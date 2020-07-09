@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Webpack</title>
-    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
+  <meta charset="UTF-8">
+  <title>byazrov-news</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
-<body>
-    <h1>Hello</h1>
-    <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+
+<body class="body">
+  <header class="header">
+    <p class="header__logo">byazrov-news</p>
+    <input type="button" name="авторизация" class="header__button">
+  </header>
+
+  <section class="search">
+    <h1 class="search__title">Что в мире творится?</h1>
+    <p class="search__subtitle">
+      Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
+    </p>
+    <div class="search__block">
+      <input type="search" class="search__field">
+      <input type="submit" value="Искать" class="search__button">
+    </div>
+  </section>
+
+  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
 </body>
+
 </html>

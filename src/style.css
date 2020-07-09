@@ -1,3 +1,15 @@
-h1 {
-  color: green;
+section, header, input, div, h1, p {
+  border: 1px solid yellowgreen;
 }
+
+.body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: aquamarine;
+  max-width: 1440px;
+  margin: auto;
+}
+
+@import './blocks/header/header.css';
+@import './blocks/search/search.css';
