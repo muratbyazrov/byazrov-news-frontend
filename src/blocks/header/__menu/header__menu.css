@@ -1,0 +1,5 @@
+.header__menu {
+  display: inline-flex;
+  margin: auto 100px auto auto;
+  height: 100%;
+}

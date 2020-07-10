@@ -1,0 +1,6 @@
+.author__text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0px;
+}

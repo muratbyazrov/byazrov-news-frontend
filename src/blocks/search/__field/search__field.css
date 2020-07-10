@@ -4,4 +4,7 @@
   border: 1px solid #D1D2D6;
   backdrop-filter: blur(8px);
   border-radius: 100px;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 24px;
 }

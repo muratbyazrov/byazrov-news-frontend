@@ -1,6 +1,7 @@
-section, header, input, div, h1, p {
+/* section, header, input, div, h1, p, a, img {
   border: 1px solid yellowgreen;
 }
+ */
 
 .body {
   position: relative;
@@ -13,3 +14,4 @@ section, header, input, div, h1, p {
 
 @import './blocks/header/header.css';
 @import './blocks/search/search.css';
+@import './blocks/author/author.css';

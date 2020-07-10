@@ -1,0 +1,15 @@
+@import './_user/header__button_user.css';
+@import './_active/header__button_active.css';
+
+.header__button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 75px;
+  color: #B6BCBF;
+
+  margin: auto 35px auto 0px;
+  height: 100%;
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+@import './__image/author__image.css';
+@import './__text-block/author__text-block.css';
+@import './__text/author__text.css';
+@import './__title/author__title.css';
+
+.author {
+  width: 100%;
+  height: 625px;
+  background: #FFFFFF;
+  display: flex;
+}
