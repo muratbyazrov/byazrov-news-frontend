@@ -1,0 +1,23 @@
+@import './__card/result__card.css';
+@import './__container/result__container.css';
+@import './__date/result__date.css';
+@import './__details/result__details.css';
+@import './__source/result__source.css';
+@import './__subtitle/result__subtitle.css';
+@import './__text/result__text.css';
+@import './__title/result__title.css';
+@import './__image/result__image.css';
+@import './__properties/result__properties.css';
+@import './__elect/result__elect.css';
+@import './__button/result__button.css';
+
+.result {
+  max-height: 975px;
+  background: #F5F6F7;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  overflow: hidden;
+
+}

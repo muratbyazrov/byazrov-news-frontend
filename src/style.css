@@ -1,7 +1,7 @@
-/* section, header, input, div, h1, p, a, img {
+/* section, header, input, div, h1, p, a, img, h2 i {
   border: 1px solid yellowgreen;
-}
- */
+} */
+
 
 .body {
   position: relative;
@@ -21,6 +21,8 @@
 @import './blocks/search/search.css';
 @import './blocks/author/author.css';
 @import './blocks/footer/footer.css';
+@import './blocks/result/result.css';
+@import './blocks/loader-block/loader-block.css';
 
 @font-face {
   font-family: Roboto;
@@ -30,4 +32,9 @@
 @font-face {
   font-family: Roboto Slab;
   src: url('./vendor/fonts/robotoslab-regular.woff');
+}
+
+@font-face {
+  font-family: Source Sans Pro;
+  src: url('./vendor/fonts/sourcesanspro-regular.woff');
 }
