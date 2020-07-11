@@ -1,6 +1,7 @@
 .author__text-block {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 130px;
   margin-left: 0px;
+  max-width: 570px;
 }

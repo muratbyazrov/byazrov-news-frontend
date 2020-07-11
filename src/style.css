@@ -12,6 +12,22 @@
   margin: auto;
 }
 
+:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
 @import './blocks/header/header.css';
 @import './blocks/search/search.css';
 @import './blocks/author/author.css';
+@import './blocks/footer/footer.css';
+
+@font-face {
+  font-family: Roboto;
+  src: url('./vendor/fonts/inter-regular.woff');
+}
+
+@font-face {
+  font-family: Roboto Slab;
+  src: url('./vendor/fonts/robotoslab-regular.woff');
+}

@@ -1,0 +1,7 @@
+.footer__menu {
+  display: inline-flex;
+  align-items: center;
+  width: 250px;
+  justify-content: space-between;
+  margin-left: auto;
+}

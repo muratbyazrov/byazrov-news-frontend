@@ -1,0 +1,8 @@
+.footer__links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70px;
+  margin-left: 45px;
+  margin-right: 0px;
+}

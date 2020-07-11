@@ -29,7 +29,7 @@
   </section>
 
   <section class="author">
-    <img src="./images/my-photo.jpg" class="author__image" alt="">
+    <img src="<%=require('./images/my-photo.jpg').default %>" class="author__image" alt="">
     <div class="author__text-block">
       <h2 class="author__title">Об авторе</h2>
       <p class="author__text">Это блок с описанием автора проекта. Здесь следует указать,
@@ -44,8 +44,10 @@
     <div class="footer__menu">
       <a href="" class="footer__button">Главная</a>
       <a href="" class="footer__button">Яндекс.Практикум</a>
-      <a href="" class="footer__social"><img class = "footer__icon" src="./images/gh.png" alt=""></a>
-      <a href="" class="footer__social"><img class = "footer__icon" src="./images/fb.png" alt=""></a>
+    </div>
+    <div class="footer__links">
+      <a href="" class="footer__social"><img src="<%=require('./images/gh.png').default %>" class="footer__social" alt=""></a>
+      <a href="" class="footer__social"><img src="<%=require('./images/fb.png').default %>" class="footer__social" alt=""></a>
     </div>
 
   </section>

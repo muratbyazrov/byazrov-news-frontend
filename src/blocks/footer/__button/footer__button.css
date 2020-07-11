@@ -1,11 +1,10 @@
-.author__text {
+.footer__button {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
+  text-align: center;
   color: #1A1B22;
-
-  width: 100%;
-  margin-top: 25px;
+  text-decoration: none;
 }

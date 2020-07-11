@@ -1,0 +1,12 @@
+@import './__copirate/footer__copirate.css';
+@import './__menu/footer__menu.css';
+@import './__social/footer__social.css';
+@import './__links/footer__links.css';
+@import './__button/footer__button.css';
+
+.footer {
+  display: flex;
+  background: #FFFFFF;
+  padding-left: 105px;
+  padding-right: 105px;
+}
