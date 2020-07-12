@@ -17,6 +17,14 @@
   outline-offset: 0;
 }
 
+.error-message {
+  color: #FF3333;
+  font-size: 0.8em;
+  transition: .3s;
+  padding: 0px;
+  opacity: 0;
+}
+
 @import './blocks/header/header.css';
 @import './blocks/search/search.css';
 @import './blocks/author/author.css';
@@ -25,10 +33,11 @@
 @import './blocks/loader-block/loader-block.css';
 @import './blocks/not-found/not-found.css';
 @import './blocks/saved/saved.css';
+@import './blocks/popup/popup.css';
 
 @font-face {
   font-family: Roboto;
-  src: url('./vendor/fonts/inter-regular.woff');
+  src: url('./vendor/fonts/roboto-regular.woff');
 }
 
 @font-face {
@@ -40,3 +49,9 @@
   font-family: Source Sans Pro;
   src: url('./vendor/fonts/sourcesanspro-regular.woff');
 }
+
+@font-face {
+  font-family: Inter;
+  src: url('./vendor/fonts/inter-regular.woff');
+}
+

@@ -216,9 +216,55 @@
 
   </section>
 
-  <section class="popup">
+  <div class="popup" id="login">
+    <div class="popup__content">
+      <img src="<%=require('./images/close.svg').default %>" alt="" class="popup__close" id="popup-user-close">
+      <h3 class="popup__title">Вход</h3>
+      <form class="popup__form" name="userForm">
+        <span class="popup__input-describ">Email</span>
+        <input type="email" required minlength="2" maxlength="30" name="email"
+          class="popup__input" placeholder="Введите почту">
+        <span id="error-email" class="error-message"></span>
+        <span class="popup__input-describ">Пароль</span>
+        <input type="password" required minlength="8" name="password"
+          class="popup__input" placeholder="Введите пароль">
+        <span id="error-user-about" class="error-message"></span>
+        <button type class="button popup__button">Войти</button>
+      </form>
+      <p class="popup__text">или <a href="" class="popup__link">Зарегистрироваться</a></p>
+    </div>
+  </div>
 
-  </section>
+  <div class="popup" id="signup">
+    <div class="popup__content">
+      <img src="<%=require('./images/close.svg').default %>" alt="" class="popup__close" id="popup-user-close">
+      <h3 class="popup__title">Регистрация</h3>
+      <form class="popup__form" name="userForm">
+        <span class="popup__input-describ">Email</span>
+        <input type="email" required minlength="2" maxlength="30" name="email"
+          class="popup__input" placeholder="Введите почту">
+        <span id="error-email" class="error-message"></span>
+        <span class="popup__input-describ">Пароль</span>
+        <input type="password" required minlength="8" name="password"
+          class="popup__input" placeholder="Введите пароль">
+        <span id="error-user-about" class="error-message"></span>
+        <span class="popup__input-describ">Имя</span>
+        <input type="text" required minlength="2" name="password"
+          class="popup__input" placeholder="Введите своё имя">
+        <span id="error-user-about" class="error-message"></span>
+        <button type class="button popup__button">Войти</button>
+      </form>
+      <p class="popup__text">или <a href="" class="popup__link">Войти</a></p>
+    </div>
+  </div>
+
+  <div class="popup" id="succes">
+    <div class="popup__content">
+      <img src="<%=require('./images/close.svg').default %>" alt="" class="popup__close" id="popup-user-close">
+      <h3 class="popup__title">Пользователь успешно зарегистриован!</h3>
+      <a href="" class="popup__link">Выполнить вход</a>
+    </div>
+  </div>
 
   <section class="footer">
     <p class="footer__copirate">&#169; 2020 Murat Byazrov</p>

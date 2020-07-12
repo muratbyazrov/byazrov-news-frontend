@@ -5,9 +5,11 @@
 @import url(./__input/popup__input.css);
 @import url(./__button/popup__button.css);
 @import url(./_is-opened/popup_is-opened.css);
-@import url(./__image-content/popup__image-content.css);
 @import url(./__image/popup__image.css);
 @import url(./__button/_active/popup__button_active.css);
+@import url(./__input-describ/popup__input-describ.css);
+@import url(./__text/popup__text.css);
+@import url(./__link/popup__link.css);
 
 .popup {
   position: fixed;
@@ -20,4 +22,8 @@
   align-items: center;
   justify-content: center;
   display: none;
+}
+
+#succes {
+  display: flex;
 }
