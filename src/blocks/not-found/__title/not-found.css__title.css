@@ -1,10 +1,10 @@
-.result__title {
+.not-found__title {
   font-family: Roboto Slab;
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
-  line-height: 46px;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
   color: #1A1B22;
   margin: auto;
-  margin-bottom: 65px;
 }

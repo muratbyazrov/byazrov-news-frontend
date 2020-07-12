@@ -23,6 +23,8 @@
 @import './blocks/footer/footer.css';
 @import './blocks/result/result.css';
 @import './blocks/loader-block/loader-block.css';
+@import './blocks/not-found/not-found.css';
+@import './blocks/saved/saved.css';
 
 @font-face {
   font-family: Roboto;

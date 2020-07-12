@@ -1,0 +1,11 @@
+@import './__container/saved__container.css';
+@import './__properties/saved__properties.css';
+@import './__subtitle/saved__subtitle.css';
+@import './__title/saved__title.css';
+@import './__data/saved__data.css';
+@import './__elect/save__elect.css';
+
+.saved {
+  background: #FFFFFF;
+  padding-top: 15px;
+}

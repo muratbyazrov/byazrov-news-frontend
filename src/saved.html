@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>byazrov-news</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
+</head>
+
+<body class="body">
+  <header class="header">
+    <p class="header__logo">NewsExplorer</p>
+    <div class="header__menu">
+      <a class="header__button header__button_active" href="./index.html">Главная</a>
+      <a class="header__button" href="saved.html" >Сохранененые статьи</a>
+      <input type="submit" value="Авторизоваться" class="header__button_user">
+    </div>
+  </header>
+
+  <section class="saved">
+    <h4 class="saved__subtitle">Сохранённые статьи</h4>
+    <h2 class="saved__title">Грета, у вас 5 сохранённых статей</h2>
+    <p class="saved__properties">По ключевым словам: Природа, Тайга и 2 другим</p>
+
+    <div class="saved__container result__container">
+      <div class="saved__card result__card">
+        <img src="<%=require('./images/image_08.png').default %>" class="result__image" alt="">
+        <div class="result__properties saved__properties">
+          <div class="result__elect saved__elect" data-title="Убрать из сохраненных">
+          </div>
+        </div>
+        <div class="result__details">
+          <p class="result__date">2 августа, 2019 </p>
+          <h3 class="result__subtitle">Национальное достояние – парки</h3>
+          <p class="result__text">
+            В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных
+            парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
+          </p>
+          <p class="result__source">Лента.ру</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="footer">
+    <p class="footer__copirate">&#169; 2020 Murat Byazrov</p>
+    <div class="footer__menu">
+      <a href="" class="footer__button">Главная</a>
+      <a href="" class="footer__button">Яндекс.Практикум</a>
+    </div>
+    <div class="footer__links">
+      <a href="" class="footer__social"><img src="<%=require('./images/gh.png').default %>" class="footer__social"
+          alt=""></a>
+      <a href="" class="footer__social"><img src="<%=require('./images/fb.png').default %>" class="footer__social"
+          alt=""></a>
+    </div>
+
+  </section>
+
+  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+</body>
+
+</html>

@@ -10,6 +10,7 @@
 @import './__properties/result__properties.css';
 @import './__elect/result__elect.css';
 @import './__button/result__button.css';
+@import './__keyword/result__keyword.css';
 
 .result {
   max-height: 975px;

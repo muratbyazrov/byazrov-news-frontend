@@ -1,0 +1,8 @@
+.not-found__icon {
+  width: 95px;
+  height: 95px;
+  background-image: url('../../../images/not-found.png');
+  background-size: cover;
+
+  margin: auto;
+}
