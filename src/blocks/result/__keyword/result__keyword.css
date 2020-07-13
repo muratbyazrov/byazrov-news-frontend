@@ -16,3 +16,11 @@
   text-align: center;
   color: #000000;
 }
+
+
+@media screen and (max-width: 768px) {
+  .result__keyword {
+    top: 0px;
+    left: 8px;
+  }
+}

@@ -8,3 +8,11 @@
 
   margin: 12px auto 16px;
 }
+
+@media screen and (max-width: 768px) {
+  .result__subtitle {
+    font-size: 22px;
+    line-height: 24px;
+    margin: 10px auto 10px;
+  }
+}

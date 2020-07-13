@@ -5,3 +5,9 @@
   position: relative;
   max-height: 576px;
 }
+
+@media screen and (max-width: 768px) {
+  .result__card {
+    max-height: 420px;
+  }
+}

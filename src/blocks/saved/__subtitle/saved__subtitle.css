@@ -6,3 +6,9 @@
   line-height: 24px;
   color: rgba(26, 27, 34, 0.5);
 }
+
+@media screen and (max-width: 768px) {
+  .saved__subtitle {
+    margin-bottom: 16px;
+  }
+}

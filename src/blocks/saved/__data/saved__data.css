@@ -2,3 +2,9 @@
   padding-left: 105px;
   padding-bottom: 40px;
 }
+
+@media screen and (max-width: 768px) {
+  .saved__data {
+    padding-left: 40px;
+  }
+}
