@@ -6,3 +6,10 @@
   line-height: 24px;
   margin: auto auto auto 100px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .header__logo {
+    margin: auto auto auto 40px;
+  }
+}

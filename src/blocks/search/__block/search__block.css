@@ -2,4 +2,21 @@
   display: inline-block;
   position: relative;
   margin: auto auto 80px auto;
+  height: 65px;
+  width: 42.5%;
+}
+
+@media screen and (max-width:1124px) {
+  .search__block {
+      width: 60%;
+      height: 60px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .search__block {
+      width: 60%;
+      height: 55px;
+      margin-bottom: 50px;
+  }
 }

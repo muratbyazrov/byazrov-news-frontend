@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>byazrov-news</title>
+  <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
 
@@ -11,17 +13,21 @@
   <header class="header">
     <p class="header__logo">NewsExplorer</p>
     <div class="header__menu">
-      <a class="header__button header__button_active" href="./index.html">Главная</a>
-      <a class="header__button" href="saved.html" >Сохранененые статьи</a>
+      <div class="header__button header__button_active" href="./index.html">Главная</div>
+      <div class="header__button" href="saved.html" >Сохранененые статьи</div>
       <input type="submit" value="Авторизоваться" class="header__button_user">
     </div>
   </header>
 
   <section class="search">
-    <h1 class="search__title">Что в мире творится?</h1>
-    <p class="search__subtitle">
-      Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
-    </p>
+
+    <div class="search__describtion">
+      <h1 class="search__title">Что в мире творится?</h1>
+      <p class="search__subtitle">
+        Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
+      </p>
+    </div>
+
     <div class="search__block">
       <input type="search" placeholder="Введите тему новости" class="search__field">
       <input type="submit" value="Искать" class="search__button">

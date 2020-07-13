@@ -1,7 +1,5 @@
 .author__image {
-  max-width: 465px;
-  max-height: 465px;
-  margin: 80px 60px auto 100px;
-
+  width: 35%;
+  margin-right: 60px;
   border-radius: 1000px;
 }

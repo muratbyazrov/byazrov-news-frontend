@@ -1,0 +1,17 @@
+.search__describtion {
+  width: 41%;
+  margin: 80px auto 65px;
+}
+
+@media screen and (max-width:1024px) {
+  .search__describtion {
+      width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search__describtion {
+      width: 59%;
+  }
+}
+

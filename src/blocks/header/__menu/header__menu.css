@@ -3,3 +3,9 @@
   margin: auto 100px auto auto;
   height: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .header__menu {
+    margin: auto 40px auto auto;
+  }
+}
