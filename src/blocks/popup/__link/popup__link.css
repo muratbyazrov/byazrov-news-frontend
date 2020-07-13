@@ -2,3 +2,12 @@
   text-decoration: none;
   color: #2f71e5;
 }
+
+#popup-succes-link {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2F71E5;
+}

@@ -41,6 +41,11 @@
 }
 
 @font-face {
+  font-family: Roboto-black;
+  src: url('./vendor/fonts/roboto-black.woff');
+}
+
+@font-face {
   font-family: Roboto Slab;
   src: url('./vendor/fonts/robotoslab-regular.woff');
 }
