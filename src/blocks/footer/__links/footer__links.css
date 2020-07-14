@@ -13,5 +13,15 @@
     order: 2;
     width: 68px;
     margin-bottom: 70px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .footer__links {
+    order: 2;
+    width: 68px;
+    margin-bottom: 70px;
+    margin-right: 20px;
   }
 }

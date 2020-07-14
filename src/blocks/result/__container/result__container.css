@@ -4,10 +4,22 @@
   grid-gap: 16px 16px;
   justify-content: center;
   margin: 0;
+
+  background: #F5F6F7;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 75px;
+  overflow: scroll;
 }
 
 @media screen and (max-width: 768px) {
   .result__container {
     grid-template-columns: repeat(auto-fill, 225px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .result__container {
+    grid-template-columns: repeat(auto-fill, 290px);
   }
 }

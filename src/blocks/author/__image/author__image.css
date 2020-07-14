@@ -14,6 +14,25 @@
 @media screen and (max-width: 860px) {
   .author__image {
     margin-right: 30px;
-    max-height: 235px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .author__image {
+    margin: auto 20px auto 0px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .author__image {
+    width: 60vw;
+    margin: auto auto 30px auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .author__image {
+    width: 85vw;
+    margin: auto auto 30px auto;
   }
 }
