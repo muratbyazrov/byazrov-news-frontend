@@ -14,8 +14,8 @@
     <p class="header__logo">NewsExplorer</p>
     <div class="header__menu-opener"></div>
     <nav class="header__menu">
-      <div class="header__button header__button_active" href="./index.html">Главная</div>
-      <div class="header__button" href="saved.html">Сохранененые статьи</div>
+      <a class="header__button header__button_active" href="./index.html">Главная</a>
+      <a class="header__button" href="saved.html">Сохранененые статьи</a>
       <input type="submit" value="Авторизоваться" class="header__button_user">
     </nav>
   </header>
@@ -47,10 +47,10 @@
       <div class="card" id="saved">
 
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_delete"></div>
           <h4 class="card__keyword">Природа</h4>
-          <h5 class="card__hint" data-title="Убрать из сохраненных"></h5>
+          <p class="card__hint" data-title="Убрать из сохраненных"></p>
         </div>
 
         <div class="card__details">
@@ -65,13 +65,13 @@
 
       </div>
 
-      <div class="card" id="saved">
+      <div class="card">
 
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_delete"></div>
           <h4 class="card__keyword">Природа</h4>
-          <h5 class="card__hint" data-title="Убрать из сохраненных"></h5>
+          <p class="card__hint" data-title="Убрать из сохраненных"></p>
         </div>
 
         <div class="card__details">
@@ -86,13 +86,13 @@
 
       </div>
 
-      <div class="card" id="saved">
+      <div class="card">
 
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_delete"></div>
           <h4 class="card__keyword">Природа</h4>
-          <h5 class="card__hint" data-title="Убрать из сохраненных"></h5>
+          <p class="card__hint" data-title="Убрать из сохраненных"></p>
         </div>
 
         <div class="card__details">
@@ -107,13 +107,13 @@
 
       </div>
 
-      <div class="card" id="saved">
+      <div class="card">
 
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_delete"></div>
           <h4 class="card__keyword">Природа</h4>
-          <h5 class="card__hint" data-title="Убрать из сохраненных"></h5>
+          <p class="card__hint" data-title="Убрать из сохраненных"></p>
         </div>
 
         <div class="card__details">
@@ -128,13 +128,13 @@
 
       </div>
 
-      <div class="card" id="saved">
+      <div class="card">
 
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_delete"></div>
           <h4 class="card__keyword">Природа</h4>
-          <h5 class="card__hint" data-title="Убрать из сохраненных"></h5>
+          <p class="card__hint" data-title="Убрать из сохраненных"></p>
         </div>
 
         <div class="card__details">
@@ -154,7 +154,7 @@
   </section>
 
   <section class="author">
-    <img src="<%=require('./images/my-photo.jpg').default %>" class="author__image" alt="">
+    <img src="<%=require('./images/my-photo.jpg').default %>" class="author__image" alt="картинка к новости">
     <div class="author__text-block">
       <h2 class="author__title">Об авторе</h2>
       <p class="author__text">Это блок с описанием автора проекта. Здесь следует указать,
@@ -166,7 +166,7 @@
 
   <section class="loader-block">
     <i class="loader-block__circle-preloader"></i>
-    <p class="loader-block__title">Идет поиск новостей...</p>
+    <h3 class="loader-block__title">Идет поиск новостей...</h3>
   </section>
 
   <section class="not-found">
@@ -179,11 +179,11 @@
     <h2 class="result__title">Результаты поиска</h2>
     <div class="result__container">
 
-      <div class="card" id="result">
+      <div class="card">
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_save"></div>
-          <h5 class="card__hint" data-title="Войдите, чтобы сохранять статьи"></h5>
+          <p class="card__hint" data-title="Войдите, чтобы сохранять статьи"></p>
         </div>
 
         <div class="card__details">
@@ -197,11 +197,11 @@
         </div>
       </div>
 
-      <div class="card" id="result">
+      <div class="card">
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_save" id="saved-card"></div>
-          <h5 class="card__hint" data-title="Войдите, чтобы сохранять статьи"></h5>
+          <p class="card__hint" data-title="Войдите, чтобы сохранять статьи"></p>
         </div>
 
         <div class="card__details">
@@ -215,11 +215,11 @@
         </div>
       </div>
 
-      <div class="card" id="result">
+      <div class="card">
         <div class="card__head">
-          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="">
+          <img src="<%=require('./images/image_08.png').default %>" class="card__image" alt="картинка к новости">
           <div class="card__button card__button_save"></div>
-          <h5 class="card__hint" data-title="Войдите, чтобы сохранять статьи"></h5>
+          <p class="card__hint" data-title="Войдите, чтобы сохранять статьи"></p>
         </div>
 
         <div class="card__details">
@@ -241,7 +241,7 @@
 
   <div class="popup" id="popup-login">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default %>" alt="" class="popup__close" id="popup-user-close">
+      <img src="<%=require('./images/close.svg').default %>" alt="заккрыть" class="popup__close" id="popup-user-close">
       <h3 class="popup__title">Вход</h3>
       <form class="popup__form" name="userForm">
         <span class="popup__input-describ">Email</span>
@@ -259,7 +259,7 @@
 
   <div class="popup" id="popup-signup">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default %>" alt="" class="popup__close" id="popup-user-close">
+      <img src="<%=require('./images/close.svg').default %>" alt="картинка к новости" class="popup__close" id="popup-user-close">
       <h3 class="popup__title">Регистрация</h3>
       <form class="popup__form" name="userForm">
         <span class="popup__input-describ">Email</span>
@@ -272,7 +272,7 @@
         <span class="popup__input-describ">Имя</span>
         <input type="text" required minlength="2" name="password" class="popup__input" placeholder="Введите своё имя">
         <span id="error-user-about" class="error-message"></span>
-        <button type class="button popup__button">Войти</button>
+        <button type="submit" class="button popup__button">Войти</button>
       </form>
       <p class="popup__text">или <a href="" class="popup__link">Войти</a></p>
     </div>
@@ -280,23 +280,23 @@
 
   <div class="popup" id="popup-succes">
     <div class="popup__content" id="popup-content-succes">
-      <img src="<%=require('./images/close.svg').default %>" alt="" class="popup__close" id="popup-user-close">
+      <img src="<%=require('./images/close.svg').default %>" alt="закрыть" class="popup__close" id="popup-user-close">
       <h3 class="popup__title" id="popup-succes-title">Пользователь успешно зарегистрирован!</h3>
       <a href="" class="popup__link" id="popup-succes-link">Выполнить вход</a>
     </div>
   </div>
 
   <section class="footer">
-    <p class="footer__copirate">&#169; 2020 Murat Byazrov</p>
+    <a class="footer__copirate" href="https://vk.com/mbyazrov" target="_blank">&#169; 2020 Murat Byazrov</a>
     <nav class="footer__menu">
-      <a href="" class="footer__button">Главная</a>
-      <a href="" class="footer__button">Яндекс.Практикум</a>
+      <a href="index.html" class="footer__button">Главная</a>
+      <a href="https://praktikum.yandex.ru" target="_blank" class="footer__button">Яндекс.Практикум</a>
     </nav>
     <div class="footer__links">
-      <a href="" class="footer__social"><img src="<%=require('./images/gh.png').default %>" class="footer__social"
-          alt=""></a>
-      <a href="" class="footer__social"><img src="<%=require('./images/fb.png').default %>" class="footer__social"
-          alt=""></a>
+      <a href="https://github.com/muratbyazrov?tab=repositories" target="_blank" class="footer__social"><img src="<%=require('./images/gh.png').default %>" class="footer__social"
+          alt="github"></a>
+      <a href="https://www.facebook.com/profile.php?id=100023839899887" target="_blank" class="footer__social"><img src="<%=require('./images/fb.png').default %>" class="footer__social"
+          alt="facebook"></a>
     </div>
 
   </section>

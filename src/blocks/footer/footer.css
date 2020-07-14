@@ -7,14 +7,12 @@
 .footer {
   display: flex;
   background: #FFFFFF;
-  padding-left: 105px;
-  padding-right: 105px;
+  padding: 25px 105px 25px 105px;
 }
 
 @media screen and (max-width: 768px) {
   .footer {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 10px 40px 15px 40px;
   }
 }
 
@@ -23,5 +21,6 @@
     flex-wrap: wrap;
     padding-left: 10px;
     padding-right: 10px;
+    padding: 10px 10px 15px 10px;
   }
 }

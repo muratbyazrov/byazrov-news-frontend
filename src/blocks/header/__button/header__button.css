@@ -12,6 +12,7 @@
   margin: auto 35px auto 0px;
   height: 100%;
   text-align: center;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
