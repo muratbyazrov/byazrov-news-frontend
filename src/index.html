@@ -12,11 +12,12 @@
 <body class="body">
   <header class="header">
     <p class="header__logo">NewsExplorer</p>
-    <div class="header__menu">
+    <div class="header__menu-opener"></div>
+    <nav class="header__menu">
       <div class="header__button header__button_active" href="./index.html">Главная</div>
       <div class="header__button" href="saved.html">Сохранененые статьи</div>
       <input type="submit" value="Авторизоваться" class="header__button_user">
-    </div>
+    </nav>
   </header>
 
   <section class="search">
@@ -287,10 +288,10 @@
 
   <section class="footer">
     <p class="footer__copirate">&#169; 2020 Murat Byazrov</p>
-    <div class="footer__menu">
+    <nav class="footer__menu">
       <a href="" class="footer__button">Главная</a>
       <a href="" class="footer__button">Яндекс.Практикум</a>
-    </div>
+    </nav>
     <div class="footer__links">
       <a href="" class="footer__social"><img src="<%=require('./images/gh.png').default %>" class="footer__social"
           alt=""></a>

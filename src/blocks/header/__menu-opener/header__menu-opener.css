@@ -1,0 +1,19 @@
+@import '../__menu-opener/_cloves/header__menu-opener_cloves.css';
+
+.header__menu-opener {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-image: url('../../../images/icons/menu-open.png');
+  background-size: contain;
+  z-index: 2;
+  display: none;
+}
+
+@media screen and (max-width: 560px) {
+  .header__menu-opener {
+    display: flex;
+  }
+}

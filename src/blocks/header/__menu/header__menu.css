@@ -27,9 +27,20 @@
     background: #1A1B22;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
-    z-index: 1;
     box-sizing: border-box;
     padding: 55px 16px 35px 16px;
-    display: none;
+    z-index: -1;
+    /* display: none; */
+  }
+
+  .header__menu::after {
+   content: '';
+   position: fixed;
+   top: 0px;
+   left: 0px;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, .5);
+   z-index: -2;
   }
 }
