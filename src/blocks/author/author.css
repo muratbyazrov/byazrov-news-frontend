@@ -4,11 +4,24 @@
 @import './__title/author__title.css';
 
 .author {
-  width: 100%;
+  max-width: 100%;
   background: #FFFFFF;
   display: flex;
   justify-content: center;
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .author {
+    padding: 70px 40px 70px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .author {
+    padding: 60px 40px 60px 40px;
+  }
 }
 

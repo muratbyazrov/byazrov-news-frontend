@@ -3,3 +3,17 @@
   margin-right: 60px;
   border-radius: 1000px;
 }
+
+
+@media screen and (max-width: 1024px) {
+  .author__image {
+    margin-right: 40px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .author__image {
+    margin-right: 30px;
+    max-height: 235px;
+  }
+}

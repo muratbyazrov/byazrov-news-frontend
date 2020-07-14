@@ -5,3 +5,15 @@
   margin-left: 0px;
   max-width: 570px;
 }
+
+@media screen and (max-width: 1024px) {
+  .author__text-block {
+    margin-top: 25px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .author__text-block {
+    margin-top: 0px;
+  }
+}
