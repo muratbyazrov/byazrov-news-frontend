@@ -8,3 +8,16 @@
   line-height: 22px;
   padding: 24px;
 }
+
+@media screen and (max-width: 768px) {
+  .search__field {
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .search__field {
+    margin-bottom: 16px;
+    height: 56px;
+  }
+}

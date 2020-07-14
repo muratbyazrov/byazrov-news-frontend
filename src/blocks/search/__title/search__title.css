@@ -14,3 +14,9 @@
     line-height: 40px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .search__title {
+    margin: 30px auto 16px;
+  }
+}

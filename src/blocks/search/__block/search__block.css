@@ -13,10 +13,18 @@
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:780px) {
   .search__block {
       width: 60%;
       height: 55px;
       margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .search__block{
+    width: 90%;
+    height: auto;
+    margin-bottom: 30px;
   }
 }

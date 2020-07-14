@@ -6,3 +6,12 @@
   margin-left: 45px;
   margin-right: 0px;
 }
+
+
+@media screen and (max-width: 670px) {
+  .footer__links {
+    order: 2;
+    width: 68px;
+    margin-bottom: 70px;
+  }
+}

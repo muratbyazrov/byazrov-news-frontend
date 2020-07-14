@@ -19,3 +19,11 @@
     margin-right: 15px;
   }
 }
+
+@media screen and (max-width: 560px) {
+  .header__button {
+    margin: 0px;
+    width: 100%;
+    line-height: 50px;
+  }
+}

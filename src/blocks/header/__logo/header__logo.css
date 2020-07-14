@@ -8,8 +8,15 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
   .header__logo {
     margin: auto auto auto 40px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .header__logo {
+    font-size: 16px;
+    margin: auto auto auto 16px;
   }
 }

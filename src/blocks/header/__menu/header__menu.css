@@ -1,5 +1,5 @@
 .header__menu {
-  display: inline-flex;
+  display: flex;
   margin: auto 100px auto auto;
   height: 100%;
 }
@@ -7,5 +7,29 @@
 @media screen and (max-width: 768px) {
   .header__menu {
     margin: auto 40px auto auto;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .header__menu {
+    margin: auto 16px auto auto;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .header__menu {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100vw;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    background: #1A1B22;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 55px 16px 35px 16px;
+    display: none;
   }
 }

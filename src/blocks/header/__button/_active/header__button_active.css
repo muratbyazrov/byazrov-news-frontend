@@ -2,3 +2,9 @@
   border-bottom: solid 3px  #FFFFFF;
   color: #FFFFFF !important;
 }
+
+@media screen and (max-width: 560px) {
+  .header__button_active {
+    border: none;
+  }
+}
