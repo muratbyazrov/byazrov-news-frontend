@@ -1,16 +1,16 @@
-.result__subtitle {
+.card__title {
   font-family: Roboto Slab;
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
   line-height: 30px;
   color: #1A1B22;
-
   margin: 12px auto 16px;
 }
 
+
 @media screen and (max-width: 768px) {
-  .result__subtitle {
+  .card__title {
     font-size: 22px;
     line-height: 24px;
     margin: 10px auto 10px;

@@ -1,11 +1,12 @@
-.result__details {
+.card__details {
   padding: 20px;
   padding-top: 14px;
   padding-bottom: 30px;
 }
 
+
 @media screen and (max-width: 768px) {
-  .result__details{
+  .card__details{
     padding: 15px;
   }
 }

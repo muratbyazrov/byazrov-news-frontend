@@ -1,0 +1,45 @@
+.card__hint {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .card__hint {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__hint {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+
+
+/* @import './_marked/result__elect_marked.css'; */
+
+.result__elect {
+  width: 40px;
+  height: 40px;
+  background-image: url('../../../images/icons/normal.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+}
+
+.result__elect:hover {
+  background-image: url('../../../images/icons/hover.png');
+}
+

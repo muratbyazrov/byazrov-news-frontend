@@ -1,0 +1,11 @@
+.card__button_save {
+  background-image: url('../../../../images/icons/normal.png');
+}
+
+.card__button_save:hover {
+  background-image: url('../../../../images/icons/hover.png');
+}
+
+#saved-card {
+  background-image: url('../../../../images/icons/marked.png');
+}

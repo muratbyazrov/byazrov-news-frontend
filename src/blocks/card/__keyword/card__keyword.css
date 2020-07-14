@@ -1,13 +1,16 @@
-.result__keyword {
+.card__keyword {
   min-width: 90px;
   height: 40px;
   background: #FFFFFF;
   border-radius: 10px;
-  position: absolute;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 5px;
+  margin: 0;
+
+  position: absolute;
+  top: 24px;
   left: 24px;
 
   font-family: Roboto;
@@ -18,9 +21,16 @@
 }
 
 
+@media screen and (max-width: 1024px) {
+  .card__keyword {
+    top: 16px;
+    left: 16px;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .result__keyword {
-    top: 0px;
+  .card__keyword {
+    top: 8px;
     left: 8px;
   }
 }

@@ -1,4 +1,4 @@
-.result__text {
+.card__text {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .result__text {
+  .card__text {
    overflow: hidden;
    text-overflow: ellipsis;
    height: 50px;
