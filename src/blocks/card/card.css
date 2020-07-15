@@ -1,7 +1,6 @@
 @import './__button/card__button.css';
 @import './__date/card__date.css';
 @import './__details/card__details.css';
-@import './__hint/card__hint.css';
 @import './__image/card__image.css';
 @import './__keyword/card__keyword.css';
 @import './__source/card__source.css';
@@ -11,14 +10,7 @@
 
 .card {
   border-radius: 20px;
-  overflow: hidden;
   background: #FFFFFF;
   position: relative;
-  max-height: 576px;
-}
-
-@media screen and (max-width: 768px) {
-  .card {
-    max-height: 420px;
-  }
+  overflow: hidden;
 }
