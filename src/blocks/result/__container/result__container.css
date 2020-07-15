@@ -9,12 +9,17 @@
   width: 100%;
   padding-top: 60px;
   padding-bottom: 75px;
-  overflow: scroll;
 }
 
 @media screen and (max-width: 768px) {
   .result__container {
     grid-template-columns: repeat(auto-fill, 225px);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .result__container {
+    grid-template-columns: repeat(auto-fill, 320px);
   }
 }
 
