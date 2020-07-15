@@ -20,6 +20,10 @@
   padding: 12px;
 }
 
+#header-button-user-saved {
+  border: 1px solid #D1D2D6;
+}
+
 @media screen and (max-width: 560px) {
   .header__button_user {
     margin-top: 10px;

@@ -1,5 +1,6 @@
 @import './_user/header__button_user.css';
 @import './_active/header__button_active.css';
+@import './_saved/header__button_saved.css';
 
 .header__button {
   font-family: Roboto;
@@ -13,6 +14,7 @@
   height: 100%;
   text-align: center;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {

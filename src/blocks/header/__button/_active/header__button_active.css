@@ -3,6 +3,11 @@
   color: #FFFFFF !important;
 }
 
+#header-button-active-saved {
+  border-bottom: solid 3px #1A1B22;
+  color: #1A1B22;
+}
+
 @media screen and (max-width: 560px) {
   .header__button_active {
     border: none;
