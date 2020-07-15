@@ -30,7 +30,7 @@
     box-sizing: border-box;
     padding: 55px 16px 35px 16px;
     z-index: -1;
-    /* display: none; */
+    display: none;
   }
 
   .header__menu::after {

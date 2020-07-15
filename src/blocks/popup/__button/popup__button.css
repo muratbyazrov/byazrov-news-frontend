@@ -11,3 +11,9 @@
   border-radius: 100px;
   border: none;
 }
+
+@media screen and (max-width: 560px) {
+  .popup__button {
+    margin-top: 0px;
+  }
+}
