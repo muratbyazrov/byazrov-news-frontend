@@ -118,7 +118,7 @@
 
   <div class="popup" id="popup-login">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default %>" alt="заккрыть" class="popup__close" id="popup-user-close">
+      <img src="<%=require('./images/close.svg').default %>" alt="заккрыть" class="popup__close" id="popup-login-close">
       <h3 class="popup__title">Вход</h3>
       <form class="popup__form" name="userForm">
         <span class="popup__input-describ">Email</span>
@@ -130,13 +130,13 @@
         <span id="error-user-about" class="error-message"></span>
         <button type="submit" class="button popup__button popup__button_active">Войти</button>
       </form>
-      <p class="popup__text">или <a href="" class="popup__link">Зарегистрироваться</a></p>
+      <p class="popup__text">или <p href="" class="popup__link" id="signup">Зарегистрироваться</p></p>
     </div>
   </div>
 
   <div class="popup" id="popup-signup">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default %>" alt="картинка к новости" class="popup__close" id="popup-user-close">
+      <img src="<%=require('./images/close.svg').default %>" alt="картинка к новости" class="popup__close" id="popup-signup-close">
       <h3 class="popup__title">Регистрация</h3>
       <form class="popup__form" name="userForm">
         <span class="popup__input-describ">Email</span>
@@ -155,9 +155,9 @@
     </div>
   </div>
 
-  <div class="popup" id="popup-succes">
-    <div class="popup__content" id="popup-content-succes">
-      <img src="<%=require('./images/close.svg').default %>" alt="закрыть" class="popup__close" id="popup-user-close">
+  <div class="popup" id="popup-success">
+    <div class="popup__content">
+      <img src="<%=require('./images/close.svg').default %>" alt="закрыть" class="popup__close" id="popup-succes-close">
       <h3 class="popup__title" id="popup-succes-title">Пользователь успешно зарегистрирован!</h3>
       <a href="" class="popup__link" id="popup-succes-link">Выполнить вход</a>
     </div>

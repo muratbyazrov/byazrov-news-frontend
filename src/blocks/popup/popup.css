@@ -20,10 +20,10 @@
   background-color: rgba(0, 0, 0, .5);
   align-items: center;
   justify-content: center;
-  display: flex;
+  display: none;
 }
 
-#popup-succes {
+/* #popup-succes {
   display: none;
 }
 
@@ -33,4 +33,4 @@ display: none;
 
 #popup-signup {
   display: none;
-}
+} */
