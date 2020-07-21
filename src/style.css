@@ -22,6 +22,12 @@
   transition: .3s;
   padding: 0px;
   opacity: 0;
+  margin-top: -35px;
+  margin-bottom: 25px;
+}
+
+.input-container__invalid {
+  opacity: 1;
 }
 
 @import './blocks/header/header.css';

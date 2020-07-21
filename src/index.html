@@ -120,17 +120,18 @@
     <div class="popup__content">
       <img src="<%=require('./images/close.svg').default %>" alt="заккрыть" class="popup__close" id="popup-login-close">
       <h3 class="popup__title">Вход</h3>
-      <form class="popup__form" name="userForm">
+      <form class="login__form" name="userForm">
         <span class="popup__input-describ">Email</span>
-        <input type="email" required minlength="2" maxlength="30" name="email" class="popup__input"
-          placeholder="Введите почту">
-        <span id="error-email" class="error-message"></span>
+        <input type="email" required minlength="2" maxlength="30" class="popup__input"
+          placeholder="Введите почту" id="email-login">
+        <p id="error-email-login" class="error-message"></p>
         <span class="popup__input-describ">Пароль</span>
-        <input type="password" required minlength="8" name="password" class="popup__input" placeholder="Введите пароль">
-        <span id="error-user-about" class="error-message"></span>
-        <button type="submit" class="button popup__button popup__button_active">Войти</button>
+        <input type="password" required minlength="8" class="popup__input"
+        placeholder="Введите пароль" id="login-password">
+        <p id="error-login-password" class="error-message"></p>
+        <button type="submit" class="button popup__button" id="login-button">Войти</button>
       </form>
-      <p class="popup__text">или <p href="" class="popup__link" id="signup">Зарегистрироваться</p></p>
+      <p class="popup__text">или <span class="popup__link" id="signup">Зарегистрироваться</span></p>
     </div>
   </div>
 
@@ -138,20 +139,22 @@
     <div class="popup__content">
       <img src="<%=require('./images/close.svg').default %>" alt="картинка к новости" class="popup__close" id="popup-signup-close">
       <h3 class="popup__title">Регистрация</h3>
-      <form class="popup__form" name="userForm">
+      <form class="signup__form" name="userForm">
         <span class="popup__input-describ">Email</span>
-        <input type="email" required minlength="2" maxlength="30" name="email" class="popup__input"
-          placeholder="Введите почту">
-        <span id="error-email" class="error-message"></span>
+        <input type="email" required minlength="2" maxlength="30" class="popup__input"
+          placeholder="Введите почту" id="email-signup">
+        <p id="error-email-signup" class="error-message"></p>
         <span class="popup__input-describ">Пароль</span>
-        <input type="password" required minlength="8" name="password" class="popup__input" placeholder="Введите пароль">
-        <span id="error-user-about" class="error-message"></span>
+        <input type="password" required minlength="8" class="popup__input"
+        placeholder="Введите пароль" id="signup-password">
+        <p id="error-signup-password" class="error-message"></p>
         <span class="popup__input-describ">Имя</span>
-        <input type="text" required minlength="2" name="password" class="popup__input" placeholder="Введите своё имя">
-        <span id="error-user-about" class="error-message"></span>
-        <button type="submit" class="button popup__button">Войти</button>
+        <input type="text" required minlength="2" class="popup__input"
+        placeholder="Введите своё имя" id="signup-name">
+        <p id="error-signup-name" class="error-message"></p>
+        <button type="submit" class="button popup__button" id="signup-button">Зарегистрироваться</button>
       </form>
-      <p class="popup__text">или <a href="" class="popup__link">Войти</a></p>
+      <p class="popup__text">или <span class="popup__link" id="login">Войти</span></p>
     </div>
   </div>
 

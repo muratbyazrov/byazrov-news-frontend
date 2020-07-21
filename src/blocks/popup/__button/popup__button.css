@@ -10,6 +10,7 @@
   background: #E6E8EB;
   border-radius: 100px;
   border: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 560px) {
