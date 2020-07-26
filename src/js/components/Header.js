@@ -1,14 +1,22 @@
+import { savedArticlesButton, autorizButton, userNameButton, } from '../constans/constans';
+
 export class Header {
-  constructor(color) {
-    this.color = color;
+  constructor(logProps) {
+    // this.color = color;
+    this.logProps = logProps;
   }
 
-  render(props) {
-    // в объекте props должны быть два своства: 1. isLoggedIn 2. userName
-    if (props.isLoggedIn) {
-      // если пользователь зареган, надо отобразить шапку как для зареганного пользователя
-      // В частности отобразить в кнопке имя пользователя props.userName
+  render(logProps) {
+    // в объекте props должны быть два свойства: 1. isLoggedIn 2. userName
+    if (logProps.isLoggedIn) {
+      savedArticlesButton.classList.add('display');
+      userNameButton.value = logProps.userName;
+      userNameButton.classList.remove('none-display');
+      autorizButton.classList.add('none-display');
+    } else {
+      savedArticlesButton.classList.remove('display');
+      userNameButton.classList.add('none-display');
+      autorizButton.classList.remove('none-display');
     }
-    // если пользователь не зареган, отобразить шапку для незареганного
   }
 }

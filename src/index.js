@@ -3,18 +3,25 @@ import './style.css';
 // классы
 import { Form } from './js/components/Form';
 import { Popup } from './js/components/Popup';
+import { MainApi } from './js/api/MainApi';
 import { Header } from './js/components/Header';
 import { NewsCard } from './js/components/NewsCard';
 import { NewsCardList } from './js/components/NewsCardList';
+import { loginCheck, signout } from './js/utils/utils';
 
 const {
-  autorizButton, signupButton, loginClose, signupClose, loginEmail, loginPassword,
-  loginSubmit, signupEmail, signupPassword, signupName, signupSubmit, login
+  autorizButton, signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose,
+  loginSubmit, signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton,
+  logProps, userNameButton,
 } = require('./js/constans/constans');
 
+// loginCheck();
+
 // подключаем классы, чтобы пользоваться их методами
-const popup = new Popup();
-const form = new Form();
+export const popup = new Popup();
+export const form = new Form();
+export const mainApi = new MainApi();
+export const header = new Header(logProps);
 
 // ФОРМА ЛОГИРОВАНИЯ
 loginEmail.addEventListener('input', form.handlValidate);
@@ -35,8 +42,8 @@ signupClose.addEventListener('click', popup.closeSignUp);
 login.addEventListener('click', popup.openLogin);
 
 // ФОРМА УСПЕШНОЙ РЕГИСТРАЦИИ
-// successClose.addEventListener('click', popup.closeSuccess);
+successClose.addEventListener('click', popup.closeSuccess);
+loginSuccessButton.addEventListener('click', popup.openLogin);
 
-export {
-  form,
-};
+// шапка
+userNameButton.addEventListener('click', signout);

@@ -20,6 +20,7 @@ const loginForm = document.querySelector('.login__form');
 const loginEmail = document.getElementById('email-login');
 const loginPassword = document.getElementById('login-password');
 const loginSubmit = document.getElementById('login-button');
+const loginServerError = document.getElementById('server-login-message');
 
 // форма регистрации
 const signupForm = document.querySelector('.signup__form');
@@ -27,7 +28,21 @@ const signupEmail = document.getElementById('email-signup');
 const signupPassword = document.getElementById('signup-password');
 const signupName = document.getElementById('signup-name');
 const signupSubmit = document.getElementById('signup-button');
-const login = document.getElementById('login')
+const login = document.getElementById('login'); // Кнопка войти
+const signupServerError = document.getElementById('server-signup-message');
+
+// форма успешной решистрации
+const loginSuccessButton = document.getElementById('popup-succes-link');
+
+// шапка
+// кнопка сохраненные статьи
+const savedArticlesButton = document.getElementById('saved-articles');
+const userNameButton = document.getElementById('user-name-button');
+
+const logProps = {
+  isLoggedIn: false,
+  userName: 'userName',
+};
 
 // правила для валидации полей форм
 const emailRules = {
@@ -66,7 +81,7 @@ const nameRules = {
 };
 
 module.exports = {
-  autorizButton,
+  // формы
   popupLogin,
   popupSignup,
   signupButton,
@@ -87,4 +102,13 @@ module.exports = {
   passwordRules,
   nameRules,
   login,
+  loginSuccessButton,
+  loginServerError,
+  signupServerError,
+  // шапка
+  autorizButton,
+  savedArticlesButton,
+  userNameButton,
+  // текущие свойства пользователя
+  logProps,
 };

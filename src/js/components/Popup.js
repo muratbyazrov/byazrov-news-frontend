@@ -1,4 +1,4 @@
-import { popupLogin, popupSignup, popupSuccess } from '../constans/constans';
+import { popupLogin, popupSignup, popupSuccess, loginServerError } from '../constans/constans';
 import { form } from '../../index';
 
 export class Popup {
@@ -12,12 +12,14 @@ export class Popup {
   }
   openLogin() {
     popupSignup.classList.remove('popup_is-opened');
+    popupSuccess.classList.remove('popup_is-opened');
     form.resetLoginForm();
     form.renderLoginForm();
     popupLogin.classList.add('popup_is-opened');
   }
   closeLogin() {
     popupLogin.classList.remove('popup_is-opened');
+    loginServerError.textContent = '';
   }
   openSignUp() {
     popupLogin.classList.remove('popup_is-opened');
@@ -27,6 +29,7 @@ export class Popup {
   }
   closeSignUp() {
     popupSignup.classList.remove('popup_is-opened');
+    signupServerError.textContent = '';
   }
   openSuccess() {
     popupSignup.classList.remove('popup_is-opened');

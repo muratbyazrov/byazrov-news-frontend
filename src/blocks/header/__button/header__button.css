@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+#saved-articles {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .header__button {
     margin-right: 15px;

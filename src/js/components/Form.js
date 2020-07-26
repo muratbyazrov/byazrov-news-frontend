@@ -1,7 +1,11 @@
-import { form } from '../../index';
-import { signupSubmit, loginSubmit, loginEmail, loginPassword,
+import { form, mainApi, popup, header } from '../../index';
+import {
+  signupSubmit, loginSubmit, loginEmail, loginPassword,
   loginForm, signupName, signupEmail, signupPassword, signupForm,
-  emailRules, passwordRules, nameRules, } from '../constans/constans';
+  emailRules, passwordRules, nameRules, loginServerError, signupServerError, logProps,
+} from '../constans/constans';
+
+import { loginCheck } from '../utils/utils';
 
 // библиотека валидации
 const approve = require('approvejs');
@@ -9,8 +13,20 @@ const approve = require('approvejs');
 export class Form {
   constructor() {
   }
-  setServerError() {
-    // добавляет форме ощибку с сервера
+  setServerLoginError(err) {
+    err.text()
+      .then(error => JSON.parse(error).message)
+      .then(errorMessage => {
+        loginServerError.textContent = errorMessage;
+      })
+  }
+
+  setServerSignupError(err) {
+    err.text()
+      .then(error => JSON.parse(error).message)
+      .then(errorMessage => {
+        signupServerError.textContent = errorMessage;
+      })
   }
 
   handlValidate(event) {
@@ -55,8 +71,8 @@ export class Form {
   // кнопка формы регистрации
   renderSignupForm() {
     if ((approve.value(signupEmail.value, emailRules)).approved &&
-    (approve.value(signupPassword.value, passwordRules)).approved &&
-    (approve.value(signupName.value, nameRules)).approved) {
+      (approve.value(signupPassword.value, passwordRules)).approved &&
+      (approve.value(signupName.value, nameRules)).approved) {
       signupSubmit.classList.add('popup__button_active');
     } else {
       signupSubmit.classList.remove('popup__button_active');
@@ -69,6 +85,18 @@ export class Form {
     [loginEmail, loginPassword].forEach((elem) => {
       form.validateInputElement(elem)
     });
+    mainApi.signin(loginEmail.value, loginPassword.value)
+      .then((res) => {
+        if (res.ok) {
+          popup.closeLogin();
+          loginCheck();
+        } else {
+          return Promise.reject(res)
+        }
+      })
+      .catch(err => {
+        form.setServerLoginError(err)
+      })
   }
 
   validateSignupForm(event) {
@@ -76,16 +104,27 @@ export class Form {
     [signupEmail, signupPassword, signupName].forEach((elem) => {
       form.validateInputElement(elem)
     });
+    mainApi.signup(signupEmail.value, signupPassword.value, signupName.value)
+      .then((res) => {
+        if (res.ok) {
+          popup.openSuccess();
+        } else {
+          return Promise.reject(res)
+        }
+      })
+      .catch(err => {
+        form.setServerSignupError(err)
+      })
   }
 
   // очистить поля формы логирования
   resetLoginForm() {
-    loginForm.reset();
+    // loginForm.reset();
   }
 
   // очистить поля формы регистрации
   resetSignupForm() {
-    signupForm.reset();
+    // signupForm.reset();
   }
 
   getIinfo() {

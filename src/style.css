@@ -30,6 +30,13 @@
   opacity: 1;
 }
 
+.display {
+  display: flex !important;
+}
+.none-display {
+  display: none !important;
+}
+
 @import './blocks/header/header.css';
 @import './blocks/search/search.css';
 @import './blocks/author/author.css';
