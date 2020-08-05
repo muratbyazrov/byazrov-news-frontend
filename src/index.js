@@ -1,13 +1,14 @@
 // подключим стили
 import './style.css';
 // классы
-import { Form } from './js/components/Form';
-import { Popup } from './js/components/Popup';
+import Form from './js/components/Form';
+import Popup from './js/components/Popup';
 import { MainApi } from './js/api/MainApi';
 import { Header } from './js/components/Header';
 import { NewsCard } from './js/components/NewsCard';
-import { NewsCardList } from './js/components/NewsCardList';
-import { loginCheck, signout } from './js/utils/utils';
+import NewsCardList from './js/components/NewsCardList';
+import { signout, searchNews, loginCheck } from './js/utils/utils';
+import { NewsApi } from './js/api/NewsApi';
 
 const {
   autorizButton, signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose,
@@ -15,13 +16,16 @@ const {
   logProps, userNameButton,
 } = require('./js/constans/constans');
 
-// loginCheck();
+const cardsContainer = document.querySelector('.result__container');
 
 // подключаем классы, чтобы пользоваться их методами
 export const popup = new Popup();
-export const form = new Form();
 export const mainApi = new MainApi();
+export const form = new Form(mainApi);
 export const header = new Header(logProps);
+export const card = new NewsCard();
+export const newsList = new NewsCardList(cardsContainer, card);
+export const newsApi = new NewsApi(newsList);
 
 // ФОРМА ЛОГИРОВАНИЯ
 loginEmail.addEventListener('input', form.handlValidate);
@@ -47,3 +51,11 @@ loginSuccessButton.addEventListener('click', popup.openLogin);
 
 // шапка
 userNameButton.addEventListener('click', signout);
+
+// поиск
+const searchField = document.querySelector('.search__field');
+const searchSubmit = document.querySelector('.search__button');
+searchSubmit.addEventListener('click', (event) => {
+  event.preventDefault();
+  searchNews(searchField.value);
+});

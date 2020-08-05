@@ -6,7 +6,7 @@ export class MainApi {
 
   // регистрация нового пользователя
   signup(email, password, name) {
-    return fetch('https://api.byazrov-news.ga/signup', {
+    return fetch('http://localhost:3000/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export class MainApi {
 
   // аутентификация
   signin(email, password) {
-    return fetch('https://api.byazrov-news.ga/signin', {
+    return fetch('http://localhost:3000/signin', {
       method: 'POST',
       credentials: 'include',
       withCredentials: true,
@@ -47,8 +47,24 @@ export class MainApi {
   }
 
   // создать статью
-  createArticle() {
-
+  createArticle(keyword, title, text, date, source, link, image) {
+    return fetch('http://localhost:3000/articles', {
+      method: 'POST',
+      credentials: 'include',
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        keyword: `${keyword}`,
+        title: `${title}`,
+        text: `${text}`,
+        date: `${date}`,
+        source: `${source}`,
+        link: `${link}`,
+        image: `${image}`,
+      })
+    })
   }
 
   // Удалить статью

@@ -1,7 +1,7 @@
 import { popupLogin, popupSignup, popupSuccess, loginServerError } from '../constans/constans';
 import { form } from '../../index';
 
-export class Popup {
+export default class Popup {
   constructor(){
   }
   setContent(){

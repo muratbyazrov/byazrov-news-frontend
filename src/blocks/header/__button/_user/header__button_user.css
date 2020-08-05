@@ -19,6 +19,7 @@
   background-color: rgba(0, 0, 0, 0);
   padding: 12px;
   cursor: pointer;
+  min-width: 100px;
 }
 
 #header-button-user-saved {

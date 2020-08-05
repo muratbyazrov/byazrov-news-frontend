@@ -10,7 +10,7 @@ import { loginCheck } from '../utils/utils';
 // библиотека валидации
 const approve = require('approvejs');
 
-export class Form {
+export default class Form {
   constructor() {
   }
   setServerLoginError(err) {
