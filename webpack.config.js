@@ -11,7 +11,10 @@ const isDev = process.env.NODE_ENV === 'development';
 // чтобы переменные окружения работали на всех ОС (включ. Win)
 module.exports = {
   // точка входа
-  entry: { main: './src/index.js' },
+  entry: {
+    main: './src/index.js',
+    saved: './src/saved-articles.js',
+  },
   // точка выхода
   output: {
     // ссылка на текущую папку и относитльный путь к точке выхода(относительно текущей директории)

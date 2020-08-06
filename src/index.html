@@ -36,7 +36,7 @@
     </form>
   </section>
 
- <section class="author">
+  <section class="author">
     <img src="<%=require('./images/my-photo.jpg').default %>" class="author__image" alt="картинка к новости">
     <div class="author__text-block">
       <h2 class="author__title">Об авторе</h2>
@@ -72,12 +72,12 @@
       <h3 class="popup__title">Вход</h3>
       <form class="login__form" name="userForm">
         <span class="popup__input-describ">Email</span>
-        <input type="email" required minlength="2" maxlength="30" class="popup__input"
-          placeholder="Введите почту" id="email-login">
+        <input type="email" required minlength="2" maxlength="30" class="popup__input" placeholder="Введите почту"
+          id="email-login">
         <p id="error-email-login" class="error-message"></p>
         <span class="popup__input-describ">Пароль</span>
-        <input type="password" required minlength="8" class="popup__input"
-        placeholder="Введите пароль" id="login-password">
+        <input type="password" required minlength="8" class="popup__input" placeholder="Введите пароль"
+          id="login-password">
         <p id="error-login-password" class="error-message"></p>
         <span class="error-message input-container__invalid" id="server-login-message"></span>
         <button type="submit" class="button popup__button" id="login-button">Войти</button>
@@ -88,20 +88,20 @@
 
   <div class="popup" id="popup-signup">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default %>" alt="картинка к новости" class="popup__close" id="popup-signup-close">
+      <img src="<%=require('./images/close.svg').default %>" alt="картинка к новости" class="popup__close"
+        id="popup-signup-close">
       <h3 class="popup__title">Регистрация</h3>
       <form class="signup__form" name="userForm">
         <span class="popup__input-describ">Email</span>
-        <input type="email" required minlength="2" maxlength="30" class="popup__input"
-          placeholder="Введите почту" id="email-signup">
+        <input type="email" required minlength="2" maxlength="30" class="popup__input" placeholder="Введите почту"
+          id="email-signup">
         <p id="error-email-signup" class="error-message"></p>
         <span class="popup__input-describ">Пароль</span>
-        <input type="password" required minlength="8" class="popup__input"
-        placeholder="Введите пароль" id="signup-password">
+        <input type="password" required minlength="8" class="popup__input" placeholder="Введите пароль"
+          id="signup-password">
         <p id="error-signup-password" class="error-message"></p>
         <span class="popup__input-describ">Имя</span>
-        <input type="text" required minlength="2" class="popup__input"
-        placeholder="Введите своё имя" id="signup-name">
+        <input type="text" required minlength="2" class="popup__input" placeholder="Введите своё имя" id="signup-name">
         <p id="error-signup-name" class="error-message"></p>
         <span class="error-message input-container__invalid" id="server-signup-message"></span>
         <button type="submit" class="button popup__button" id="signup-button">Зарегистрироваться</button>
@@ -112,7 +112,8 @@
 
   <div class="popup" id="popup-success">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default %>" alt="закрыть" class="popup__close" id="popup-success-close">
+      <img src="<%=require('./images/close.svg').default %>" alt="закрыть" class="popup__close"
+        id="popup-success-close">
       <h3 class="popup__title" id="popup-succes-title">Пользователь успешно зарегистрирован!</h3>
       <p class="popup__link" id="popup-succes-link">Выполнить вход</p>
     </div>
@@ -125,15 +126,16 @@
       <a href="https://praktikum.yandex.ru" target="_blank" class="footer__button">Яндекс.Практикум</a>
     </nav>
     <div class="footer__links">
-      <a href="https://github.com/muratbyazrov?tab=repositories" target="_blank" class="footer__social"><img src="<%=require('./images/gh.png').default %>" class="footer__social"
-          alt="github"></a>
-      <a href="https://www.facebook.com/profile.php?id=100023839899887" target="_blank" class="footer__social"><img src="<%=require('./images/fb.png').default %>" class="footer__social"
-          alt="facebook"></a>
+      <a href="https://github.com/muratbyazrov?tab=repositories" target="_blank" class="footer__social"><img
+          src="<%=require('./images/gh.png').default %>" class="footer__social" alt="github"></a>
+      <a href="https://www.facebook.com/profile.php?id=100023839899887" target="_blank" class="footer__social"><img
+          src="<%=require('./images/fb.png').default %>" class="footer__social" alt="facebook"></a>
     </div>
 
   </section>
 
-  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+  <script src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
+
 </body>
 
 </html>
