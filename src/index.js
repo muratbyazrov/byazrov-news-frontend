@@ -13,8 +13,10 @@ import { NewsApi } from './js/api/NewsApi';
 const {
   autorizButton, signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose,
   loginSubmit, signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton,
-  logProps, userNameButton,
+  userNameButton,
 } = require('./js/constans/constans');
+
+loginCheck();
 
 const cardsContainer = document.querySelector('.result__container');
 
@@ -22,7 +24,7 @@ const cardsContainer = document.querySelector('.result__container');
 export const popup = new Popup();
 export const mainApi = new MainApi();
 export const form = new Form(mainApi);
-export const header = new Header(logProps);
+export const header = new Header();
 export const card = new NewsCard();
 export const newsList = new NewsCardList(cardsContainer, card);
 export const newsApi = new NewsApi(newsList);

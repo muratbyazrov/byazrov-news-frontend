@@ -1,6 +1,11 @@
 import { logProps } from '../constans/constans';
 import { header, newsApi } from '../../index';
 
+function setLogProps() {
+  logProps.isLoggedIn = localStorage.getItem('isloggedIn');
+  logProps.userName = localStorage.getItem('userName');
+}
+
 // проверяем, зарегистирован ли пользователь
 export function loginCheck() {
   return fetch('http://localhost:3000/users/me', {
@@ -12,19 +17,21 @@ export function loginCheck() {
       'Content-Type': 'application/json',
     },
   })
-  // если да, то меням свойства объекта logProps на соответствующие
+    // если да, то меням свойства объекта logProps на соответствующие
     .then((res) => {
       if (res.ok) {
         res.json()
           .then((data) => {
-            logProps.isLoggedIn = true;
-            logProps.userName = data.data.name;
+            localStorage.setItem('isloggedIn', true);
+            localStorage.setItem('userName', data.data.name);
+            setLogProps();
             header.render(logProps);
           });
         // если нет, так же меням свойства объекта logProps на соответствующие
       } else {
-        logProps.isLoggedIn = false;
-        logProps.userName = undefined;
+        localStorage.setItem('isloggedIn', false);
+        localStorage.setItem('userName', undefined);
+        setLogProps();
         header.render(logProps);
       }
     });
@@ -33,16 +40,17 @@ export function loginCheck() {
 // функция выхода из аккаунта
 export function signout() {
   // отправляем запрос на обнуление куки
-  return fetch('http://localhost:3000//signout', {
+  return fetch('http://localhost:3000/signout', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
   })
-  // если ошибок не возникает, меням свойства объекта logProps на соответствующие
+    // если ошибок не возникает, меням свойства объекта logProps на соответствующие
     .then(() => {
-      logProps.isLoggedIn = false;
-      logProps.userName = undefined;
+      localStorage.setItem('isloggedIn', false);
+      localStorage.setItem('userName', undefined);
+      setLogProps();
       header.render(logProps);
     })
     .catch(() => {

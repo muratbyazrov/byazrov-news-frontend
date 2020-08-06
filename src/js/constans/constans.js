@@ -1,5 +1,5 @@
 // кнопка авторизации
-const autorizButton = document.querySelector('.header__button_user');
+const autorizButton = document.querySelector('.header__button');
 // форма логина
 const popupLogin = document.getElementById('popup-login');
 // форма регистрации
@@ -40,8 +40,8 @@ const savedArticlesButton = document.getElementById('saved-articles');
 const userNameButton = document.getElementById('user-name-button');
 
 const logProps = {
-  isLoggedIn: false,
-  userName: 'userName',
+  isLoggedIn: localStorage.getItem('isloggedIn'),
+  userName: localStorage.getItem('userName'),
 };
 
 // правила для валидации полей форм
