@@ -1,22 +1,28 @@
-import { savedArticlesButton, autorizButton, userNameButton, } from '../constans/constans';
-const userNameButtonSaved = document.getElementById('user-name-button-saved');
+import { savedArticlesButton} from '../constans/constans';
 
 export class Header {
-  constructor() {
+  constructor(headerButton, authorizButton) {
+    this.headerButton = headerButton;
+    this.authorizButton = authorizButton;
   }
 
   render(logProps) {
     // в объекте props должны быть два свойства: 1. isLoggedIn 2. userName
     if (logProps.isLoggedIn === 'true') {
       savedArticlesButton.classList.add('display');
-      userNameButton.value = logProps.userName;
-      userNameButtonSaved.value = logProps.userName;
-      userNameButton.classList.remove('none-display');
-      autorizButton.classList.add('none-display');
+      this.headerButton.value = logProps.userName;
+      this.headerButton.classList.remove('none-display');
+      this.hiddenAuthorizButton();
     } else if (logProps.isLoggedIn === 'false') {
       savedArticlesButton.classList.remove('display');
-      userNameButton.classList.add('none-display');
-      autorizButton.classList.remove('none-display');
+      this.headerButton.classList.add('none-display');
+      this.authorizButton.classList.remove('none-display');
+    }
+  }
+
+  hiddenAuthorizButton () {
+    if(this.authorizButton) {
+      this.authorizButton.classList.add('none-display');
     }
   }
 }

@@ -1,10 +1,11 @@
 // подключим стили
 import './style.css';
+
 import { logProps } from './js/constans/constans';
 import { Header } from './js/components/Header';
 
-const header = new Header();
+const userNameButtonSaved = document.getElementById('user-name-button-saved');
 
-console.log(logProps);
+const header = new Header(userNameButtonSaved);
 
-header.render(logProps);
+header.render(logProps, userNameButtonSaved);

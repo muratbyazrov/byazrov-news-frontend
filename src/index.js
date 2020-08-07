@@ -11,12 +11,16 @@ import { signout, searchNews, loginCheck } from './js/utils/utils';
 import { NewsApi } from './js/api/NewsApi';
 
 const {
-  autorizButton, signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose,
+  signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose, savedArticlesButton,
   loginSubmit, signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton,
-  userNameButton,
 } = require('./js/constans/constans');
 
 loginCheck();
+
+// шапка
+const userNameButton = document.getElementById('user-name-button');
+// кнопка авторизации
+const authorizButton = document.querySelector('.header__button');
 
 const cardsContainer = document.querySelector('.result__container');
 
@@ -24,7 +28,7 @@ const cardsContainer = document.querySelector('.result__container');
 export const popup = new Popup();
 export const mainApi = new MainApi();
 export const form = new Form(mainApi);
-export const header = new Header();
+export const header = new Header(userNameButton, authorizButton, savedArticlesButton);
 export const card = new NewsCard();
 export const newsList = new NewsCardList(cardsContainer, card);
 export const newsApi = new NewsApi(newsList);
@@ -34,7 +38,7 @@ loginEmail.addEventListener('input', form.handlValidate);
 loginPassword.addEventListener('input', form.handlValidate);
 loginSubmit.addEventListener('click', form.validateLoginForm);
 // открыть/закрыть форму логирования
-autorizButton.addEventListener('click', popup.openLogin);
+authorizButton.addEventListener('click', popup.openLogin);
 loginClose.addEventListener('click', popup.closeLogin);
 
 // ФОРМА РЕГИСТРАЦИИ

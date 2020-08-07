@@ -1,5 +1,3 @@
-// кнопка авторизации
-const autorizButton = document.querySelector('.header__button');
 // форма логина
 const popupLogin = document.getElementById('popup-login');
 // форма регистрации
@@ -37,7 +35,6 @@ const loginSuccessButton = document.getElementById('popup-succes-link');
 // шапка
 // кнопка сохраненные статьи
 const savedArticlesButton = document.getElementById('saved-articles');
-const userNameButton = document.getElementById('user-name-button');
 
 const logProps = {
   isLoggedIn: localStorage.getItem('isloggedIn'),
@@ -106,9 +103,7 @@ module.exports = {
   loginServerError,
   signupServerError,
   // шапка
-  autorizButton,
   savedArticlesButton,
-  userNameButton,
   // текущие свойства пользователя
   logProps,
 };
