@@ -30,8 +30,7 @@
 @media screen and (max-width: 560px) {
   .header__link {
     margin: 0px;
-    width: 100%;
-    line-height: 50px;
+    line-height: 60px;
   }
 }
 

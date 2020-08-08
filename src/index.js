@@ -11,16 +11,20 @@ import { signout, searchNews, loginCheck } from './js/utils/utils';
 import { NewsApi } from './js/api/NewsApi';
 
 const {
-  signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose, savedArticlesButton,
+  signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose,
   loginSubmit, signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton,
 } = require('./js/constans/constans');
 
 loginCheck();
 
 // шапка
+// Кнопка выхода с именем польховатлея
 const userNameButton = document.getElementById('user-name-button');
 // кнопка авторизации
 const authorizButton = document.querySelector('.header__button');
+// кнопка выпадающего меню
+const menuOpener = document.querySelector('.header__menu-opener');
+const headerMenu = document.querySelector('.header__menu');
 
 const cardsContainer = document.querySelector('.result__container');
 
@@ -28,7 +32,7 @@ const cardsContainer = document.querySelector('.result__container');
 export const popup = new Popup();
 export const mainApi = new MainApi();
 export const form = new Form(mainApi);
-export const header = new Header(userNameButton, authorizButton, savedArticlesButton);
+export const header = new Header(userNameButton, authorizButton, headerMenu);
 export const card = new NewsCard();
 export const newsList = new NewsCardList(cardsContainer, card);
 export const newsApi = new NewsApi(newsList);
@@ -57,6 +61,8 @@ loginSuccessButton.addEventListener('click', popup.openLogin);
 
 // шапка
 userNameButton.addEventListener('click', signout);
+// bind - иначе this в функции menuOpen принимал не то значение
+menuOpener.addEventListener('click', header.menuOpen.bind(header));
 
 // поиск
 const searchField = document.querySelector('.search__field');

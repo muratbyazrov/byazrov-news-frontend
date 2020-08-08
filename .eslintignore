@@ -1,6 +1,5 @@
 /dist
 postcss.config.js
-/src/js/components/Header.js
 /src/js/components/Popup.js
 /src/js/components/Form.js
 /src/js/components/NewsCard.js

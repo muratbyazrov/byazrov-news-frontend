@@ -2,6 +2,7 @@
 @import './__button/header__button.css';
 @import './__menu/header__menu.css';
 @import './__menu-opener/header__menu-opener.css';
+@import './__menu-closer/header__menu-closer.css';
 @import './header_saved/header_saved.css';
 @import './__link/header__link.css';
 

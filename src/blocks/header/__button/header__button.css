@@ -29,13 +29,8 @@
 }
 
 @media screen and (max-width: 560px) {
-  .header__button_user {
+  .header__button {
     margin-top: 10px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .header__button_user {
     width: 100%;
   }
 }
