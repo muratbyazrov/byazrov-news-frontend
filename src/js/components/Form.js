@@ -1,8 +1,8 @@
-import { form, mainApi, popup, header } from '../../index';
+import { form, mainApi, popup } from '../../index';
 import {
   signupSubmit, loginSubmit, loginEmail, loginPassword,
-  loginForm, signupName, signupEmail, signupPassword, signupForm,
-  emailRules, passwordRules, nameRules, loginServerError, signupServerError, logProps,
+  signupName, signupEmail, signupPassword,
+  emailRules, passwordRules, nameRules, loginServerError, signupServerError,
 } from '../constans/constans';
 
 import { loginCheck } from '../utils/utils';

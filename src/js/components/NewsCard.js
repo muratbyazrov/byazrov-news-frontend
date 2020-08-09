@@ -1,21 +1,28 @@
 // класс карточки новости
 export class NewsCard {
-  constructor() {
-
+  constructor(logProps) {
+    this.logProps = logProps;
+  }
+  setMessage() {
+    let message = '';
+    if(this.logProps.isLoggedIn === 'true'){message = 'Сохранить'}
+    else if (this.logProps.isLoggedIn === 'false') {message = 'Войдите, чтобы сохранять статьи'}
+    return message;
   }
   renderIcon() {
-    // обрабатывает три состояния иконки: 1. иконка незалогенного пользователя (показывает сообщение "залогинься, чтобы сохранить карточку")
-    // 2. неактивная иконка залогенного пользователя (нет сообщения выше)
-    // 3. активная иконка залогенного - видио синяя
+    if(this.logProps.isLoggedIn === 'true' && event.target.classList.contains('card__button')) {
+      event.target.classList.toggle('saved-card')
+    }
   }
 
   createCard(urlImg, date, title, content, source) {
     const card = document.createElement('div');
+    const cardMessage = this.setMessage();
     card.classList.add('card')
     card.insertAdjacentHTML('afterbegin',
       `<div class="card__head">
         <img src="АДРЕС КАРТИНКИ" class="card__image" alt="картинка к новости">
-        <div class="card__button card__button_save" data-title="Войдите, чтобы сохранять статьи"></div>
+        <div class="card__button card__button_save" data-title='${cardMessage}'></div>
       </div>
 
       <div class="card__details">

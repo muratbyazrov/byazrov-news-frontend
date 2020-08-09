@@ -11,13 +11,13 @@ import { signout, searchNews, loginCheck } from './js/utils/utils';
 import { NewsApi } from './js/api/NewsApi';
 
 const {
-  signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose,
-  loginSubmit, signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton,
+  signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose, loginSubmit,
+  signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton, logProps,
 } = require('./js/constans/constans');
 
 loginCheck();
 
-// шапка
+// ШАПКА
 // Кнопка выхода с именем польховатлея
 const userNameButton = document.getElementById('user-name-button');
 // кнопка авторизации
@@ -26,6 +26,7 @@ const authorizButton = document.querySelector('.header__button');
 const menuOpener = document.querySelector('.header__menu-opener');
 const headerMenu = document.querySelector('.header__menu');
 
+// КАРТОЧКИ
 const cardsContainer = document.querySelector('.result__container');
 
 // подключаем классы, чтобы пользоваться их методами
@@ -33,7 +34,7 @@ export const popup = new Popup();
 export const mainApi = new MainApi();
 export const form = new Form(mainApi);
 export const header = new Header(userNameButton, authorizButton, headerMenu);
-export const card = new NewsCard();
+export const card = new NewsCard(logProps);
 export const newsList = new NewsCardList(cardsContainer, card);
 export const newsApi = new NewsApi(newsList);
 
@@ -71,3 +72,5 @@ searchSubmit.addEventListener('click', (event) => {
   event.preventDefault();
   searchNews(searchField.value);
 });
+
+cardsContainer.addEventListener('click', card.renderIcon.bind(card));
