@@ -20,7 +20,8 @@ export default class NewsCardList {
       const text = condition? item.description: item.text;
       const source = condition? item.source.name: item.source;
       const link = condition? item.url: item.link;
-      const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image);
+      const cardId = item._id;
+      const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId);
       cardsContainer.appendChild(newCard);
     });
   }

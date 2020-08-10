@@ -18,9 +18,9 @@ const headerMenu = document.querySelector('.header__menu');
 // контейнер сохраненных карточек
 const saveCardContainer = document.querySelector('.result__container');
 
-const card = new NewsCard(logProps);
-const newsList = new NewsCardList(saveCardContainer, card);
 const mainApi = new MainApi();
+const card = new NewsCard(logProps, undefined, mainApi);
+const newsList = new NewsCardList(saveCardContainer, card);
 const header = new Header(userNameButtonSaved, undefined, headerMenu);
 
 header.render(logProps, userNameButtonSaved);

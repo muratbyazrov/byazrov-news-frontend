@@ -29,8 +29,9 @@ export default class NewsCard {
     }
   }
 
-  createCard(keyword, title, text, date, source, link, image) {
+  createCard(keyword, title, text, date, source, link, image, cardId) {
     const card = document.createElement('div');
+    card.id = cardId;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
     card.classList.add('card')
@@ -70,14 +71,19 @@ export default class NewsCard {
 
   }
 
-  deleteCard() {
+  deleteCard(event) {
+    const currentCard = event.target.parentNode.parentNode.parentNode;
     if (event.target.classList.contains('card__button')) {
       event.preventDefault();
-      const cardId = '5f313e8cbcedb559d02a5267'
-      console.log(this)
+      const cardId = currentCard.id;
       this.mainApi.removeArticle(cardId)
         .then((res) => {
-          console.log(res)
+          if (res.ok) {
+            currentCard.parentNode.removeChild(currentCard);
+          }
+        })
+        .catch((err) => {
+          console.log(err)
         })
     }
   }

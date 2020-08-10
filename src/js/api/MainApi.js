@@ -70,7 +70,7 @@ export class MainApi {
   }
 
   // Удалить статью
-  removeArticle() {
+  removeArticle(articleId) {
     return fetch(`http://localhost:3000/articles/${articleId}`, {
       method: 'DELETE',
       credentials: 'include',
