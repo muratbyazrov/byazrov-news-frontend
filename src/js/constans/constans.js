@@ -39,6 +39,7 @@ const savedArticlesButton = document.getElementById('saved-articles');
 const logProps = {
   isLoggedIn: localStorage.getItem('isloggedIn'),
   userName: localStorage.getItem('userName'),
+  page: undefined,
 };
 
 // правила для валидации полей форм

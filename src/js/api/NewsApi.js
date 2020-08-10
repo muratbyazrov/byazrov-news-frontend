@@ -1,4 +1,3 @@
-import NewsCardList from '../components/NewsCardList';
 import { actualDate } from '../utils/utils';
 
 class NewsApi {
@@ -12,6 +11,7 @@ class NewsApi {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         this.cardListClass.renderResults(res);
       })
       .catch((err) => {

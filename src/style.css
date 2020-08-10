@@ -37,6 +37,10 @@
   display: none !important;
 }
 
+a {
+  text-decoration: none;
+}
+
 @import './blocks/header/header.css';
 @import './blocks/search/search.css';
 @import './blocks/author/author.css';

@@ -1,23 +1,31 @@
+import { logProps } from "../constans/constans";
+
 export default class NewsCardList {
   constructor(container, cardClass) {
     this.container = container;
     this.cardClass = cardClass;
   }
 
-  renderResults(arr) {
+  renderResults(obj) {
     const cardsContainer = this.container;
+    // проверка, для какой страницы рендерим карточки
+    const condition = logProps.page === 'main'
     // очистка предыдущих результатов
     cardsContainer.innerHTML = '';
-    arr.articles.forEach((item) => {
-      const urlImg = item.urlToImage;
-      const date = item.publishedAt;
+    obj.articles.forEach((item) => {
+      const keyword = 'WTF'
+      const image = condition? item.urlToImage: item.image;
+      const date = condition? item.publishedAt: item.date;
       const { title } = item;
-      const content = item.description;
-      const source = item.source.name;
-      const newCard = this.cardClass.createCard(urlImg, date, title, content, source);
+      const text = condition? item.description: item.text;
+      const source = condition? item.source.name: item.source;
+      const link = condition? item.url: item.link;
+      const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image);
       cardsContainer.appendChild(newCard);
     });
   }
+
+
 
 /*   renderLoader() {
     // будет отвечать за отрисовку лоадера

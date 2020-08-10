@@ -5,7 +5,7 @@ import Form from './js/components/Form';
 import Popup from './js/components/Popup';
 import { MainApi } from './js/api/MainApi';
 import { Header } from './js/components/Header';
-import { NewsCard } from './js/components/NewsCard';
+import NewsCard from './js/components/NewsCard';
 import NewsCardList from './js/components/NewsCardList';
 import { signout, searchNews, loginCheck } from './js/utils/utils';
 import { NewsApi } from './js/api/NewsApi';
@@ -16,6 +16,7 @@ const {
 } = require('./js/constans/constans');
 
 loginCheck();
+logProps.page = 'main';
 
 // ШАПКА
 // Кнопка выхода с именем польховатлея
@@ -29,12 +30,16 @@ const headerMenu = document.querySelector('.header__menu');
 // КАРТОЧКИ
 const cardsContainer = document.querySelector('.result__container');
 
+// поиск
+const searchField = document.querySelector('.search__field');
+const searchSubmit = document.querySelector('.search__button');
+
 // подключаем классы, чтобы пользоваться их методами
 export const popup = new Popup();
 export const mainApi = new MainApi();
 export const form = new Form(mainApi);
 export const header = new Header(userNameButton, authorizButton, headerMenu);
-export const card = new NewsCard(logProps);
+export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card);
 export const newsApi = new NewsApi(newsList);
 
@@ -65,12 +70,9 @@ userNameButton.addEventListener('click', signout);
 // bind - иначе this в функции menuOpen принимал не то значение
 menuOpener.addEventListener('click', header.menuOpen.bind(header));
 
-// поиск
-const searchField = document.querySelector('.search__field');
-const searchSubmit = document.querySelector('.search__button');
 searchSubmit.addEventListener('click', (event) => {
   event.preventDefault();
   searchNews(searchField.value);
 });
 
-cardsContainer.addEventListener('click', card.renderIcon.bind(card));
+cardsContainer.addEventListener('click', card.savedCard.bind(card));

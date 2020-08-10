@@ -1,12 +1,19 @@
 // класс карточки новости
-export class NewsCard {
-  constructor(logProps) {
+export default class NewsCard {
+  constructor(logProps, searchField, mainApi) {
     this.logProps = logProps;
+    this.searchField = searchField;
+    this.mainApi = mainApi;
   }
   setMessage() {
     let message = '';
-    if(this.logProps.isLoggedIn === 'true'){message = 'Сохранить'}
-    else if (this.logProps.isLoggedIn === 'false') {message = 'Войдите, чтобы сохранять статьи'}
+    if(this.logProps.isLoggedIn === 'true' && this.logProps.page === 'main'){
+      message = 'Сохранить'
+    } else if (this.logProps.isLoggedIn === 'false' && this.logProps.page === 'main') {
+      message = 'Войдите, чтобы сохранять статьи'
+    } else if (this.logProps.isLoggedIn === 'true' && this.logProps.page === 'saved') {
+      message = 'Удалить'
+    }
     return message;
   }
   renderIcon() {
@@ -14,33 +21,60 @@ export class NewsCard {
       event.target.classList.toggle('saved-card')
     }
   }
+  setClassnameIcon(){
+    if (this.logProps.page === 'main') {
+      return 'card__button_save'
+    } else if (this.logProps.page === 'saved') {
+      return 'card__button_delete'
+    }
+  }
 
-  createCard(urlImg, date, title, content, source) {
+  createCard(keyword, title, text, date, source, link, image) {
     const card = document.createElement('div');
     const cardMessage = this.setMessage();
+    const iconClassname = this.setClassnameIcon();
     card.classList.add('card')
     card.insertAdjacentHTML('afterbegin',
-      `<div class="card__head">
-        <img src="АДРЕС КАРТИНКИ" class="card__image" alt="картинка к новости">
-        <div class="card__button card__button_save" data-title='${cardMessage}'></div>
+      `<a href=${link} target = 'new'>
+        <div class="card__head">
+          <img src="${image}" class="card__image" alt="картинка к новости">
+          <div class="card__button ${iconClassname}" data-title='${cardMessage}'></div>
+          <h4 class="card__keyword"> ${keyword} </h4>
+        </div>
+
+        <div class="card__details">
+          <p class="card__date"> ${date} </p>
+          <h3 class="card__title"> ${title} </h3>
+          <p class="card__text"> ${text} </p>
+          <p class="card__source"> ${source} </p>
       </div>
-
-      <div class="card__details">
-        <p class="card__date"> ТУТ ДОЛЖНА БЫТЬ ДАТА </p>
-        <h3 class="card__title"> ТУТ ДОЛЖНО БЫТЬ КРАТКОЕ ОПИСАНИЕ </h3>
-        <p class="card__text"> ТУТ ПОЛНОЕ ОПИСАНИЕ </p>
-        <p class="card__source"> НОВОСТНОЙ РЕСУРС </p>
-    </div>`);
-
-   card.querySelector('.card__image').src = urlImg;
-   card.querySelector('.card__date').textContent = date;
-   card.querySelector('.card__title').textContent = title;
-   card.querySelector('.card__text').textContent = content;
-   card.querySelector('.card__source').textContent = source;
+    </a>`);
   return card
   }
 
-  // тут могут быть другие методы: Удаление например
+    savedCard() {
+    if(event.target.classList.contains('card__button')) {
+      event.preventDefault();
+      const currentCard = event.target.parentNode.parentNode;
+      const keyword = this.searchField.value
+      const title = currentCard.querySelector('.card__title').textContent;
+      const text = currentCard.querySelector('.card__text').textContent;
+      const date = currentCard.querySelector('.card__date').textContent;
+      const source = currentCard.querySelector('.card__source').textContent;
+      const link = currentCard.href
+      const image = currentCard.querySelector('.card__image').src;
+
+      this.mainApi.createArticle(keyword, title, text, date, source, link, image)
+       .then(res => {console.log(res.json())})
+    }
+
+  }
+
+  deleteCard() {
+    if(event.target.classList.contains('card__button')) {
+      event.preventDefault();
+    }
+  }
 }
 
 /* если часть интерфейса, которой управляет класс, подразумевает интерактивность,
