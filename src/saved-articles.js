@@ -20,7 +20,7 @@ const saveCardContainer = document.querySelector('.result__container');
 
 const card = new NewsCard(logProps);
 const newsList = new NewsCardList(saveCardContainer, card);
-const mainApi = new MainApi(newsList);
+const mainApi = new MainApi();
 const header = new Header(userNameButtonSaved, undefined, headerMenu);
 
 header.render(logProps, userNameButtonSaved);
@@ -28,4 +28,13 @@ header.render(logProps, userNameButtonSaved);
 // bind - иначе this в функции menuOpen принимал не то значение
 menuOpener.addEventListener('click', header.menuOpen.bind(header));
 
-mainApi.getArticles();
+mainApi.getArticles()
+  .then((res) => res.json())
+  .then((res) => {
+    newsList.renderResults(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+saveCardContainer.addEventListener('click', card.deleteCard.bind(card));

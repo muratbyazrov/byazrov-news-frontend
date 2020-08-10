@@ -7,7 +7,7 @@ export default class NewsCard {
   }
   setMessage() {
     let message = '';
-    if(this.logProps.isLoggedIn === 'true' && this.logProps.page === 'main'){
+    if (this.logProps.isLoggedIn === 'true' && this.logProps.page === 'main') {
       message = 'Сохранить'
     } else if (this.logProps.isLoggedIn === 'false' && this.logProps.page === 'main') {
       message = 'Войдите, чтобы сохранять статьи'
@@ -17,11 +17,11 @@ export default class NewsCard {
     return message;
   }
   renderIcon() {
-    if(this.logProps.isLoggedIn === 'true' && event.target.classList.contains('card__button')) {
+    if (this.logProps.isLoggedIn === 'true' && event.target.classList.contains('card__button')) {
       event.target.classList.toggle('saved-card')
     }
   }
-  setClassnameIcon(){
+  setClassnameIcon() {
     if (this.logProps.page === 'main') {
       return 'card__button_save'
     } else if (this.logProps.page === 'saved') {
@@ -49,11 +49,11 @@ export default class NewsCard {
           <p class="card__source"> ${source} </p>
       </div>
     </a>`);
-  return card
+    return card
   }
 
-    savedCard() {
-    if(event.target.classList.contains('card__button')) {
+  savedCard() {
+    if (event.target.classList.contains('card__button')) {
       event.preventDefault();
       const currentCard = event.target.parentNode.parentNode;
       const keyword = this.searchField.value
@@ -65,14 +65,20 @@ export default class NewsCard {
       const image = currentCard.querySelector('.card__image').src;
 
       this.mainApi.createArticle(keyword, title, text, date, source, link, image)
-       .then(res => {console.log(res.json())})
+        .then(res => { console.log(res.json()) })
     }
 
   }
 
   deleteCard() {
-    if(event.target.classList.contains('card__button')) {
+    if (event.target.classList.contains('card__button')) {
       event.preventDefault();
+      const cardId = '5f313e8cbcedb559d02a5267'
+      console.log(this)
+      this.mainApi.removeArticle(cardId)
+        .then((res) => {
+          console.log(res)
+        })
     }
   }
 }

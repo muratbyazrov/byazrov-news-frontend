@@ -1,7 +1,6 @@
 // класс отвечает за взаимодействие с моим АПИ
 export class MainApi {
-  constructor(cardListClass) {
-    this.cardListClass = cardListClass;
+  constructor() {
   }
 
   // регистрация нового пользователя
@@ -68,19 +67,11 @@ export class MainApi {
       credentials: 'include',
       withCredentials: true,
     })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res)
-        this.cardListClass.renderResults(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   // Удалить статью
   removeArticle() {
-    return fetch(`http://localhost:3000/articles/${articleID}`, {
+    return fetch(`http://localhost:3000/articles/${articleId}`, {
       method: 'DELETE',
       credentials: 'include',
       withCredentials: true,
