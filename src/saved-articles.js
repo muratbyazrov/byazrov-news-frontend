@@ -19,11 +19,10 @@ const headerMenu = document.querySelector('.header__menu');
 const cardContainer = document.querySelector('.result__container');
 // поле с приветсвием и описанием количества статей
 const pageTitle = document.querySelector('.saved__title');
-pageTitle.textContent = `${logProps.userName}, у вас 5 сохранённых статей`;
 
 const mainApi = new MainApi();
 const card = new NewsCard(logProps, undefined, mainApi);
-const newsList = new NewsCardList(cardContainer, card);
+const newsList = new NewsCardList(cardContainer, card, pageTitle);
 const header = new Header(userNameButtonSaved, undefined, headerMenu);
 
 header.render(logProps, userNameButtonSaved);
@@ -41,5 +40,3 @@ mainApi.getArticles()
   });
 
 cardContainer.addEventListener('click', card.deleteCard.bind(card));
-
-const articleCount = setTimeout(() => console.log(cardContainer.childNodes.length), 400);

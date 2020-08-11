@@ -1,13 +1,13 @@
 import { logProps } from "../constans/constans";
 
 export default class NewsCardList {
-  constructor(container, cardClass) {
+  constructor(container, cardClass, pageTitle) {
     this.container = container;
     this.cardClass = cardClass;
+    this.pageTitle = pageTitle;
   }
 
   renderResults(obj) {
-    console.log(obj)
     const cardsContainer = this.container;
     // проверка, для какой страницы рендерим карточки
     const condition = logProps.page === 'main'
@@ -26,6 +26,13 @@ export default class NewsCardList {
 
       this.addCard(cardsContainer, newCard)
     });
+    this.renderArticlesInfo(obj.articles.length)
+  }
+
+  renderArticlesInfo(count) {
+    if(logProps.page === 'saved') {
+      this.pageTitle.textContent = `${logProps.userName}, у вас ${count} сохранённых статей`
+    }
   }
 /*   renderLoader() {
     // будет отвечать за отрисовку лоадера

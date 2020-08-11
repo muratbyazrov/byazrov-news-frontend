@@ -35,7 +35,7 @@ export default class NewsCard {
     card.id = cardId;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
-    const setKeyword = this.logProps.page === 'main'? undefined: `<h4 class="card__keyword"> ${keyword} </h4>`
+    const setKeyword = this.logProps.page === 'main'? '': `<h4 class="card__keyword"> ${keyword} </h4>`
     card.insertAdjacentHTML('afterbegin',
       `<a href=${link} target = 'new'>
         <div class="card__head">
