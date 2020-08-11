@@ -31,16 +31,17 @@ export default class NewsCard {
 
   createCard(keyword, title, text, date, source, link, image, cardId) {
     const card = document.createElement('div');
+    card.classList.add('card')
     card.id = cardId;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
-    card.classList.add('card')
+    const setKeyword = this.logProps.page === 'main'? undefined: `<h4 class="card__keyword"> ${keyword} </h4>`
     card.insertAdjacentHTML('afterbegin',
       `<a href=${link} target = 'new'>
         <div class="card__head">
           <img src="${image}" class="card__image" alt="картинка к новости">
           <div class="card__button ${iconClassname}" data-title='${cardMessage}'></div>
-          <h4 class="card__keyword"> ${keyword} </h4>
+           ${setKeyword}
         </div>
 
         <div class="card__details">
@@ -57,7 +58,7 @@ export default class NewsCard {
     if (event.target.classList.contains('card__button')) {
       event.preventDefault();
       const currentCard = event.target.parentNode.parentNode;
-      const keyword = this.searchField.value
+      const keyword = this.searchField.value;
       const title = currentCard.querySelector('.card__title').textContent;
       const text = currentCard.querySelector('.card__text').textContent;
       const date = currentCard.querySelector('.card__date').textContent;

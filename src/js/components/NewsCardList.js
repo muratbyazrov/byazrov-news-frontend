@@ -7,13 +7,14 @@ export default class NewsCardList {
   }
 
   renderResults(obj) {
+    console.log(obj)
     const cardsContainer = this.container;
     // проверка, для какой страницы рендерим карточки
     const condition = logProps.page === 'main'
     // очистка предыдущих результатов
     cardsContainer.innerHTML = '';
     obj.articles.forEach((item) => {
-      const keyword = 'WTF'
+      const keyword = item.keyword;
       const image = condition? item.urlToImage: item.image;
       const date = condition? item.publishedAt: item.date;
       const { title } = item;
@@ -22,12 +23,10 @@ export default class NewsCardList {
       const link = condition? item.url: item.link;
       const cardId = item._id;
       const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId);
-      cardsContainer.appendChild(newCard);
+
+      this.addCard(cardsContainer, newCard)
     });
   }
-
-
-
 /*   renderLoader() {
     // будет отвечать за отрисовку лоадера
   }
@@ -41,7 +40,7 @@ export default class NewsCardList {
     // кнопка показать ещё
   } */
 
-  addCard() {
-    // принимает экземпляр карточки и добавляет в список (видимо сохраненное)
+  addCard(cardsContainer, newCard) {
+    cardsContainer.appendChild(newCard);
   }
 }
