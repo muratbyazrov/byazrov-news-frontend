@@ -1,23 +1,24 @@
 import { logProps } from '../constans/constans';
-import { header, newsApi } from '../../index';
+import { header, newsApi, mainApi } from '../../index';
 
+// установить параметры объекта из локал сторидж
 function setLogProps() {
   logProps.isLoggedIn = localStorage.getItem('isloggedIn');
   logProps.userName = localStorage.getItem('userName');
 }
 
+// если пользователь не залогинен, его должно выкинуть на главную страницу
+export function banish() {
+  if (logProps.isLoggedIn === 'false') {
+    document.location.href = 'index.html';
+  }
+}
+
 // проверяем, зарегистирован ли пользователь
 export function loginCheck() {
-  return fetch('http://localhost:3000/users/me', {
-    method: 'GET',
-    credentials: 'include',
-    withCredentials: true,
-    headers: {
-      authorization: document.cookie,
-      'Content-Type': 'application/json',
-    },
-  })
-    // если да, то меням свойства объекта logProps на соответствующие
+  // если запрос на получение данных пользователя...
+  mainApi.getUserData()
+    // правильный, то меням свойства объекта logProps на соответствующие
     .then((res) => {
       if (res.ok) {
         res.json()
@@ -39,18 +40,15 @@ export function loginCheck() {
 
 // функция выхода из аккаунта
 export function signout() {
-  // отправляем запрос на обнуление куки
-  return fetch('http://localhost:3000/signout', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+  mainApi.signout()
     // если ошибок не возникает, меням свойства объекта logProps на соответствующие
     .then(() => {
       localStorage.setItem('isloggedIn', false);
       localStorage.setItem('userName', undefined);
       setLogProps();
+      if (logProps.page === 'saved') {
+        document.location.href = 'index.html';
+      }
       header.render(logProps);
     })
     .catch(() => {

@@ -1,13 +1,15 @@
 // подключим стили
 import './style.css';
-
 import { logProps } from './js/constans/constans';
 import { Header } from './js/components/Header';
 import { MainApi } from './js/api/MainApi';
 import NewsCardList from './js/components/NewsCardList';
 import NewsCard from './js/components/NewsCard';
+/* import { banish } from './js/utils/utils'; */
 
 logProps.page = 'saved';
+
+/* banish(); */
 
 // кнопка с пользователем
 const userNameButtonSaved = document.getElementById('user-name-button-saved');
@@ -19,17 +21,19 @@ const headerMenu = document.querySelector('.header__menu');
 const cardContainer = document.querySelector('.result__container');
 // поле с приветсвием и описанием количества статей
 const pageTitle = document.querySelector('.saved__title');
+const pageSubtitle = document.querySelector('.saved__properties');
 
 const mainApi = new MainApi();
 const card = new NewsCard(logProps, undefined, mainApi);
-const newsList = new NewsCardList(cardContainer, card, pageTitle);
+const newsList = new NewsCardList(cardContainer, card, pageTitle, pageSubtitle);
 const header = new Header(userNameButtonSaved, undefined, headerMenu);
 
 header.render(logProps, userNameButtonSaved);
 
-// bind - иначе this в функции menuOpen принимал не то значение
+// отркыть меню. bind - иначе this в функции menuOpen принимал не то значение
 menuOpener.addEventListener('click', header.menuOpen.bind(header));
 
+// отобразить карточки
 mainApi.getArticles()
   .then((res) => res.json())
   .then((res) => {
@@ -40,3 +44,4 @@ mainApi.getArticles()
   });
 
 cardContainer.addEventListener('click', card.deleteCard.bind(card));
+/* userNameButtonSaved.addEventListener('click', signout); */

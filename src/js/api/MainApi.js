@@ -34,6 +34,18 @@ export class MainApi {
       })
     })
   }
+
+  // выйти из аккаунта
+  signout() {
+    // отправляем запрос на обнуление куки
+    return fetch('http://localhost:3000/signout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  }
+
   // создать статью
   createArticle(keyword, title, text, date, source, link, image) {
     return fetch('http://localhost:3000/articles', {
@@ -57,7 +69,15 @@ export class MainApi {
 
   // возвращает данные о пользователе
   getUserData() {
-
+    return fetch('http://localhost:3000/users/me', {
+      method: 'GET',
+      credentials: 'include',
+      withCredentials: true,
+      headers: {
+        authorization: document.cookie,
+        'Content-Type': 'application/json',
+      },
+    })
   }
 
   // забирает все статьи

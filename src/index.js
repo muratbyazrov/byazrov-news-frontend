@@ -7,16 +7,16 @@ import { MainApi } from './js/api/MainApi';
 import { Header } from './js/components/Header';
 import NewsCard from './js/components/NewsCard';
 import NewsCardList from './js/components/NewsCardList';
-import { signout, searchNews, loginCheck } from './js/utils/utils';
-import { NewsApi } from './js/api/NewsApi';
+import NewsApi from './js/api/NewsApi';
 
 const {
   signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose, loginSubmit,
   signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton, logProps,
 } = require('./js/constans/constans');
 
-loginCheck();
-logProps.page = 'main';
+const {
+  signout, searchNews, loginCheck, actualDate,
+} = require('./js/utils/utils');
 
 // ШАПКА
 // Кнопка выхода с именем польховатлея
@@ -41,7 +41,10 @@ export const form = new Form(mainApi);
 export const header = new Header(userNameButton, authorizButton, headerMenu);
 export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card);
-export const newsApi = new NewsApi(newsList);
+export const newsApi = new NewsApi(newsList, actualDate);
+
+loginCheck();
+logProps.page = 'main';
 
 // ФОРМА ЛОГИРОВАНИЯ
 loginEmail.addEventListener('input', form.handlValidate);
