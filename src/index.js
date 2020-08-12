@@ -37,7 +37,7 @@ const searchSubmit = document.querySelector('.search__button');
 // подключаем классы, чтобы пользоваться их методами
 export const popup = new Popup();
 export const mainApi = new MainApi();
-export const form = new Form(mainApi);
+export const form = new Form(mainApi, popup);
 export const header = new Header(userNameButton, authorizButton, headerMenu);
 export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card);
@@ -47,18 +47,18 @@ loginCheck();
 logProps.page = 'main';
 
 // ФОРМА ЛОГИРОВАНИЯ
-loginEmail.addEventListener('input', form.handlValidate);
-loginPassword.addEventListener('input', form.handlValidate);
-loginSubmit.addEventListener('click', form.validateLoginForm);
+loginEmail.addEventListener('input', form.handlValidate.bind(form));
+loginPassword.addEventListener('input', form.handlValidate.bind(form));
+loginSubmit.addEventListener('click', form.validateLoginForm.bind(form));
 // открыть/закрыть форму логирования
 authorizButton.addEventListener('click', popup.openLogin);
 loginClose.addEventListener('click', popup.closeLogin);
 
 // ФОРМА РЕГИСТРАЦИИ
-signupEmail.addEventListener('input', form.handlValidate);
-signupPassword.addEventListener('input', form.handlValidate);
-signupName.addEventListener('input', form.handlValidate);
-signupSubmit.addEventListener('click', form.validateSignupForm);
+signupEmail.addEventListener('input', form.handlValidate.bind(form));
+signupPassword.addEventListener('input', form.handlValidate.bind(form));
+signupName.addEventListener('input', form.handlValidate.bind(form));
+signupSubmit.addEventListener('click', form.validateSignupForm.bind(form));
 // открыть/закрыть форму регистрации
 signupButton.addEventListener('click', popup.openSignUp);
 signupClose.addEventListener('click', popup.closeSignUp);

@@ -1,4 +1,3 @@
-import { form, mainApi, popup } from '../../index';
 import {
   signupSubmit, loginSubmit, loginEmail, loginPassword,
   signupName, signupEmail, signupPassword,
@@ -11,7 +10,9 @@ import { loginCheck } from '../utils/utils';
 const approve = require('approvejs');
 
 export default class Form {
-  constructor() {
+  constructor(mainApi, popup) {
+    this.mainApi = mainApi;
+    this.popup = popup;
   }
   setServerLoginError(err) {
     err.text()
@@ -30,9 +31,9 @@ export default class Form {
   }
 
   handlValidate(event) {
-    form.validateInputElement(event.target)
-    form.renderLoginForm();
-    form.renderSignupForm();
+    this.validateInputElement(event.target)
+    this.renderLoginForm();
+    this.renderSignupForm();
   }
 
   validateInputElement(element) {
@@ -45,7 +46,7 @@ export default class Form {
     } else if (element.type == 'text') {
       result = approve.value(element.value, nameRules);
     }
-    form.activateError(result, element);
+    this.activateError(result, element);
   }
 
   //Это функция добавляет определенный класс полю, чтобы тот приобрел новые стили
@@ -83,37 +84,37 @@ export default class Form {
   validateLoginForm(event) {
     event.preventDefault();
     [loginEmail, loginPassword].forEach((elem) => {
-      form.validateInputElement(elem)
+      this.validateInputElement(elem)
     });
-    mainApi.signin(loginEmail.value, loginPassword.value)
+    this.mainApi.signin(loginEmail.value, loginPassword.value)
       .then((res) => {
         if (res.ok) {
-          popup.closeLogin();
+          this.popup.closeLogin();
           loginCheck();
         } else {
           return Promise.reject(res)
         }
       })
       .catch(err => {
-        form.setServerLoginError(err)
+        this.setServerLoginError(err)
       })
   }
 
   validateSignupForm(event) {
     event.preventDefault();
     [signupEmail, signupPassword, signupName].forEach((elem) => {
-      form.validateInputElement(elem)
+      this.validateInputElement(elem)
     });
-    mainApi.signup(signupEmail.value, signupPassword.value, signupName.value)
+    this.mainApi.signup(signupEmail.value, signupPassword.value, signupName.value)
       .then((res) => {
         if (res.ok) {
-          popup.openSuccess();
+          this.popup.openSuccess();
         } else {
           return Promise.reject(res)
         }
       })
       .catch(err => {
-        form.setServerSignupError(err)
+        this.setServerSignupError(err)
       })
   }
 
