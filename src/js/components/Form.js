@@ -1,24 +1,30 @@
-import {
-  signupSubmit, loginSubmit, loginEmail, loginPassword,
-  signupName, signupEmail, signupPassword,
-  emailRules, passwordRules, nameRules, loginServerError, signupServerError,
-} from '../constans/constans';
-
-import { loginCheck } from '../utils/utils';
-
 // библиотека валидации
 const approve = require('approvejs');
-
 export default class Form {
-  constructor(mainApi, popup) {
+  constructor(mainApi, popup, formObj, loginCheck) {
     this.mainApi = mainApi;
     this.popup = popup;
+    this.signupSubmit = formObj.signupSubmit;
+    this.loginSubmit = formObj.loginSubmit;
+    this.loginEmail = formObj.loginEmail;
+    this.loginPassword = formObj.loginPassword;
+    this.signupName = formObj.signupName;
+    this.signupEmail = formObj.signupEmail;
+    this.signupPassword = formObj.signupPassword;
+    this.emailRules = formObj.emailRules;
+    this.passwordRules = formObj.passwordRules;
+    this.nameRules = formObj.nameRules;
+    this.loginServerError = formObj.loginServerError;
+    this.signupServerError = formObj.signupServerError;
+    this.loginForm = formObj.loginForm;
+    this.signupForm = formObj.signupForm;
+    this.loginCheck = loginCheck;
   }
   setServerLoginError(err) {
     err.text()
       .then(error => JSON.parse(error).message)
       .then(errorMessage => {
-        loginServerError.textContent = errorMessage;
+        this.loginServerError.textContent = errorMessage;
       })
   }
 
@@ -26,7 +32,7 @@ export default class Form {
     err.text()
       .then(error => JSON.parse(error).message)
       .then(errorMessage => {
-        signupServerError.textContent = errorMessage;
+        this.signupServerError.textContent = errorMessage;
       })
   }
 
@@ -40,11 +46,11 @@ export default class Form {
     // валидирует переданный input
     let result;
     if (element.type == 'email') {
-      result = approve.value(element.value, emailRules);
+      result = approve.value(element.value, this.emailRules);
     } else if (element.type == 'password') {
-      result = approve.value(element.value, passwordRules);
+      result = approve.value(element.value, this.passwordRules);
     } else if (element.type == 'text') {
-      result = approve.value(element.value, nameRules);
+      result = approve.value(element.value, this.nameRules);
     }
     this.activateError(result, element);
   }
@@ -62,35 +68,35 @@ export default class Form {
 
   // кнопка формы логирования
   renderLoginForm() {
-    if ((approve.value(loginEmail.value, emailRules)).approved && (approve.value(loginPassword.value, passwordRules)).approved) {
-      loginSubmit.classList.add('popup__button_active');
+    if ((approve.value(this.loginEmail.value, this.emailRules)).approved && (approve.value(this.loginPassword.value, this.passwordRules)).approved) {
+      this.loginSubmit.classList.add('popup__button_active');
     } else {
-      loginSubmit.classList.remove('popup__button_active');
+      this.loginSubmit.classList.remove('popup__button_active');
     }
   }
 
   // кнопка формы регистрации
   renderSignupForm() {
-    if ((approve.value(signupEmail.value, emailRules)).approved &&
-      (approve.value(signupPassword.value, passwordRules)).approved &&
-      (approve.value(signupName.value, nameRules)).approved) {
-      signupSubmit.classList.add('popup__button_active');
+    if ((approve.value(this.signupEmail.value, this.emailRules)).approved &&
+      (approve.value(this.signupPassword.value, this.passwordRules)).approved &&
+      (approve.value(this.signupName.value, this.nameRules)).approved) {
+        this.signupSubmit.classList.add('popup__button_active');
     } else {
-      signupSubmit.classList.remove('popup__button_active');
+      this.signupSubmit.classList.remove('popup__button_active');
     }
   }
 
   // валидация всех полей по нажатию на кнопку сабмита
   validateLoginForm(event) {
     event.preventDefault();
-    [loginEmail, loginPassword].forEach((elem) => {
+    [this.loginEmail, this.loginPassword].forEach((elem) => {
       this.validateInputElement(elem)
     });
-    this.mainApi.signin(loginEmail.value, loginPassword.value)
+    this.mainApi.signin(this.loginEmail.value, this.loginPassword.value)
       .then((res) => {
         if (res.ok) {
           this.popup.closeLogin();
-          loginCheck();
+          this.loginCheck();
         } else {
           return Promise.reject(res)
         }
@@ -102,10 +108,10 @@ export default class Form {
 
   validateSignupForm(event) {
     event.preventDefault();
-    [signupEmail, signupPassword, signupName].forEach((elem) => {
+    [this.signupEmail, this.signupPassword, this.signupName].forEach((elem) => {
       this.validateInputElement(elem)
     });
-    this.mainApi.signup(signupEmail.value, signupPassword.value, signupName.value)
+    this.mainApi.signup(this.signupEmail.value, this.signupPassword.value, this.signupName.value)
       .then((res) => {
         if (res.ok) {
           this.popup.openSuccess();
@@ -120,16 +126,12 @@ export default class Form {
 
   // очистить поля формы логирования
   resetLoginForm() {
-    // loginForm.reset();
+    this.loginForm.reset();
   }
 
   // очистить поля формы регистрации
   resetSignupForm() {
-    // signupForm.reset();
-  }
-
-  getIinfo() {
-    // возвращает данные формы
+    this.signupForm.reset();
   }
 }
 

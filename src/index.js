@@ -10,21 +10,43 @@ import NewsCardList from './js/components/NewsCardList';
 import NewsApi from './js/api/NewsApi';
 
 const {
-  signupButton, loginClose, signupClose, loginEmail, loginPassword, successClose, loginSubmit,
-  signupEmail, signupPassword, signupName, signupSubmit, login, loginSuccessButton, logProps,
+  logProps, emailRules, passwordRules, nameRules,
 } = require('./js/constans/constans');
 
 const {
   signout, searchNews, loginCheck, actualDate,
 } = require('./js/utils/utils');
 
+// форма авторизации
+const popupLogin = document.getElementById('popup-login');
+const loginForm = document.querySelector('.login__form');
+const loginEmail = document.getElementById('email-login');
+const loginPassword = document.getElementById('login-password');
+const loginSubmit = document.getElementById('login-button');
+const loginServerError = document.getElementById('server-login-message');
+const loginClose = document.getElementById('popup-login-close'); // кнопка закрытия формы авторизации
+
+// форма регистрации
+const popupSignup = document.getElementById('popup-signup'); // форма регистрации
+const signupForm = document.querySelector('.signup__form');
+const signupEmail = document.getElementById('email-signup');
+const signupPassword = document.getElementById('signup-password');
+const signupName = document.getElementById('signup-name');
+const signupSubmit = document.getElementById('signup-button');
+const login = document.getElementById('login'); // Кнопка войти
+const signupServerError = document.getElementById('server-signup-message');
+const signupClose = document.getElementById('popup-signup-close'); // кнопка закрытия формы регистрации
+const signupButton = document.getElementById('signup'); // ссылка на регистрацию в форме
+
+// форма успешной решистрации
+const loginSuccessButton = document.getElementById('popup-succes-link');
+const successClose = document.getElementById('popup-success-close'); // кнопка закрытия формы успешной регистрации
+const popupSuccess = document.getElementById('popup-success'); // форма успешной регистрации
+
 // ШАПКА
-// Кнопка выхода с именем польховатлея
-const userNameButton = document.getElementById('user-name-button');
-// кнопка авторизации
-const authorizButton = document.querySelector('.header__button');
-// кнопка выпадающего меню
-const menuOpener = document.querySelector('.header__menu-opener');
+const userNameButton = document.getElementById('user-name-button'); // Кнопка выхода с именем польховатлея
+const authorizButton = document.querySelector('.header__button'); // кнопка авторизации
+const menuOpener = document.querySelector('.header__menu-opener'); // кнопка выпадающего меню
 const headerMenu = document.querySelector('.header__menu');
 
 // КАРТОЧКИ
@@ -34,10 +56,32 @@ const cardsContainer = document.querySelector('.result__container');
 const searchField = document.querySelector('.search__field');
 const searchSubmit = document.querySelector('.search__button');
 
+// объект для передачи класc form
+const formObj = {
+  signupSubmit,
+  loginSubmit,
+  loginEmail,
+  loginPassword,
+  signupName,
+  signupEmail,
+  signupPassword,
+  emailRules,
+  passwordRules,
+  nameRules,
+  loginServerError,
+  signupServerError,
+  loginForm,
+  signupForm,
+};
+
+const popupObj = {
+  popupLogin, popupSignup, popupSuccess, loginServerError, signupServerError,
+};
+
 // подключаем классы, чтобы пользоваться их методами
-export const popup = new Popup();
+export const popup = new Popup(popupObj);
 export const mainApi = new MainApi();
-export const form = new Form(mainApi, popup);
+export const form = new Form(mainApi, popup, formObj, loginCheck);
 export const header = new Header(userNameButton, authorizButton, headerMenu);
 export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card);
@@ -51,8 +95,8 @@ loginEmail.addEventListener('input', form.handlValidate.bind(form));
 loginPassword.addEventListener('input', form.handlValidate.bind(form));
 loginSubmit.addEventListener('click', form.validateLoginForm.bind(form));
 // открыть/закрыть форму логирования
-authorizButton.addEventListener('click', popup.openLogin);
-loginClose.addEventListener('click', popup.closeLogin);
+authorizButton.addEventListener('click', popup.openLogin.bind(popup));
+loginClose.addEventListener('click', popup.closeLogin.bind(popup));
 
 // ФОРМА РЕГИСТРАЦИИ
 signupEmail.addEventListener('input', form.handlValidate.bind(form));
@@ -60,13 +104,13 @@ signupPassword.addEventListener('input', form.handlValidate.bind(form));
 signupName.addEventListener('input', form.handlValidate.bind(form));
 signupSubmit.addEventListener('click', form.validateSignupForm.bind(form));
 // открыть/закрыть форму регистрации
-signupButton.addEventListener('click', popup.openSignUp);
-signupClose.addEventListener('click', popup.closeSignUp);
-login.addEventListener('click', popup.openLogin);
+signupButton.addEventListener('click', popup.openSignUp.bind(popup));
+signupClose.addEventListener('click', popup.closeSignUp.bind(popup));
+login.addEventListener('click', popup.openLogin.bind(popup));
 
 // ФОРМА УСПЕШНОЙ РЕГИСТРАЦИИ
-successClose.addEventListener('click', popup.closeSuccess);
-loginSuccessButton.addEventListener('click', popup.openLogin);
+successClose.addEventListener('click', popup.closeSuccess.bind(popup));
+loginSuccessButton.addEventListener('click', popup.openLogin.bind(popup));
 
 // шапка
 userNameButton.addEventListener('click', signout);
