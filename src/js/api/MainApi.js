@@ -1,5 +1,5 @@
 // класс отвечает за взаимодействие с моим АПИ
-export class MainApi {
+export default class MainApi {
   constructor() {
   }
 
@@ -8,16 +8,15 @@ export class MainApi {
     return fetch('http://localhost:3000/signup', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: `${email}`,
         password: `${password}`,
-        name: `${name}`
-      })
-    })
+        name: `${name}`,
+      }),
+    });
   }
-
 
   // аутентификация
   signin(email, password) {
@@ -26,13 +25,13 @@ export class MainApi {
       credentials: 'include',
       withCredentials: true,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: `${email}`,
         password: `${password}`,
-      })
-    })
+      }),
+    });
   }
 
   // выйти из аккаунта
@@ -43,7 +42,7 @@ export class MainApi {
       headers: {
         'Content-Type': 'application/json',
       },
-    })
+    });
   }
 
   // создать статью
@@ -53,7 +52,7 @@ export class MainApi {
       credentials: 'include',
       withCredentials: true,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         keyword: `${keyword}`,
@@ -63,8 +62,8 @@ export class MainApi {
         source: `${source}`,
         link: `${link}`,
         image: `${image}`,
-      })
-    })
+      }),
+    });
   }
 
   // возвращает данные о пользователе
@@ -77,7 +76,7 @@ export class MainApi {
         authorization: document.cookie,
         'Content-Type': 'application/json',
       },
-    })
+    });
   }
 
   // забирает все статьи
@@ -86,7 +85,7 @@ export class MainApi {
       method: 'GET',
       credentials: 'include',
       withCredentials: true,
-    })
+    });
   }
 
   // Удалить статью
@@ -96,9 +95,8 @@ export class MainApi {
       credentials: 'include',
       withCredentials: true,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-    })
+    });
   }
-
 }

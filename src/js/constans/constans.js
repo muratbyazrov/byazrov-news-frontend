@@ -1,7 +1,3 @@
-// шапка
-// кнопка сохраненные статьи
-const savedArticlesButton = document.getElementById('saved-articles');
-
 const logProps = {
   isLoggedIn: localStorage.getItem('isloggedIn'),
   userName: localStorage.getItem('userName'),
@@ -49,8 +45,6 @@ module.exports = {
   emailRules,
   passwordRules,
   nameRules,
-  // шапка
-  savedArticlesButton,
   // текущие свойства пользователя
   logProps,
 };

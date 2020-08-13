@@ -3,8 +3,8 @@ import './style.css';
 // классы
 import Form from './js/components/Form';
 import Popup from './js/components/Popup';
-import { MainApi } from './js/api/MainApi';
-import { Header } from './js/components/Header';
+import MainApi from './js/api/MainApi';
+import Header from './js/components/Header';
 import NewsCard from './js/components/NewsCard';
 import NewsCardList from './js/components/NewsCardList';
 import NewsApi from './js/api/NewsApi';
@@ -48,6 +48,7 @@ const userNameButton = document.getElementById('user-name-button'); // Кноп�
 const authorizButton = document.querySelector('.header__button'); // кнопка авторизации
 const menuOpener = document.querySelector('.header__menu-opener'); // кнопка выпадающего меню
 const headerMenu = document.querySelector('.header__menu');
+const savedArticlesButton = document.getElementById('saved-articles'); // кнопка сохраненные статьи
 
 // КАРТОЧКИ
 const cardsContainer = document.querySelector('.result__container');
@@ -78,11 +79,15 @@ const popupObj = {
   popupLogin, popupSignup, popupSuccess, loginServerError, signupServerError,
 };
 
+const headerObj = {
+  authorizButton, headerMenu, savedArticlesButton,
+};
+
 // подключаем классы, чтобы пользоваться их методами
 export const popup = new Popup(popupObj);
 export const mainApi = new MainApi();
 export const form = new Form(mainApi, popup, formObj, loginCheck);
-export const header = new Header(userNameButton, authorizButton, headerMenu);
+export const header = new Header(headerObj, userNameButton);
 export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card);
 export const newsApi = new NewsApi(newsList, actualDate);
