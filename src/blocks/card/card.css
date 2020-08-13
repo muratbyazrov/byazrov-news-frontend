@@ -7,10 +7,29 @@
 @import './__text/card__text.css';
 @import './__title/card__title.css';
 @import './__head/cards__head.css';
+@import './__link/card__link.css';
 
 .card {
   border-radius: 20px;
   background: #FFFFFF;
   position: relative;
   overflow: hidden;
+  height: 575px;
+  box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+}
+
+.card:hover {
+  box-shadow: 0.2em 0.2em 3px rgba(122,122,122,0.5);
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    height: 420px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    height: 440px;
+  }
 }

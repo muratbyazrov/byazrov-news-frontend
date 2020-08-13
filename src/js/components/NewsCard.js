@@ -37,7 +37,7 @@ export default class NewsCard {
     const iconClassname = this.setClassnameIcon();
     const setKeyword = this.logProps.page === 'main'? '': `<h4 class="card__keyword"> ${keyword} </h4>`
     card.insertAdjacentHTML('afterbegin',
-      `<a href=${link} target = 'new'>
+      `<a class = 'card__link' href=${link} target = 'new'>
         <div class="card__head">
           <img src="${image}" class="card__image" alt="картинка к новости">
           <div class="card__button ${iconClassname}" data-title='${cardMessage}'></div>

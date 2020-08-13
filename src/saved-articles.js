@@ -30,10 +30,10 @@ const headerObj = {
   savedArticlesButton,
 };
 
-const mainApi = new MainApi();
+export const mainApi = new MainApi();
 const card = new NewsCard(logProps, undefined, mainApi);
 const newsList = new NewsCardList(cardContainer, card, pageTitle, pageSubtitle);
-const header = new Header(headerObj, userNameButtonSaved);
+export const header = new Header(headerObj, userNameButtonSaved);
 
 header.render(logProps, userNameButtonSaved);
 
