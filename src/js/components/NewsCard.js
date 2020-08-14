@@ -17,10 +17,10 @@ export default class NewsCard {
     }
     return message;
   }
-  renderIcon() {
-    if (this.logProps.isLoggedIn === 'true' && event.target.classList.contains('card__button')) {
-      event.target.classList.toggle('saved-card')
-    }
+
+  // отрисовать фложок 'сохранить'
+  renderIcon(cardIcon) {
+    cardIcon.classList.toggle('saved-card')
   }
   setClassnameIcon() {
     if (this.logProps.page === 'main') {
@@ -35,10 +35,10 @@ export default class NewsCard {
     card.classList.add('card')
     card.id = cardId;
     // createcard срабатывает дважды, a dateFormat должен только раз
-    date = this.logProps.page === 'main'? dateFormat(date, "dd mmmm, yyyy"): date;
+    date = this.logProps.page === 'main' ? dateFormat(date, "dd mmmm, yyyy") : date;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
-    const setKeyword = this.logProps.page === 'main'? '': `<h4 class="card__keyword"> ${keyword} </h4>`
+    const setKeyword = this.logProps.page === 'main' ? '' : `<h4 class="card__keyword"> ${keyword} </h4>`
     card.insertAdjacentHTML('afterbegin',
       `<a class = 'card__link' href=${link} target = 'new'>
         <div class="card__head">
@@ -57,7 +57,7 @@ export default class NewsCard {
     return card
   }
 
-  savedCard() {
+  savedCard(event) {
     if (event.target.classList.contains('card__button')) {
       event.preventDefault();
       const currentCard = event.target.parentNode.parentNode;
@@ -69,9 +69,15 @@ export default class NewsCard {
       const link = currentCard.href
       const image = currentCard.querySelector('.card__image').src;
 
+      // запрос на сохранение
       this.mainApi.createArticle(keyword, title, text, date, source, link, image)
+        .then((res) => {
+          // если ответ положительный, отрендерить иконку
+          if (res.ok) {
+            this.renderIcon(event.target)
+          }
+        })
     }
-
   }
 
   deleteCard(event) {

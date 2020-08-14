@@ -127,4 +127,5 @@ searchSubmit.addEventListener('click', (event) => {
   searchNews(searchField.value);
 });
 
+// сохранить статью
 cardsContainer.addEventListener('click', card.savedCard.bind(card));

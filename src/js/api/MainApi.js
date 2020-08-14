@@ -39,6 +39,8 @@ export default class MainApi {
     // отправляем запрос на обнуление куки
     return fetch('http://localhost:3000/signout', {
       method: 'POST',
+      credentials: 'include',
+      withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
       },

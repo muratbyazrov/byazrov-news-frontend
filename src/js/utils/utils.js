@@ -42,14 +42,16 @@ export function loginCheck() {
 export function signout() {
   mainApi.signout()
     // если ошибок не возникает, меням свойства объекта logProps на соответствующие
-    .then(() => {
-      localStorage.setItem('isloggedIn', false);
-      localStorage.setItem('userName', undefined);
-      setLogProps();
+    .then((res) => {
       if (logProps.page === 'saved') {
         document.location.href = 'index.html';
       }
-      header.render(logProps);
+      if (res.ok) {
+        localStorage.setItem('isloggedIn', false);
+        localStorage.setItem('userName', undefined);
+        setLogProps();
+        header.render(logProps);
+      }
     })
     .catch(() => {
       console.log('ошибка при выходе из аккаунта');

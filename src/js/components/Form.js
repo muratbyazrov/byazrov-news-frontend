@@ -1,4 +1,4 @@
-// библиотека валидации
+// библиотека валидации (По заданию можно пользоваться)
 const approve = require('approvejs');
 
 export default class Form {
@@ -75,8 +75,10 @@ export default class Form {
     if ((approve.value(this.loginEmail.value, this.emailRules)).approved
     && (approve.value(this.loginPassword.value, this.passwordRules)).approved) {
       this.loginSubmit.classList.add('popup__button_active');
+      this.loginSubmit.removeAttribute('disabled');
     } else {
       this.loginSubmit.classList.remove('popup__button_active');
+      this.loginSubmit.setAttribute('disabled', 'true');
     }
   }
 
@@ -86,17 +88,16 @@ export default class Form {
       && (approve.value(this.signupPassword.value, this.passwordRules)).approved
       && (approve.value(this.signupName.value, this.nameRules)).approved) {
       this.signupSubmit.classList.add('popup__button_active');
+      this.signupSubmit.removeAttribute('disabled');
     } else {
       this.signupSubmit.classList.remove('popup__button_active');
+      this.signupSubmit.setAttribute('disabled', 'true');
     }
   }
 
   // валидация всех полей по нажатию на кнопку сабмита
   validateLoginForm(event) {
     event.preventDefault();
-    [this.loginEmail, this.loginPassword].forEach((elem) => {
-      this.validateInputElement(elem);
-    });
     this.mainApi.signin(this.loginEmail.value, this.loginPassword.value)
       // eslint-disable-next-line consistent-return
       .then((res) => {
@@ -114,9 +115,6 @@ export default class Form {
 
   validateSignupForm(event) {
     event.preventDefault();
-    [this.signupEmail, this.signupPassword, this.signupName].forEach((elem) => {
-      this.validateInputElement(elem);
-    });
     this.mainApi.signup(this.signupEmail.value, this.signupPassword.value, this.signupName.value)
       // eslint-disable-next-line consistent-return
       .then((res) => {
