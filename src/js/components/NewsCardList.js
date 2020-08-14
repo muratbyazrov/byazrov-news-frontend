@@ -1,5 +1,4 @@
 import { logProps } from "../constans/constans";
-
 export default class NewsCardList {
   constructor(container, cardClass, pageTitle, pageSubtitle) {
     this.container = container;

@@ -1,4 +1,5 @@
 // класс карточки новости
+const dateFormat = require('dateformat');
 export default class NewsCard {
   constructor(logProps, searchField, mainApi) {
     this.logProps = logProps;
@@ -33,6 +34,8 @@ export default class NewsCard {
     const card = document.createElement('div');
     card.classList.add('card')
     card.id = cardId;
+    // createcard срабатывает дважды, a dateFormat должен только раз
+    date = this.logProps.page === 'main'? dateFormat(date, "dd mmmm, yyyy"): date;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
     const setKeyword = this.logProps.page === 'main'? '': `<h4 class="card__keyword"> ${keyword} </h4>`
@@ -67,7 +70,6 @@ export default class NewsCard {
       const image = currentCard.querySelector('.card__image').src;
 
       this.mainApi.createArticle(keyword, title, text, date, source, link, image)
-        .then(res => { console.log(res.json()) })
     }
 
   }
