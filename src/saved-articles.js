@@ -5,11 +5,11 @@ import Header from './js/components/Header';
 import MainApi from './js/api/MainApi';
 import NewsCardList from './js/components/NewsCardList';
 import NewsCard from './js/components/NewsCard';
+
+/* const { banish } = require('./js/utils/utils'); */
 /* import { banish } from './js/utils/utils'; */
 
 logProps.page = 'saved';
-
-/* banish(); */
 
 // кнопка с пользователем
 const userNameButtonSaved = document.getElementById('user-name-button-saved');

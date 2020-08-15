@@ -1,5 +1,7 @@
 import { logProps } from '../constans/constans';
-import { header, newsApi, mainApi } from '../../index';
+import {
+  header, newsApi, mainApi, newsList,
+} from '../../index';
 
 // установить параметры объекта из локал сторидж
 function setLogProps() {
@@ -61,7 +63,14 @@ export function signout() {
 // эта функция поиска новостией. Принимает ключевое слово поиска
 export function searchNews(keyWord) {
   // обращаемся к API поиска новостей, передавая ключевое слово
-  newsApi.getNews(keyWord);
+  newsApi.getNews(keyWord)
+    .then((res) => res.json())
+    .then((res) => {
+      newsList.renderResults(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 // эта функция добавляет нолик в формате даты

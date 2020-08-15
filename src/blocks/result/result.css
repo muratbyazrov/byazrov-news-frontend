@@ -8,6 +8,7 @@
   flex-direction: column;
   padding-top: 80px;
   padding-bottom: 80px;
+  display: none;
 }
 
 @media screen and (max-width: 560px) {

@@ -51,7 +51,8 @@ const headerMenu = document.querySelector('.header__menu');
 const savedArticlesButton = document.getElementById('saved-articles'); // кнопка сохраненные статьи
 
 // КАРТОЧКИ
-const cardsContainer = document.querySelector('.result__container');
+const cardsContainer = document.querySelector('.result__container'); // контейнер карточек
+const showMoreButton = document.querySelector('.result__button'); // кнопка показать ещё
 
 // поиск
 const searchField = document.querySelector('.search__field');
@@ -90,7 +91,7 @@ export const form = new Form(mainApi, popup, formObj, loginCheck);
 export const header = new Header(headerObj, userNameButton);
 export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card);
-export const newsApi = new NewsApi(newsList, actualDate);
+export const newsApi = new NewsApi(actualDate);
 
 loginCheck();
 logProps.page = 'main';
@@ -121,7 +122,7 @@ loginSuccessButton.addEventListener('click', popup.openLogin.bind(popup));
 userNameButton.addEventListener('click', signout);
 // bind - иначе this в функции menuOpen принимал не то значение
 menuOpener.addEventListener('click', header.menuOpen.bind(header));
-
+// ПОИСК!
 searchSubmit.addEventListener('click', (event) => {
   event.preventDefault();
   searchNews(searchField.value);
@@ -129,3 +130,5 @@ searchSubmit.addEventListener('click', (event) => {
 
 // сохранить статью
 cardsContainer.addEventListener('click', card.savedCard.bind(card));
+// показать ещё
+showMoreButton.addEventListener('click', newsList.showMore.bind(newsList));
