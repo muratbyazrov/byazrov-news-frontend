@@ -9,6 +9,7 @@ export default class Searcher {
 
   // стартовый метод
   startSearch(keyWord) {
+    this.newsList.renderLoader(); // показать лоадер
     this.setActualDate(); // утсновить корректную дату для поиска
     this.searchNews(keyWord); // запустить поиск с ключевым словом
   }
@@ -20,8 +21,13 @@ export default class Searcher {
       .then((res) => {
         this.newsList.renderResults(res);
       })
+      .then(() => {
+        this.newsList.clearLoader(); // скрыть лоадер, когда пришли данные
+      })
       .catch((err) => {
+        this.newsList.clearLoader(); // все равно надо скрыть лоадер
         console.log(err);
+        alert('Проверьте ваше интернет-соединение');
       });
   }
 

@@ -58,6 +58,18 @@ export default class NewsCardList {
     this.resultBlock.appendChild(notFoundBlock);
   }
 
+  // отобразить лоадер
+  renderLoader() {
+    this.clearResultBlock() // очистка всей секции результатов
+    this.clearLoader(); // чтобы лоадеры не размножались
+    const loader = document.createElement('div');
+    loader.classList.add('loader-block');
+    loader.insertAdjacentHTML('afterbegin',
+      `<i class="loader-block__circle-preloader"></i>
+    <h3 class="loader-block__title">Идет поиск новостей...</h3>`)
+    this.resultBlock.insertBefore(loader, this.resultBlock.firstChild); // так лоудер будет перед карточками
+  }
+
   // открывает блок с результатами
   showResultBlock() {
     this.container.parentNode.classList.add('display');
@@ -65,10 +77,18 @@ export default class NewsCardList {
   hideResultBlock() {
     this.container.parentNode.classList.remove('display');
   }
-  // уберем блок ничего не найдено
+
+  // удалить блок ничего не найдено
   clearResultBlock() {
-    if(this.resultBlock.querySelector('.not-found') != null) {
+    if (this.resultBlock.querySelector('.not-found') != null) {
       this.resultBlock.querySelector('.not-found').remove();
+    }
+  }
+
+  // удалить лоадер
+  clearLoader() {
+    if (this.resultBlock.querySelector('.loader-block') != null) {
+      this.resultBlock.querySelector('.loader-block').remove();
     }
   }
 
@@ -92,10 +112,6 @@ export default class NewsCardList {
     // вставим правильный текст в pageSubtitle
     this.pageSubtitle.textContent = `По ключевым словам ${this.keywordArr[0]}, ${this.keywordArr[1]} и ${another}`;
   }
-
-  /*  renderLoader() {
-     // будет отвечать за отрисовку лоадера
-   } */
 
   // добавить карточки в список
   addCard(cardsContainer, newCard) {

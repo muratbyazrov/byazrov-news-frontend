@@ -41,10 +41,5 @@ const nameRules = {
 };
 
 module.exports = {
-  // формы
-  emailRules,
-  passwordRules,
-  nameRules,
-  // текущие свойства пользователя
-  logProps,
+  emailRules, passwordRules, nameRules, logProps,
 };

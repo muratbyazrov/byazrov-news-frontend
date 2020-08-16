@@ -1,5 +1,6 @@
 export default class NewsApi {
   constructor() {
+    this.params = ''; // чтобы еслинт не доставал
   }
 
   // eslint-disable-next-line class-methods-use-this
