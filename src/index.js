@@ -8,14 +8,13 @@ import Header from './js/components/Header';
 import NewsCard from './js/components/NewsCard';
 import NewsCardList from './js/components/NewsCardList';
 import NewsApi from './js/api/NewsApi';
+import Searcher from './js/components/Searcher';
 
 const {
   logProps, emailRules, passwordRules, nameRules,
 } = require('./js/constans/constans');
 
-const {
-  signout, searchNews, loginCheck, actualDate,
-} = require('./js/utils/utils');
+const { signout, loginCheck } = require('./js/utils/utils');
 
 // форма авторизации
 const popupLogin = document.getElementById('popup-login');
@@ -92,7 +91,8 @@ export const form = new Form(mainApi, popup, formObj, loginCheck);
 export const header = new Header(headerObj, userNameButton);
 export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card, resultBlock);
-export const newsApi = new NewsApi(actualDate);
+export const newsApi = new NewsApi();
+const searcher = new Searcher(newsApi, newsList);
 
 loginCheck();
 logProps.page = 'main';
@@ -126,7 +126,7 @@ menuOpener.addEventListener('click', header.menuOpen.bind(header));
 // ПОИСК!
 searchSubmit.addEventListener('click', (event) => {
   event.preventDefault();
-  searchNews(searchField.value);
+  searcher.startSearch(searchField.value);
 });
 
 // сохранить статью

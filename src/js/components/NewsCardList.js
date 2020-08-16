@@ -9,7 +9,6 @@ export default class NewsCardList {
     this.pageSubtitle = pageSubtitle; // для page = saved
     this.keywordArr = []; // массив ключевых слов
     this.accumCards = []; // аккумулирующий массив карточек
-
   }
 
   // рендер карточек main

@@ -1,7 +1,5 @@
 import { logProps } from '../constans/constans';
-import {
-  header, newsApi, mainApi, newsList,
-} from '../../index';
+import { header, mainApi } from '../../index';
 
 // установить параметры объекта из локал сторидж
 function setLogProps() {
@@ -59,28 +57,3 @@ export function signout() {
       console.log('ошибка при выходе из аккаунта');
     });
 }
-
-// эта функция поиска новостией. Принимает ключевое слово поиска
-export function searchNews(keyWord) {
-  // обращаемся к API поиска новостей, передавая ключевое слово
-  newsApi.getNews(keyWord)
-    .then((res) => res.json())
-    .then((res) => {
-      newsList.renderResults(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
-// эта функция добавляет нолик в формате даты
-function addZero(num) {
-  if (num >= 0 && num <= 9) {
-    return `0${num}`;
-  }
-  return num;
-}
-
-const date = new Date();
-// текущая дата - 7 дней. Нужно для поиска новостей
-export const actualDate = `${addZero(date.getFullYear())}-${addZero(date.getMonth() + 1)}-${addZero(date.getDate() - 7)}`;
