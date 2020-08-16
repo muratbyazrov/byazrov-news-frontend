@@ -10,9 +10,11 @@
   font-style: normal;
   font-size: 18px;
   line-height: 24px;
+  box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
 }
 
 .result__button:hover {
   background: #FFFFFF;
   opacity: 0.9;
+  box-shadow: 0.2em 0.2em 3px rgba(122,122,122,0.5);
 }

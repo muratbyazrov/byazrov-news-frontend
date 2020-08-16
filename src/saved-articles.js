@@ -32,7 +32,7 @@ const headerObj = {
 
 export const mainApi = new MainApi();
 const card = new NewsCard(logProps, undefined, mainApi);
-const newsList = new NewsCardList(cardContainer, card, pageTitle, pageSubtitle);
+const newsList = new NewsCardList(cardContainer, card, undefined, pageTitle, pageSubtitle);
 export const header = new Header(headerObj, userNameButtonSaved);
 
 header.render(logProps, userNameButtonSaved);
@@ -44,7 +44,7 @@ menuOpener.addEventListener('click', header.menuOpen.bind(header));
 mainApi.getArticles()
   .then((res) => res.json())
   .then((res) => {
-    newsList.renderResults(res);
+    newsList.renderSavedArticles(res);
   })
   .catch((err) => {
     console.log(err);

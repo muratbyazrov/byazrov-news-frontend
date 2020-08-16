@@ -50,7 +50,8 @@ const menuOpener = document.querySelector('.header__menu-opener'); // кнопк
 const headerMenu = document.querySelector('.header__menu');
 const savedArticlesButton = document.getElementById('saved-articles'); // кнопка сохраненные статьи
 
-// КАРТОЧКИ
+// РЕЗУЛЬТАТЫ ПОИСКА
+const resultBlock = document.querySelector('.result__section'); // блок результатов
 const cardsContainer = document.querySelector('.result__container'); // контейнер карточек
 const showMoreButton = document.querySelector('.result__button'); // кнопка показать ещё
 
@@ -90,7 +91,7 @@ export const mainApi = new MainApi();
 export const form = new Form(mainApi, popup, formObj, loginCheck);
 export const header = new Header(headerObj, userNameButton);
 export const card = new NewsCard(logProps, searchField, mainApi);
-export const newsList = new NewsCardList(cardsContainer, card);
+export const newsList = new NewsCardList(cardsContainer, card, resultBlock);
 export const newsApi = new NewsApi(actualDate);
 
 loginCheck();

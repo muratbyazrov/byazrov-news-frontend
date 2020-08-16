@@ -1,44 +1,47 @@
 // класс карточки новости
 const dateFormat = require('dateformat');
+
 export default class NewsCard {
   constructor(logProps, searchField, mainApi) {
     this.logProps = logProps;
     this.searchField = searchField;
     this.mainApi = mainApi;
   }
+
   setMessage() {
     let message = '';
     if (this.logProps.isLoggedIn === 'true' && this.logProps.page === 'main') {
-      message = 'Сохранить'
+      message = 'Сохранить';
     } else if (this.logProps.isLoggedIn === 'false' && this.logProps.page === 'main') {
-      message = 'Войдите, чтобы сохранять статьи'
+      message = 'Войдите, чтобы сохранять статьи';
     } else if (this.logProps.isLoggedIn === 'true' && this.logProps.page === 'saved') {
-      message = 'Удалить'
+      message = 'Удалить';
     }
     return message;
   }
 
   // отрисовать фложок 'сохранить'
   renderIcon(cardIcon) {
-    cardIcon.classList.toggle('saved-card')
+    cardIcon.classList.toggle('saved-card');
   }
+
   setClassnameIcon() {
     if (this.logProps.page === 'main') {
-      return 'card__button_save'
-    } else if (this.logProps.page === 'saved') {
-      return 'card__button_delete'
+      return 'card__button_save';
+    } if (this.logProps.page === 'saved') {
+      return 'card__button_delete';
     }
   }
 
   createCard(keyword, title, text, date, source, link, image, cardId) {
     const card = document.createElement('div');
-    card.classList.add('card')
+    card.classList.add('card');
     card.id = cardId;
     // createcard срабатывает дважды, a dateFormat должен только раз
-    date = this.logProps.page === 'main' ? dateFormat(date, "dd mmmm, yyyy") : date;
+    date = this.logProps.page === 'main' ? dateFormat(date, 'dd mmmm, yyyy') : date;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
-    const setKeyword = this.logProps.page === 'main' ? '' : `<h4 class="card__keyword"> ${keyword} </h4>`
+    const setKeyword = this.logProps.page === 'main' ? '' : `<h4 class="card__keyword"> ${keyword} </h4>`;
     card.insertAdjacentHTML('afterbegin',
       `<a class = 'card__link' href=${link} target = 'new'>
         <div class="card__head">
@@ -54,7 +57,7 @@ export default class NewsCard {
           <p class="card__source"> ${source} </p>
       </div>
     </a>`);
-    return card
+    return card;
   }
 
   savedCard(event) {
@@ -66,7 +69,7 @@ export default class NewsCard {
       const text = currentCard.querySelector('.card__text').textContent;
       const date = currentCard.querySelector('.card__date').textContent;
       const source = currentCard.querySelector('.card__source').textContent;
-      const link = currentCard.href
+      const link = currentCard.href;
       const image = currentCard.querySelector('.card__image').src;
 
       // запрос на сохранение
@@ -74,9 +77,9 @@ export default class NewsCard {
         .then((res) => {
           // если ответ положительный, отрендерить иконку
           if (res.ok) {
-            this.renderIcon(event.target)
+            this.renderIcon(event.target);
           }
-        })
+        });
     }
   }
 
@@ -92,13 +95,13 @@ export default class NewsCard {
           }
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     }
   }
 }
 
 /* если часть интерфейса, которой управляет класс, подразумевает интерактивность,
-конструктор этого класса может принимать массив обработчиков событий, которые нужно добавить его элементам.
- Обработчики следует передавать конструктору в виде массива, а за их добавление должен
-  отвечать приватный метод _setHandlers. */
+конструктор этого класса может принимать массив обработчиков событий, которые нужно
+добавить его элементам. Обработчики следует передавать конструктору в виде массива, а
+за их добавление должен отвечать приватный метод _setHandlers. */

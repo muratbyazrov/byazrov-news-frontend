@@ -1,71 +1,106 @@
-import { logProps } from "../constans/constans";
+import { logProps } from '../constans/constans';
+
 export default class NewsCardList {
-  constructor(container, cardClass, pageTitle, pageSubtitle) {
-    this.container = container;
-    this.cardClass = cardClass;
-    this.pageTitle = pageTitle;
-    this.pageSubtitle = pageSubtitle;
-    this.keywordArr = [];
-    this.accumCards = [];
+  constructor(container, cardClass, resultBlock, pageTitle, pageSubtitle) {
+    this.resultBlock = resultBlock; // секция с результатом
+    this.container = container; // блок с карточками
+    this.cardClass = cardClass; // экзмпляр класса карточки
+    this.pageTitle = pageTitle; // для page = saved
+    this.pageSubtitle = pageSubtitle; // для page = saved
+    this.keywordArr = []; // массив ключевых слов
+    this.accumCards = []; // аккумулирующий массив карточек
+
   }
 
+  // рендер карточек main
   renderResults(obj) {
-    const cardsContainer = this.container;
-    this.showResultBlock(cardsContainer.parentNode)
-    // проверка, для какой страницы рендерим карточки
-    const condition = logProps.page === 'main'
-    // очистка предыдущих результатов
-    cardsContainer.innerHTML = '';
-    obj.articles.forEach((item) => {
-      const keyword = item.keyword;
-      const image = condition ? item.urlToImage : item.image;
-      const date = condition ? item.publishedAt : item.date;
-      const { title } = item;
-      const text = condition ? item.description : item.text;
-      const source = condition ? item.source.name : item.source;
-      const link = condition ? item.url : item.link;
-      const cardId = item._id;
-      // создать карточки используя исходные данные выше
-      const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId);
-      // добавить карточки
-      this.addCard(cardsContainer, newCard)
-      // отредактировать тексты
-      this.renderSubtitle(keyword)
-    });
-    this.renderArticlesInfo(obj.articles.length)
-  }
-
-  // добавляет тексты
-  renderArticlesInfo(count) {
-    if (logProps.page === 'saved') {
-      this.pageTitle.textContent = `${logProps.userName}, у вас ${count} сохранённых статей`
+    this.clearCardContainer(); // очистка контейнера от предыдущих результатов
+    if (obj.articles.length === 0) { // если нет карточек для отрисовки
+      this.hideResultBlock() // скрыть блок результатов
+      this.renderError(); // и отобразить блок 'ничего не найдено'
+    } else {
+      this.clearResultBlock(); // очищаем секцию от not-found
+      this.showResultBlock(); // нужно показать блок с карточками
+      obj.articles.forEach((item) => {
+        const { keyword, title } = item;
+        const image = item.urlToImage;
+        const date = item.publishedAt;
+        const text = item.description;
+        const source = item.source.name;
+        const link = item.url;
+        const cardId = item._id;
+        const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId); // создать карточку
+        this.addCard(this.container, newCard); // добавить карточки
+      });
     }
   }
+
+  // рендер карточек saved
+  renderSavedArticles(obj) {
+    obj.articles.forEach((item) => {
+      const { keyword, image, date, title, text, source, link } = item;
+      const cardId = item._id;
+      const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId); // создать карточку
+      this.addCard(this.container, newCard);
+      this.renderSubtitle(keyword);
+    })
+    this.renderArticlesInfo(obj.articles.length); // сколько всего карточек
+  }
+
+  // добавляет блок "ничего не найдено"
+  renderError() {
+    this.clearResultBlock() // очистка всей секции результатов
+    const notFoundBlock = document.createElement('div');
+    notFoundBlock.classList.add('not-found');
+    notFoundBlock.insertAdjacentHTML('afterbegin',
+      `<div class="not-found__icon"></div>
+    <h3 class="not-found__title">Ничего не найдено</h3>
+    <p class="not-found__subtitle">К сожалению по вашему запросу ничего не найдено.</p>`);
+    this.resultBlock.appendChild(notFoundBlock);
+  }
+
+  // открывает блок с результатами
+  showResultBlock() {
+    this.container.parentNode.classList.add('display');
+  }
+  hideResultBlock() {
+    this.container.parentNode.classList.remove('display');
+  }
+  // уберем блок ничего не найдено
+  clearResultBlock() {
+    if(this.resultBlock.querySelector('.not-found') != null) {
+      this.resultBlock.querySelector('.not-found').remove();
+    }
+  }
+
+  // очистка контейнера карточек
+  clearCardContainer() {
+    this.container.innerHTML = '';
+  }
+
+  // добавляет тексты на станцу сохраненные
+  renderArticlesInfo(count) {
+    this.pageTitle.textContent = `${logProps.userName}, у вас ${count} сохранённых статей`;
+  }
+
   // добавляет тексты
   renderSubtitle(keyword) {
-    if (logProps.page === 'saved') {
-      // добавим в массив все ключевые слова
-      this.keywordArr.push(keyword);
-      // элементы массива должны быть уникальны
-      this.keywordArr = this.keywordArr.sort().filter((item, index) => item !== this.keywordArr[index + 1]);
-      // если до 3 ключевых слов - отображаем все, если больше 3 перечисляем кол-во остальных
-      const another = this.keywordArr.length <= 3 ? this.keywordArr[2] : `${this.keywordArr.length - 2} другим`;
-      // вставим правильный текст в pageSubtitle
-      this.pageSubtitle.textContent = `По ключевым словам ${this.keywordArr[0]}, ${this.keywordArr[1]} и ${another}`
-    }
+    this.keywordArr.push(keyword); // добавим в массив все ключевые слова
+    // элементы массива должны быть уникальны
+    this.keywordArr = this.keywordArr.sort().filter((item, index) => item !== this.keywordArr[index + 1]);
+    // если до 3 ключевых слов - отображаем все, если больше 3 перечисляем кол-во остальных
+    const another = this.keywordArr.length <= 3 ? this.keywordArr[2] : `${this.keywordArr.length - 2} другим`;
+    // вставим правильный текст в pageSubtitle
+    this.pageSubtitle.textContent = `По ключевым словам ${this.keywordArr[0]}, ${this.keywordArr[1]} и ${another}`;
   }
-  /*     renderLoader() {
-        // будет отвечать за отрисовку лоадера
-      }
 
-      renderError() {
-        // принимает объект ошибки и отрисовывает его в интерфейсе
-        (наверное в то поле можно и другие ошибки кроме ничего не найдено)
-      } */
+  /*  renderLoader() {
+     // будет отвечать за отрисовку лоадера
+   } */
 
   // добавить карточки в список
   addCard(cardsContainer, newCard) {
-    // если элементов в контейнере больше 3, добавлять карточки перестаем. Но записываем эти карточки в массив
+    // 3 карточки поажем, остальные в массив
     if (cardsContainer.childNodes.length <= 2 && logProps.page === 'main') {
       cardsContainer.appendChild(newCard);
     } else if (cardsContainer.childNodes.length >= 3 && logProps.page === 'main') {
@@ -75,8 +110,9 @@ export default class NewsCardList {
       cardsContainer.appendChild(newCard);
     }
   }
-  // когда поступила команда показать ещё - рендерим оставшуюся часть карточек, которые остались в массиве
-  showMore() {
+
+  // показать ещё карточки
+  showMore(event) {
     if (this.accumCards.length > 0) {
       const counter = this.accumCards.length >= 3 ? 3 : this.accumCards.length;
       for (let i = 0; i < counter; i++) {
@@ -91,13 +127,9 @@ export default class NewsCardList {
       this.renderShowMoreButton(event.target);
     }
   }
+
   // когда статьи закончились, надо об этом сообщить
   renderShowMoreButton(button) {
-    button.value = 'Это всё'
+    button.value = 'Это всё';
   }
-
-  showResultBlock(block) {
-    block.classList.add('display')
-  }
-
 }

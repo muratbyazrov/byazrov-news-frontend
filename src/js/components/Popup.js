@@ -1,5 +1,3 @@
-/* import { form } from '../../index'; */
-
 export default class Popup {
   constructor(popupObj) {
     this.popupLogin = popupObj.popupLogin;
