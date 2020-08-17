@@ -61,10 +61,10 @@ export default class NewsCard {
   }
 
   savedCard(event) {
-    if (event.target.classList.contains('card__button')) {
-      event.preventDefault();
-      const currentCard = event.target.parentNode.parentNode;
-      const keyword = this.searchField.value;
+    const currentCard = event.target.parentNode.parentNode; // карточка
+    if (event.target.classList.contains('card__button') && !event.target.classList.contains('saved-card')) {
+      event.preventDefault(); // отменяем переход по ссылке
+      const keyword = this.searchField.value; // достаем ключевое слово из поля поиска
       const title = currentCard.querySelector('.card__title').textContent;
       const text = currentCard.querySelector('.card__text').textContent;
       const date = currentCard.querySelector('.card__date').textContent;
@@ -72,14 +72,28 @@ export default class NewsCard {
       const link = currentCard.href;
       const image = currentCard.querySelector('.card__image').src;
 
-      // запрос на сохранение
-      this.mainApi.createArticle(keyword, title, text, date, source, link, image)
+      this.mainApi.createArticle(keyword, title, text, date, source, link, image) // запрос на сохранение
         .then((res) => {
-          // если ответ положительный, отрендерить иконку
           if (res.ok) {
-            this.renderIcon(event.target);
+            this.renderIcon(event.target); // если ответ положительный, отрендерить иконку
+            return res.json();
           }
-        });
+        })
+        .then(data => {
+          currentCard.parentNode.id = data.data._id; // дать карточке id
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    } else if (event.target.classList.contains('saved-card')) { // отменить сохранение
+      event.preventDefault(); // отменяем переход по ссылке
+      this.mainApi.removeArticle(currentCard.parentNode.id) // запрос на удаление по id, которое определил выше
+      .then (() => {
+        this.renderIcon(event.target); // после чего отрендерим иконку
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   }
 

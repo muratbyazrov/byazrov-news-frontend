@@ -121,15 +121,13 @@ loginSuccessButton.addEventListener('click', popup.openLogin.bind(popup));
 
 // шапка
 userNameButton.addEventListener('click', signout);
-// bind - иначе this в функции menuOpen принимал не то значение
 menuOpener.addEventListener('click', header.menuOpen.bind(header));
+
 // ПОИСК!
 searchSubmit.addEventListener('click', (event) => {
   event.preventDefault();
   searcher.startSearch(searchField.value);
 });
 
-// сохранить статью
-cardsContainer.addEventListener('click', card.savedCard.bind(card));
-// показать ещё
-showMoreButton.addEventListener('click', newsList.showMore.bind(newsList));
+cardsContainer.addEventListener('click', card.savedCard.bind(card)); // сохранить статью. обработчик на контейнере
+showMoreButton.addEventListener('click', newsList.showMore.bind(newsList)); // показать ещё

@@ -48,7 +48,7 @@ export default class MainApi {
   }
 
   // создать статью
-  createArticle(keyword, title, text, date, source, link, image) {
+   createArticle(keyword, title, text, date, source, link, image) {
     return fetch('http://localhost:3000/articles', {
       method: 'POST',
       credentials: 'include',
