@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { logProps } from '../constans/constans';
 
 export default class NewsCardList {
@@ -15,7 +16,7 @@ export default class NewsCardList {
   renderResults(obj) {
     this.clearCardContainer(); // очистка контейнера от предыдущих результатов
     if (obj.articles.length === 0) { // если нет карточек для отрисовки
-      this.hideResultBlock() // скрыть блок результатов
+      this.hideResultBlock(); // скрыть блок результатов
       this.renderError(); // и отобразить блок 'ничего не найдено'
     } else {
       this.clearResultBlock(); // очищаем секцию от not-found
@@ -36,19 +37,25 @@ export default class NewsCardList {
 
   // рендер карточек saved
   renderSavedArticles(obj) {
+    let articleCount = 0;
     obj.articles.forEach((item) => {
-      const { keyword, image, date, title, text, source, link } = item;
+      const {
+        keyword, image, date, title, text, source, link, owner,
+      } = item;
       const cardId = item._id;
-      const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId); // создать карточку
-      this.addCard(this.container, newCard);
-      this.renderSubtitle(keyword);
-    })
-    this.renderArticlesInfo(obj.articles.length); // сколько всего карточек
+      if (logProps.userId === owner) { // отображаем только свои карточки
+        const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId); // создать карточку
+        this.addCard(this.container, newCard);
+        this.renderSubtitle(keyword);
+        articleCount += 1;
+      }
+    });
+    this.renderArticlesInfo(articleCount); // сколько всего карточек
   }
 
   // добавляет блок "ничего не найдено"
   renderError() {
-    this.clearResultBlock() // очистка всей секции результатов
+    this.clearResultBlock(); // очистка всей секции результатов
     const notFoundBlock = document.createElement('div');
     notFoundBlock.classList.add('not-found');
     notFoundBlock.insertAdjacentHTML('afterbegin',
@@ -60,13 +67,13 @@ export default class NewsCardList {
 
   // отобразить лоадер
   renderLoader() {
-    this.clearResultBlock() // очистка всей секции результатов
+    this.clearResultBlock(); // очистка всей секции результатов
     this.clearLoader(); // чтобы лоадеры не размножались
     const loader = document.createElement('div');
     loader.classList.add('loader-block');
     loader.insertAdjacentHTML('afterbegin',
       `<i class="loader-block__circle-preloader"></i>
-    <h3 class="loader-block__title">Идет поиск новостей...</h3>`)
+    <h3 class="loader-block__title">Идет поиск новостей...</h3>`);
     this.resultBlock.insertBefore(loader, this.resultBlock.firstChild); // так лоудер будет перед карточками
   }
 
@@ -74,6 +81,7 @@ export default class NewsCardList {
   showResultBlock() {
     this.container.parentNode.classList.add('display');
   }
+
   hideResultBlock() {
     this.container.parentNode.classList.remove('display');
   }
@@ -110,7 +118,16 @@ export default class NewsCardList {
     // если до 3 ключевых слов - отображаем все, если больше 3 перечисляем кол-во остальных
     const another = this.keywordArr.length <= 3 ? this.keywordArr[2] : `${this.keywordArr.length - 2} другим`;
     // вставим правильный текст в pageSubtitle
-    this.pageSubtitle.textContent = `По ключевым словам ${this.keywordArr[0]}, ${this.keywordArr[1]} и ${another}`;
+    switch (this.keywordArr.length) {
+      case 1:
+        this.pageSubtitle.textContent = `По ключевому слову ${this.keywordArr[0]}`;
+        break;
+      case 2:
+        this.pageSubtitle.textContent = `По ключевым словам ${this.keywordArr[0]} и ${this.keywordArr[1]}`;
+        break;
+      default:
+        this.pageSubtitle.textContent = `По ключевым словам ${this.keywordArr[0]}, ${this.keywordArr[1]} и ${another}`;
+    }
   }
 
   // добавить карточки в список

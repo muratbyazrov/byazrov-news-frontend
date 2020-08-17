@@ -7,13 +7,6 @@ function setLogProps() {
   logProps.userName = localStorage.getItem('userName');
 }
 
-// если пользователь не залогинен, его должно выкинуть на главную страницу
-export function banish() {
-  if (logProps.isLoggedIn === 'false') {
-    document.location.href = 'index.html';
-  }
-}
-
 // проверяем, зарегистирован ли пользователь
 export function loginCheck() {
   // если запрос на получение данных пользователя...
@@ -25,6 +18,7 @@ export function loginCheck() {
           .then((data) => {
             localStorage.setItem('isloggedIn', true);
             localStorage.setItem('userName', data.data.name);
+            localStorage.setItem('userId', data.data._id);
             setLogProps();
             header.render(logProps);
           });

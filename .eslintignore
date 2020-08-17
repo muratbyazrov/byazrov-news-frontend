@@ -1,5 +1,4 @@
 /dist
 postcss.config.js
 /src/js/components/NewsCard.js
-/src/js/components/NewsCardList.js
 /src/js/api/MainApi.js

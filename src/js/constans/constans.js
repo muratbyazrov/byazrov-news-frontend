@@ -2,6 +2,7 @@ const logProps = {
   isLoggedIn: localStorage.getItem('isloggedIn'),
   userName: localStorage.getItem('userName'),
   page: undefined,
+  userId: localStorage.getItem('userId'),
 };
 
 // правила для валидации полей форм

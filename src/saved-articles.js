@@ -6,39 +6,36 @@ import MainApi from './js/api/MainApi';
 import NewsCardList from './js/components/NewsCardList';
 import NewsCard from './js/components/NewsCard';
 
-/* const { banish } = require('./js/utils/utils'); */
-/* import { banish } from './js/utils/utils'; */
-
 logProps.page = 'saved';
+// выкидываем незалогиненного пользователя на главную
+(function banish() {
+  if (logProps.isLoggedIn === 'false') {
+    document.location.href = 'index.html';
+  }
+}());
 
-// кнопка с пользователем
-const userNameButtonSaved = document.getElementById('user-name-button-saved');
-// кнопка выпадающего меню
-const menuOpener = document.querySelector('.header__menu-opener');
-// меню
-const headerMenu = document.querySelector('.header__menu');
-// контейнер сохраненных карточек
-const cardContainer = document.querySelector('.result__container');
-// поле с приветсвием и описанием количества статей
-const pageTitle = document.querySelector('.saved__title');
+const userNameButtonSaved = document.getElementById('user-name-button-saved'); // кнопка с пользователем
+const menuOpener = document.querySelector('.header__menu-opener'); // кнопка выпадающего меню
+const headerMenu = document.querySelector('.header__menu'); // меню
+const cardContainer = document.querySelector('.result__container'); // контейнер сохраненных карточек
+const pageTitle = document.querySelector('.saved__title'); // поле с приветсвием и описанием количества статей
 const pageSubtitle = document.querySelector('.saved__properties');
 const savedArticlesButton = document.getElementById('saved-articles'); // кнопка сохраненные статьи
 
+// параметры, передаваемые экземпляру header
 const headerObj = {
   authorizButton: undefined,
   headerMenu,
   savedArticlesButton,
 };
 
-export const mainApi = new MainApi();
+const mainApi = new MainApi();
 const card = new NewsCard(logProps, undefined, mainApi);
 const newsList = new NewsCardList(cardContainer, card, undefined, pageTitle, pageSubtitle);
-export const header = new Header(headerObj, userNameButtonSaved);
+const header = new Header(headerObj, userNameButtonSaved);
 
-header.render(logProps, userNameButtonSaved);
-
-// отркыть меню. bind - иначе this в функции menuOpen принимал не то значение
-menuOpener.addEventListener('click', header.menuOpen.bind(header));
+header.render(logProps, userNameButtonSaved); // ренедерим правильно header
+menuOpener.addEventListener('click', header.menuOpen.bind(header)); // открыть меню
 
 // отобразить карточки
 mainApi.getArticles()
