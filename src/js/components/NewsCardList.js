@@ -21,6 +21,7 @@ export default class NewsCardList {
     } else {
       this.clearResultBlock(); // очищаем секцию от not-found
       this.showResultBlock(); // нужно показать блок с карточками
+      this.showButton(); // показать кнопку
       obj.articles.forEach((item) => {
         const { keyword, title } = item;
         const image = item.urlToImage;
@@ -144,9 +145,10 @@ export default class NewsCardList {
   }
 
   // показать ещё карточки
-  showMore(event) {
+  showMore() {
     if (this.accumCards.length > 0) {
       const counter = this.accumCards.length >= 3 ? 3 : this.accumCards.length;
+      // eslint-disable-next-line no-plusplus
       for (let i = 0; i < counter; i++) {
         // показать первый элемент
         this.container.appendChild(this.accumCards[0]);
@@ -156,12 +158,16 @@ export default class NewsCardList {
       }
     } else {
       // когда статьи закончились, надо об этом сообщить
-      this.renderShowMoreButton(event.target);
+      this.hideButton();
     }
   }
 
   // когда статьи закончились, надо об этом сообщить
-  renderShowMoreButton(button) {
-    button.value = 'Это всё';
+  hideButton() {
+    this.resultBlock.querySelector('.result__button').classList.add('none-display');
+  }
+
+  showButton() {
+    this.resultBlock.querySelector('.result__button').classList.remove('none-display');
   }
 }

@@ -27,7 +27,6 @@ export default class Searcher {
       .catch((err) => {
         this.newsList.clearLoader(); // все равно надо скрыть лоадер
         console.log(err);
-        alert('Проверьте ваше интернет-соединение');
       });
   }
 
