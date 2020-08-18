@@ -42,6 +42,7 @@ export default class Form {
     this.validateInputElement(event.target);
     this.renderLoginForm();
     this.renderSignupForm();
+    this.loginServerError.textContent = ''; // будет скрывать серверную ошибку
   }
 
   validateInputElement(element) {
@@ -103,7 +104,8 @@ export default class Form {
       .then((res) => {
         if (res.ok) {
           this.popup.closeLogin();
-          this.loginCheck();
+          this.loginCheck()
+            .then(() => { window.location.reload(); });
         } else {
           return Promise.reject(res);
         }

@@ -1,5 +1,7 @@
 import { logProps } from '../constans/constans';
-import { header, mainApi } from '../../index';
+import MainApi from '../api/MainApi';
+
+export const mainApi = new MainApi();
 
 // установить параметры объекта из локал сторидж
 function setLogProps() {
@@ -7,12 +9,9 @@ function setLogProps() {
   logProps.userName = localStorage.getItem('userName');
 }
 
-// проверяем, зарегистирован ли пользователь
-export function loginCheck() {
-  // если запрос на получение данных пользователя...
-  mainApi.getUserData()
-    // правильный, то меням свойства объекта logProps на соответствующие
-    .then((res) => {
+export async function loginCheck() { // проверяем, зарегистирован ли пользователь
+  mainApi.getUserData() // если запрос на получение данных пользователя...
+    .then((res) => { // правильный, то меням свойства объекта logProps на соответствующие
       if (res.ok) {
         res.json()
           .then((data) => {
@@ -20,14 +19,11 @@ export function loginCheck() {
             localStorage.setItem('userName', data.data.name);
             localStorage.setItem('userId', data.data._id);
             setLogProps();
-            header.render(logProps);
           });
-        // если нет, так же меням свойства объекта logProps на соответствующие
-      } else {
+      } else { // если нет, так же меням свойства объекта logProps на соответствующие
         localStorage.setItem('isloggedIn', false);
         localStorage.setItem('userName', undefined);
         setLogProps();
-        header.render(logProps);
       }
     });
 }
@@ -35,8 +31,7 @@ export function loginCheck() {
 // функция выхода из аккаунта
 export function signout() {
   mainApi.signout()
-    // если ошибок не возникает, меням свойства объекта logProps на соответствующие
-    .then((res) => {
+    .then((res) => { // если ошибок не возникает, меням свойства объекта logProps на соответствующие
       if (logProps.page === 'saved') {
         document.location.href = 'index.html';
       }
@@ -44,7 +39,7 @@ export function signout() {
         localStorage.setItem('isloggedIn', false);
         localStorage.setItem('userName', undefined);
         setLogProps();
-        header.render(logProps);
+        window.location.reload();
       }
     })
     .catch(() => {

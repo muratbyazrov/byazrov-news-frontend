@@ -94,8 +94,11 @@ export const newsList = new NewsCardList(cardsContainer, card, resultBlock);
 export const newsApi = new NewsApi();
 const searcher = new Searcher(newsApi, newsList);
 
-loginCheck();
 logProps.page = 'main';
+loginCheck()
+  .then(() => {
+    header.render(logProps);
+  });
 
 // ФОРМА ЛОГИРОВАНИЯ
 loginEmail.addEventListener('input', form.handlValidate.bind(form));

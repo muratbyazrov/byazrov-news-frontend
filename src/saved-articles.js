@@ -6,6 +6,8 @@ import MainApi from './js/api/MainApi';
 import NewsCardList from './js/components/NewsCardList';
 import NewsCard from './js/components/NewsCard';
 
+const { signout } = require('./js/utils/utils');
+
 logProps.page = 'saved';
 // выкидываем незалогиненного пользователя на главную
 (function banish() {
@@ -48,4 +50,4 @@ mainApi.getArticles()
   });
 
 cardContainer.addEventListener('click', card.deleteCard.bind(card));
-/* userNameButtonSaved.addEventListener('click', signout); */
+userNameButtonSaved.addEventListener('click', signout);
