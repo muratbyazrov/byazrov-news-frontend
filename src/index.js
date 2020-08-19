@@ -14,7 +14,7 @@ const {
   logProps, emailRules, passwordRules, nameRules,
 } = require('./js/constans/constans');
 
-const { signout, loginCheck } = require('./js/utils/utils');
+const { signout, loginCheck, renderTopButton } = require('./js/utils/utils');
 
 // форма авторизации
 const popupLogin = document.getElementById('popup-login');
@@ -131,6 +131,8 @@ searchSubmit.addEventListener('click', (event) => {
   event.preventDefault();
   searcher.startSearch(searchField.value);
 });
+
+window.addEventListener('scroll', renderTopButton);
 
 cardsContainer.addEventListener('click', card.savedCard.bind(card)); // сохранить статью. обработчик на контейнере
 showMoreButton.addEventListener('click', newsList.showMore.bind(newsList)); // показать ещё

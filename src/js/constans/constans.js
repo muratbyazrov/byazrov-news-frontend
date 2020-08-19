@@ -41,6 +41,8 @@ const nameRules = {
   },
 };
 
+const topButton = document.querySelector('.top-button');
+
 module.exports = {
-  emailRules, passwordRules, nameRules, logProps,
+  emailRules, passwordRules, nameRules, logProps, topButton,
 };

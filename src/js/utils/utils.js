@@ -1,4 +1,4 @@
-import { logProps } from '../constans/constans';
+import { logProps, topButton } from '../constans/constans';
 import MainApi from '../api/MainApi';
 
 export const mainApi = new MainApi();
@@ -48,4 +48,13 @@ export function signout() {
     .catch(() => {
       console.log('ошибка при выходе из аккаунта');
     });
+}
+
+// функция для кнопки top
+export function renderTopButton() {
+  if (scrollY <= 1400) {
+    topButton.style.opacity = 0;
+  } else {
+    topButton.style.opacity = 0.8;
+  }
 }
