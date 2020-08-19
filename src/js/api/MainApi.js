@@ -5,7 +5,7 @@ export default class MainApi {
 
   // регистрация нового пользователя
   signup(email, password, name) {
-    return fetch('http://localhost:3000/signup', {
+    return fetch('https://api.byazrov-news.ga/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export default class MainApi {
 
   // аутентификация
   signin(email, password) {
-    return fetch('http://localhost:3000/signin', {
+    return fetch('https://api.byazrov-news.ga/signin', {
       method: 'POST',
       credentials: 'include',
       withCredentials: true,
@@ -37,7 +37,7 @@ export default class MainApi {
   // выйти из аккаунта
   signout() {
     // отправляем запрос на обнуление куки
-    return fetch('http://localhost:3000/signout', {
+    return fetch('https://api.byazrov-news.ga/signout', {
       method: 'POST',
       credentials: 'include',
       withCredentials: true,
@@ -49,7 +49,7 @@ export default class MainApi {
 
   // создать статью
    createArticle(keyword, title, text, date, source, link, image) {
-    return fetch('http://localhost:3000/articles', {
+    return fetch('https://api.byazrov-news.ga/articles', {
       method: 'POST',
       credentials: 'include',
       withCredentials: true,
@@ -70,7 +70,7 @@ export default class MainApi {
 
   // возвращает данные о пользователе
   getUserData() {
-    return fetch('http://localhost:3000/users/me', {
+    return fetch('https://api.byazrov-news.ga/users/me', {
       method: 'GET',
       credentials: 'include',
       withCredentials: true,
@@ -83,7 +83,7 @@ export default class MainApi {
 
   // забирает все статьи
   getArticles() {
-    return fetch('http://localhost:3000/articles', {
+    return fetch('https://api.byazrov-news.ga/articles', {
       method: 'GET',
       credentials: 'include',
       withCredentials: true,
@@ -92,7 +92,7 @@ export default class MainApi {
 
   // Удалить статью
   removeArticle(articleId) {
-    return fetch(`http://localhost:3000/articles/${articleId}`, {
+    return fetch(`https://api.byazrov-news.ga/articles/${articleId}`, {
       method: 'DELETE',
       credentials: 'include',
       withCredentials: true,
