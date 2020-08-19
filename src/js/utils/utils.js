@@ -25,6 +25,9 @@ export async function loginCheck() { // проверяем, зарегистир
         localStorage.setItem('userName', undefined);
         setLogProps();
       }
+    })
+    .catch(() => {
+      console.log('Ошибка предварительной авторизации');
     });
 }
 

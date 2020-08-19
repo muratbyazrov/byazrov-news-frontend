@@ -7,6 +7,8 @@ export default class MainApi {
   signup(email, password, name) {
     return fetch('https://api.byazrov-news.ga/signup', {
       method: 'POST',
+      /* credentials: 'include',
+      withCredentials: true, */
       headers: {
         'Content-Type': 'application/json',
       },
@@ -22,8 +24,8 @@ export default class MainApi {
   signin(email, password) {
     return fetch('https://api.byazrov-news.ga/signin', {
       method: 'POST',
-      credentials: 'include',
-      withCredentials: true,
+      /* credentials: 'include',
+      withCredentials: true, */
       headers: {
         'Content-Type': 'application/json',
       },
