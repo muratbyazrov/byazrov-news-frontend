@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production rimraf dist && webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
-    "deploy": "cross-env NODE_ENV=production gh-pages -d dist"
+    "deploy": "cross-env NODE_ENV=production gh-pages -d dist",
+    "serdep": "npm run build && scp -r ./dist/* murat@84.201.166.130:/home/murat/byazrov-news-frontend"
   },
   "repository": {
     "type": "git",
