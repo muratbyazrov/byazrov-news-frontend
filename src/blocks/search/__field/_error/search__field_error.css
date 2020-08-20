@@ -1,0 +1,17 @@
+/* @keyframes pulsar {
+  from {
+    border-color: rgba(250, 0, 0, .7) !important;
+  }
+  to {
+    border-color: #D1D2D6 !important;
+  }
+} */
+
+.search__field_error {
+ /*  animation: pulsar 2s ease-in-out;
+  animation-iteration-count: 3; */
+  border-color: rgba(250, 0, 0, .7) !important;
+/*   transition-property: border-color;
+  transition-duration: 1s;
+  transition-timing-function: linear; */
+}

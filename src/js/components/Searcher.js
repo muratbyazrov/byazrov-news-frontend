@@ -1,17 +1,18 @@
 const date = new Date();
 
 export default class Searcher {
-  constructor(newsApi, newsList) {
+  constructor(newsApi, newsList, searchField) {
     this.newsApi = newsApi;
     this.newsList = newsList;
     this.actualDate = '';
+    this.searchField = searchField;
   }
 
   // стартовый метод
-  startSearch(keyWord) {
-    this.newsList.renderLoader(); // показать лоадер
+  startSearch(event) {
+    event.preventDefault(); // остановить действие по умолчанию
     this.setActualDate(); // утсновить корректную дату для поиска
-    this.searchNews(keyWord); // запустить поиск с ключевым словом
+    this.checkKeyword(); // проверим текст зароса
   }
 
   // сам поиск
@@ -28,6 +29,17 @@ export default class Searcher {
         this.newsList.clearLoader(); // все равно надо скрыть лоадер
         console.log(err);
       });
+  }
+
+  checkKeyword() {
+    if (this.searchField.value === '') {
+      this.searchField.placeholder = 'Пустой запрос'; // сообщение
+      this.searchField.classList.add('search__field_error'); // красный стиль
+    } else {
+      this.newsList.renderLoader(); // показать лоадер
+      this.searchField.classList.remove('search__field_error'); // убрать стиль
+      this.searchNews(this.searchField.value); // запустить поиск
+    }
   }
 
   // устанавливает корректную дату для поиска

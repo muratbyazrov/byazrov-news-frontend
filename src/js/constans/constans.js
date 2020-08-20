@@ -23,7 +23,7 @@ const passwordRules = {
   },
   alphaNumeric: {
     alphaNumeric: true,
-    message: 'Пароль может содеражить только буквы и цифры',
+    message: 'Пароль может содеражить только латинские буквы и цифры',
   },
   min: {
     min: 8,

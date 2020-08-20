@@ -25,7 +25,6 @@ export default class NewsCardList {
       obj.articles.forEach((item) => {
         const { keyword, title } = item;
         const image = item.urlToImage;
-        console.log(image);
         const date = item.publishedAt;
         const text = item.description;
         const source = item.source.name;

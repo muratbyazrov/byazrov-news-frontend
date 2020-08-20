@@ -92,7 +92,7 @@ export const header = new Header(headerObj, userNameButton);
 export const card = new NewsCard(logProps, searchField, mainApi);
 export const newsList = new NewsCardList(cardsContainer, card, resultBlock);
 export const newsApi = new NewsApi();
-const searcher = new Searcher(newsApi, newsList);
+const searcher = new Searcher(newsApi, newsList, searchField);
 
 logProps.page = 'main';
 loginCheck()
@@ -127,10 +127,7 @@ userNameButton.addEventListener('click', signout);
 menuOpener.addEventListener('click', header.menuOpen.bind(header));
 
 // ПОИСК!
-searchSubmit.addEventListener('click', (event) => {
-  event.preventDefault();
-  searcher.startSearch(searchField.value);
-});
+searchSubmit.addEventListener('click', searcher.startSearch.bind(searcher));
 
 window.addEventListener('scroll', renderTopButton);
 

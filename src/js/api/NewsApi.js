@@ -14,7 +14,7 @@ export default class NewsApi {
       'http://newsapi.org/v2/everything?'
       + `q=${keyWord}&`
       + `from=${actualDate}&`
-      + 'sortBy=publishedAt&'
+      + 'sortBy=popular&'
       + 'pageSize=100&'
       + 'apiKey=0809fef65efa4e06b9681496b0a3fa07',
     );
