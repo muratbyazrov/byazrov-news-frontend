@@ -41,8 +41,11 @@ const nameRules = {
   },
 };
 
-const topButton = document.querySelector('.top-button');
+const topButton = document.querySelector('.top-button'); // кнопка для быстрого скролла наверх
+
+// eslint-disable-next-line no-undef
+const serverUrl = NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://api.byazrov-news.ga';
 
 module.exports = {
-  emailRules, passwordRules, nameRules, logProps, topButton,
+  emailRules, passwordRules, nameRules, logProps, topButton, serverUrl,
 };

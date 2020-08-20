@@ -74,7 +74,7 @@ export default class Form {
   // кнопка формы логирования
   renderLoginForm() {
     if ((approve.value(this.loginEmail.value, this.emailRules)).approved
-    && (approve.value(this.loginPassword.value, this.passwordRules)).approved) {
+      && (approve.value(this.loginPassword.value, this.passwordRules)).approved) {
       this.loginSubmit.classList.add('popup__button_active');
       this.loginSubmit.removeAttribute('disabled');
     } else {
@@ -96,25 +96,28 @@ export default class Form {
     }
   }
 
-  // валидация всех полей по нажатию на кнопку сабмита
+  // авторизация...
   validateLoginForm(event) {
     event.preventDefault();
-    this.mainApi.signin(this.loginEmail.value, this.loginPassword.value)
+    this.mainApi.signin(this.loginEmail.value, this.loginPassword.value) // запрос данных поль
       // eslint-disable-next-line consistent-return
       .then((res) => {
         if (res.ok) {
-          this.popup.closeLogin();
-          this.loginCheck()
-            .then(() => { window.location.reload(); });
-        } else {
-          return Promise.reject(res);
-        }
+          this.loginCheck() // если ответ положительный, обновляем свойства logProps
+            .then(() => {
+              this.popup.closeLogin(); // закрываем форму
+            })
+            .then(() => {
+              window.location.reload(); // и перезапускаем страницу для обновления
+            });
+        } else { return Promise.reject(res); } // в противном случае переходим в catch
       })
       .catch((err) => {
-        this.setServerLoginError(err);
+        this.setServerLoginError(err); // и уже здесь сообщаем об ошибке
       });
   }
 
+  // регистрация...
   validateSignupForm(event) {
     event.preventDefault();
     this.mainApi.signup(this.signupEmail.value, this.signupPassword.value, this.signupName.value)

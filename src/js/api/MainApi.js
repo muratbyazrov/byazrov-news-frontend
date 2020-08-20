@@ -1,3 +1,5 @@
+const { serverUrl } = require('../constans/constans'); // временно здесь. возможно в некоторых методаъх работает this.url - поставить везде и проверить
+
 // класс отвечает за взаимодействие с моим АПИ
 export default class MainApi {
   constructor() {
@@ -5,7 +7,7 @@ export default class MainApi {
 
   // регистрация нового пользователя
   signup(email, password, name) {
-    return fetch('https://api.byazrov-news.ga/signup', {
+    return fetch(`${serverUrl}/signup`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки
       withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
@@ -22,7 +24,7 @@ export default class MainApi {
 
   // аутентификация
   signin(email, password) {
-    return fetch('https://api.byazrov-news.ga/signin', {
+    return fetch(`${serverUrl}/signin`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки
       withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
@@ -39,7 +41,7 @@ export default class MainApi {
   // выйти из аккаунта
   signout() {
     // отправляем запрос на обнуление куки
-    return fetch('https://api.byazrov-news.ga/signout', {
+    return fetch(`${serverUrl}/signout`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки
       withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
@@ -51,7 +53,7 @@ export default class MainApi {
 
   // создать статью
    createArticle(keyword, title, text, date, source, link, image) {
-    return fetch('https://api.byazrov-news.ga/articles', {
+    return fetch(`${serverUrl}/articles`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки
       withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
@@ -72,7 +74,8 @@ export default class MainApi {
 
   // возвращает данные о пользователе
   getUserData() {
-    return fetch('https://api.byazrov-news.ga/users/me', {
+    console.log(serverUrl)
+    return fetch(`http://localhost:3000/users/me`, {
       method: 'GET',
       credentials: 'include', // разрешаем отправку куки
       withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
@@ -85,7 +88,7 @@ export default class MainApi {
 
   // забирает все статьи
   getArticles() {
-    return fetch('https://api.byazrov-news.ga/articles', {
+    return fetch(`${serverUrl}/articles`, {
       method: 'GET',
       credentials: 'include', // разрешаем отправку куки
       withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
@@ -94,7 +97,7 @@ export default class MainApi {
 
   // Удалить статью
   removeArticle(articleId) {
-    return fetch(`https://api.byazrov-news.ga/articles/${articleId}`, {
+    return fetch(`${serverUrl}/articles/${articleId}`, {
       method: 'DELETE',
       credentials: 'include', // разрешаем отправку куки
       withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
