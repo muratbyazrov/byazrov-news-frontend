@@ -39,6 +39,7 @@ export default class Searcher {
       this.newsList.renderLoader(); // показать лоадер
       this.searchField.classList.remove('search__field_error'); // убрать стиль
       this.searchNews(this.searchField.value); // запустить поиск
+      this.searchField.placeholder = 'Введите тему новости'; // возвращаем сообщение
     }
   }
 

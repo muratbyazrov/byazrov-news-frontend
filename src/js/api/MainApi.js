@@ -7,8 +7,8 @@ export default class MainApi {
   signup(email, password, name) {
     return fetch('https://api.byazrov-news.ga/signup', {
       method: 'POST',
-      /* credentials: 'include', */
-      withCredentials: true,
+      credentials: 'include', // разрешаем отправку куки
+      withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
       headers: {
         'Content-Type': 'application/json',
       },
@@ -24,8 +24,8 @@ export default class MainApi {
   signin(email, password) {
     return fetch('https://api.byazrov-news.ga/signin', {
       method: 'POST',
-      /* credentials: 'include', */
-      withCredentials: true,
+      credentials: 'include', // разрешаем отправку куки
+      withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
       headers: {
         'Content-Type': 'application/json',
       },
@@ -41,8 +41,8 @@ export default class MainApi {
     // отправляем запрос на обнуление куки
     return fetch('https://api.byazrov-news.ga/signout', {
       method: 'POST',
-      /* credentials: 'include', */
-      withCredentials: true,
+      credentials: 'include', // разрешаем отправку куки
+      withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
       headers: {
         'Content-Type': 'application/json',
       },
@@ -53,8 +53,8 @@ export default class MainApi {
    createArticle(keyword, title, text, date, source, link, image) {
     return fetch('https://api.byazrov-news.ga/articles', {
       method: 'POST',
-      /* credentials: 'include', */
-      withCredentials: true,
+      credentials: 'include', // разрешаем отправку куки
+      withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
       headers: {
         'Content-Type': 'application/json',
       },
@@ -74,8 +74,8 @@ export default class MainApi {
   getUserData() {
     return fetch('https://api.byazrov-news.ga/users/me', {
       method: 'GET',
-      /* credentials: 'include', */
-      withCredentials: true,
+      credentials: 'include', // разрешаем отправку куки
+      withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
       headers: {
         authorization: document.cookie,
         'Content-Type': 'application/json',
@@ -87,8 +87,8 @@ export default class MainApi {
   getArticles() {
     return fetch('https://api.byazrov-news.ga/articles', {
       method: 'GET',
-      /* credentials: 'include', */
-      withCredentials: true,
+      credentials: 'include', // разрешаем отправку куки
+      withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
     });
   }
 
@@ -96,8 +96,8 @@ export default class MainApi {
   removeArticle(articleId) {
     return fetch(`https://api.byazrov-news.ga/articles/${articleId}`, {
       method: 'DELETE',
-      /* credentials: 'include', */
-      withCredentials: true,
+      credentials: 'include', // разрешаем отправку куки
+      withCredentials: true, // разрешаем кросс-доменные запросы с использованием куки
       headers: {
         'Content-Type': 'application/json',
       },

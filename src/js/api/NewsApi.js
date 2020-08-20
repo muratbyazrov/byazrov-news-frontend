@@ -11,7 +11,7 @@ export default class NewsApi {
   // eslint-disable-next-line class-methods-use-this
   getNews(keyWord, actualDate) {
     return fetch(
-      'http://newsapi.org/v2/everything?'
+      'https://nomoreparties.co/news/v2/everything?'
       + `q=${keyWord}&`
       + `from=${actualDate}&`
       + 'sortBy=popular&'
