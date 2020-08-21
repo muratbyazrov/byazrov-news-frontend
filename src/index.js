@@ -132,4 +132,5 @@ searchSubmit.addEventListener('click', searcher.startSearch.bind(searcher));
 window.addEventListener('scroll', renderTopButton);
 
 cardsContainer.addEventListener('click', card.savedCard.bind(card)); // сохранить статью. обработчик на контейнере
+cardsContainer.addEventListener('touchstart', card.savedCard.bind(card)); // для сенсорных экранов
 showMoreButton.addEventListener('click', newsList.showMore.bind(newsList)); // показать ещё

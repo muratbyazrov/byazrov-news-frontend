@@ -131,7 +131,7 @@ export default class NewsCardList {
     }
   }
 
-  // добавить карточки в список
+  // добавить карточки в список при загрузке стрницы
   addCard(cardsContainer, newCard) {
     // 3 карточки поажем, остальные в массив
     if (cardsContainer.childNodes.length <= 2 && logProps.page === 'main') {
