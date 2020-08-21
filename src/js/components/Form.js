@@ -99,7 +99,7 @@ export default class Form {
   // авторизация...
   validateLoginForm(event) {
     event.preventDefault();
-    this.mainApi.signin(this.loginEmail.value, this.loginPassword.value) // запрос данных поль
+    this.mainApi.signin(this.loginEmail.value, this.loginPassword.value) // запрос данных польз.
       // eslint-disable-next-line consistent-return
       .then((res) => {
         if (res.ok) {
@@ -108,7 +108,9 @@ export default class Form {
               this.popup.closeLogin(); // закрываем форму
             })
             .then(() => {
-              window.location.reload(); // и перезапускаем страницу для обновления
+              setTimeout(() => {
+                window.location.reload(); // и перезапускаем страницу для обновления
+              }, 500);
             });
         } else { return Promise.reject(res); } // в противном случае переходим в catch
       })
