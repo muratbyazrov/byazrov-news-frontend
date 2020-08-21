@@ -26,6 +26,12 @@
   margin-bottom: 25px;
 }
 
+@media screen and (max-width: 560px) {
+  .error-message {
+    margin-top: -29px;
+  }
+}
+
 .input-container__invalid {
   opacity: 1;
 }
