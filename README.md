@@ -1,5 +1,5 @@
 # frontend-часть приложения для новостей NewsEplorer
-### [Ссылка на приложение в сети](https://byazrov-news.ga)
+### Ссылка на приложение [в сети](https://byazrov-news.ga)
 ### Cсылка на работающую страничку  [gh-pages](https://muratbyazrov.github.io/byazrov-news-frontend/)
 ### Бэкенд можно посмотреть по [этой ссылке](https://github.com/muratbyazrov/byazrov-news-api)
 
