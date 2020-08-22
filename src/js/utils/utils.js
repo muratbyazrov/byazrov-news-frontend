@@ -19,13 +19,11 @@ export async function loginCheck() { // проверяем, зарегистир
             localStorage.setItem('userName', data.data.name);
             localStorage.setItem('userId', data.data._id);
             setLogProps();
-            console.log('ok');
           });
       } else { // если нет, так же меням свойства объекта logProps на соответствующие
         localStorage.setItem('isloggedIn', false);
         localStorage.setItem('userName', undefined);
         setLogProps();
-        console.log('else');
       }
     })
     .catch(() => {

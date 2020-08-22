@@ -2,23 +2,23 @@
 const approve = require('approvejs');
 
 export default class Form {
-  constructor(mainApi, popup, formObj, loginCheck) {
+  constructor(mainApi, popup, formParams, loginCheck) {
     this.mainApi = mainApi;
     this.popup = popup;
-    this.signupSubmit = formObj.signupSubmit;
-    this.loginSubmit = formObj.loginSubmit;
-    this.loginEmail = formObj.loginEmail;
-    this.loginPassword = formObj.loginPassword;
-    this.signupName = formObj.signupName;
-    this.signupEmail = formObj.signupEmail;
-    this.signupPassword = formObj.signupPassword;
-    this.emailRules = formObj.emailRules;
-    this.passwordRules = formObj.passwordRules;
-    this.nameRules = formObj.nameRules;
-    this.loginServerError = formObj.loginServerError;
-    this.signupServerError = formObj.signupServerError;
-    this.loginForm = formObj.loginForm;
-    this.signupForm = formObj.signupForm;
+    this.signupSubmit = formParams.signupSubmit;
+    this.loginSubmit = formParams.loginSubmit;
+    this.loginEmail = formParams.loginEmail;
+    this.loginPassword = formParams.loginPassword;
+    this.signupName = formParams.signupName;
+    this.signupEmail = formParams.signupEmail;
+    this.signupPassword = formParams.signupPassword;
+    this.emailRules = formParams.emailRules;
+    this.passwordRules = formParams.passwordRules;
+    this.nameRules = formParams.nameRules;
+    this.loginServerError = formParams.loginServerError;
+    this.signupServerError = formParams.signupServerError;
+    this.loginForm = formParams.loginForm;
+    this.signupForm = formParams.signupForm;
     this.loginCheck = loginCheck;
   }
 

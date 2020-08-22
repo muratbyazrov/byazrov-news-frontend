@@ -2,9 +2,9 @@
 const dateFormat = require('dateformat');
 
 export default class NewsCard {
-  constructor(logProps, searchField, mainApi) {
-    this.logProps = logProps;
-    this.searchField = searchField;
+  constructor(newsCardParams, mainApi) {
+    this.logProps = newsCardParams.logProps;
+    this.searchField = newsCardParams.searchField;
     this.mainApi = mainApi;
   }
 

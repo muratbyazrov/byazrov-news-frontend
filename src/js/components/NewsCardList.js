@@ -2,12 +2,12 @@
 import { logProps } from '../constans/constans';
 
 export default class NewsCardList {
-  constructor(container, cardClass, resultBlock, pageTitle, pageSubtitle) {
-    this.resultBlock = resultBlock; // секция с результатом
-    this.container = container; // блок с карточками
+  constructor(newsCardListParams, cardClass) {
+    this.resultBlock = newsCardListParams.resultBlock; // секция с результатом
+    this.container = newsCardListParams.cardsContainer; // блок с карточками
     this.cardClass = cardClass; // экзмпляр класса карточки
-    this.pageTitle = pageTitle; // для page = saved
-    this.pageSubtitle = pageSubtitle; // для page = saved
+    this.pageTitle = newsCardListParams.pageTitle; // для page = saved
+    this.pageSubtitle = newsCardListParams.pageSubtitle; // для page = saved
     this.keywordArr = []; // массив ключевых слов
     this.accumCards = []; // аккумулирующий массив карточек
   }

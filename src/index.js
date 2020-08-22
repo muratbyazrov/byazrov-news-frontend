@@ -59,7 +59,7 @@ const searchField = document.querySelector('.search__field');
 const searchSubmit = document.querySelector('.search__button');
 
 // объект для передачи класc form
-const formObj = {
+const formParams = {
   signupSubmit,
   loginSubmit,
   loginEmail,
@@ -76,21 +76,29 @@ const formObj = {
   signupForm,
 };
 
-const popupObj = {
+const popupParams = {
   popupLogin, popupSignup, popupSuccess, loginServerError, signupServerError,
 };
 
-const headerObj = {
+const headerParams = {
   authorizButton, headerMenu, savedArticlesButton, menuOpener,
 };
 
+const newsCardParams = {
+  logProps, searchField,
+};
+
+const newsCardListParams = {
+  cardsContainer, resultBlock,
+};
+
 // подключаем классы, чтобы пользоваться их методами
-export const popup = new Popup(popupObj);
+export const popup = new Popup(popupParams);
 export const mainApi = new MainApi();
-export const form = new Form(mainApi, popup, formObj, loginCheck);
-export const header = new Header(headerObj, userNameButton);
-export const card = new NewsCard(logProps, searchField, mainApi);
-export const newsList = new NewsCardList(cardsContainer, card, resultBlock);
+export const form = new Form(mainApi, popup, formParams, loginCheck);
+export const header = new Header(headerParams, userNameButton);
+export const card = new NewsCard(newsCardParams, mainApi);
+export const newsList = new NewsCardList(newsCardListParams, card);
 export const newsApi = new NewsApi();
 const searcher = new Searcher(newsApi, newsList, searchField);
 

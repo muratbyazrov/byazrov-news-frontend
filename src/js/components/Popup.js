@@ -1,10 +1,10 @@
 export default class Popup {
-  constructor(popupObj) {
-    this.popupLogin = popupObj.popupLogin;
-    this.popupSignup = popupObj.popupSignup;
-    this.popupSuccess = popupObj.popupSuccess;
-    this.loginServerError = popupObj.loginServerError;
-    this.signupServerError = popupObj.signupServerError;
+  constructor(popupParams) {
+    this.popupLogin = popupParams.popupLogin;
+    this.popupSignup = popupParams.popupSignup;
+    this.popupSuccess = popupParams.popupSuccess;
+    this.loginServerError = popupParams.loginServerError;
+    this.signupServerError = popupParams.signupServerError;
   }
 
   openLogin() {
