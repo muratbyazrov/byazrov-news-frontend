@@ -1,6 +1,8 @@
 # frontend-часть приложения для новостей NewsEplorer
-[Ссылка на приложение в сети](https://byazrov-news.ga)
-ссылка на работающую страничку  [gh-pages](https://muratbyazrov.github.io/byazrov-news-frontend/)
+### [Ссылка на приложение в сети](https://byazrov-news.ga)
+### Cсылка на работающую страничку  [gh-pages](https://muratbyazrov.github.io/byazrov-news-frontend/)
+### Бэкенд можно посмотреть по [этой ссылке](https://github.com/muratbyazrov/byazrov-news-api)
+
 ### В работе применялась семантическая верстка, все классы именовались по БЭМ, для позиционирования элементов применялись Flex layout и Grid Layout. Верстка адаптирована под все устройства.
 ### Использован JS(ES6). 
 
@@ -10,5 +12,5 @@
 - `npm run deploy` опубликует сборку build на гитхабе в ветке gh-pages
 - `npm run serdep` задеплоит фронт на сервер, если конечно у вас есть пароль от сервера (злобный смех)
 
-### Бэкенд-часть можно посмотреть по [этой ссылке](https://github.com/muratbyazrov/byazrov-news-api)
+
 
