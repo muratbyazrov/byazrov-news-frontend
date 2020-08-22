@@ -3,7 +3,11 @@
   "rules": {
     "no-underscore-dangle": ["error", { "allow": ["_id"] }],
     "no-restricted-globals": ["error", "event", "fdescribe"], // разрешить scrollY
-    "no-console": "off" // разрешаем консоли
+    "no-console": "off", // разрешаем консоли
+    "class-methods-use-this": ["error", { "exceptMethods": [
+      "getNews", "signup", "signin", "signout", "createArticle", "getUserData", "getArticles", "removeArticle"
+      ]
+    }]
   },
 
   "env": {

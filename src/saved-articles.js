@@ -1,12 +1,12 @@
 // подключим стили
 import './style.css';
-import { logProps } from './js/constans/constans';
 import Header from './js/components/Header';
 import MainApi from './js/api/MainApi';
 import NewsCardList from './js/components/NewsCardList';
 import NewsCard from './js/components/NewsCard';
 
 const { signout } = require('./js/utils/utils');
+const { logProps } = require('./js/constans/constans');
 
 logProps.page = 'saved';
 // выкидываем незалогиненного пользователя на главную

@@ -1,10 +1,7 @@
-const { serverUrl } = require('../constans/constans'); // временно здесь. возможно в некоторых методаъх работает this.url - поставить везде и проверить
+const { serverUrl } = require('../constans/constans');
 
 // класс отвечает за взаимодействие с моим АПИ
 export default class MainApi {
-  constructor() {
-  }
-
   // регистрация нового пользователя
   signup(email, password, name) {
     return fetch(`${serverUrl}/signup`, {
@@ -52,7 +49,7 @@ export default class MainApi {
   }
 
   // создать статью
-   createArticle(keyword, title, text, date, source, link, image) {
+  createArticle(keyword, title, text, date, source, link, image) {
     return fetch(`${serverUrl}/articles`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки

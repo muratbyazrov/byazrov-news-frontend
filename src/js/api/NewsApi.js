@@ -1,9 +1,5 @@
 export default class NewsApi {
-  constructor() {
-    this.params = ''; // чтобы еслинт не доставал
-  }
-
-  // eslint-disable-next-line class-methods-use-this
+  // конструкор удален. В доках к еслинт говориться, что можно так делать, если констр не нужен
   getNews(keyWord, actualDate) {
     return fetch(
       'https://nomoreparties.co/news/v2/everything?'
