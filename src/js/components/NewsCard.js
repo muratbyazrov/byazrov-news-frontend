@@ -42,11 +42,13 @@ export default class NewsCard {
     dateNews = this.logProps.page === 'main' ? dateFormat(dateNews, 'dd mmmm, yyyy') : dateNews;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
+    const imageSrc = image == null ? 'https://clck.ru/QTnke' : `${image}`; // если фото по новости нет
+    // добавляем ключевое слово, если мы на странице с сохраненками
     const setKeyword = this.logProps.page === 'main' ? '' : `<h4 class="card__keyword"> ${keyword} </h4>`;
     card.insertAdjacentHTML('afterbegin',
       `<a class = 'card__link' href=${link} target = 'new'>
         <div class="card__head">
-          <img src="${image}" class="card__image" alt="картинка к новости">
+          <img src=${imageSrc} class="card__image" alt="картинка к новости отсутствует">
           <div class="card__button ${iconClassname}" data-title='${cardMessage}'></div>
            ${setKeyword}
         </div>

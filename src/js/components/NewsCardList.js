@@ -10,6 +10,7 @@ export default class NewsCardList {
     this.pageSubtitle = newsCardListParams.pageSubtitle; // для page = saved
     this.keywordArr = []; // массив ключевых слов
     this.accumCards = []; // аккумулирующий массив карточек
+    this.articleCount = 0; // Счётчик сохраненных статей
   }
 
   // рендер карточек main
@@ -38,7 +39,6 @@ export default class NewsCardList {
 
   // рендер карточек saved
   renderSavedArticles(obj) {
-    let articleCount = 0;
     obj.articles.forEach((item) => {
       const {
         keyword, image, date, title, text, source, link, owner,
@@ -48,10 +48,10 @@ export default class NewsCardList {
         const newCard = this.cardClass.createCard(keyword, title, text, date, source, link, image, cardId); // создать карточку
         this.addCard(this.container, newCard);
         this.renderSubtitle(keyword);
-        articleCount += 1;
+        this.articleCount += 1;
       }
     });
-    this.renderArticlesInfo(articleCount); // сколько всего карточек
+    this.renderArticlesInfo(); // сколько всего карточек
   }
 
   // добавляет блок "ничего не найдено"
@@ -107,8 +107,8 @@ export default class NewsCardList {
   }
 
   // добавляет тексты на станцу сохраненные
-  renderArticlesInfo(count) {
-    this.pageTitle.textContent = `${logProps.userName}, у вас ${count} сохранённых статей`;
+  renderArticlesInfo() {
+    this.pageTitle.textContent = `${logProps.userName}, у вас ${this.articleCount} сохранённых статей`;
   }
 
   // добавляет тексты
