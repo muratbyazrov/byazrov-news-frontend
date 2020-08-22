@@ -81,7 +81,7 @@ const popupObj = {
 };
 
 const headerObj = {
-  authorizButton, headerMenu, savedArticlesButton,
+  authorizButton, headerMenu, savedArticlesButton, menuOpener,
 };
 
 // подключаем классы, чтобы пользоваться их методами

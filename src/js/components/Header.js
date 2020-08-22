@@ -1,9 +1,10 @@
 export default class Header {
   constructor(headerObj, headerButton) {
     this.headerButton = headerButton;
-    this.authorizButton = headerObj.authorizButton;
-    this.headerMenu = headerObj.headerMenu;
-    this.savedArticlesButton = headerObj.savedArticlesButton;
+    this.authorizButton = headerObj.authorizButton; // кнопка авторизации
+    this.headerMenu = headerObj.headerMenu; // само выпадающее меню
+    this.savedArticlesButton = headerObj.savedArticlesButton; // кнопка сохр статьи
+    this.menuOpener = headerObj.menuOpener; // кнопка выпадающего меню
   }
 
   render(logProps) {
@@ -27,14 +28,15 @@ export default class Header {
     }
   }
 
-  menuOpen(event) {
+  menuOpen() { // открыть меню
     this.headerMenu.classList.toggle('display');
-    event.target.classList.toggle('header__menu-closer');
+    this.menuOpener.classList.toggle('header__menu-closer'); // поменять стиль кнопки
   }
 
-  menuClose(event) {
+  menuClose(event) { // закрыть меню
     if (!event.target.classList.contains('header__menu-opener')) {
       this.headerMenu.classList.remove('display');
+      this.menuOpener.classList.remove('header__menu-closer'); // поменять стиль кнопки на исходный
     }
   }
 }

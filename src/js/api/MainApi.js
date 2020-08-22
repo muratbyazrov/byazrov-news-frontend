@@ -7,7 +7,6 @@ export default class MainApi {
 
   // регистрация нового пользователя
   signup(email, password, name) {
-    console.log(serverUrl)
     return fetch(`${serverUrl}/signup`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки
@@ -25,7 +24,6 @@ export default class MainApi {
 
   // аутентификация
   signin(email, password) {
-    console.log(serverUrl)
     return fetch(`${serverUrl}/signin`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки
@@ -42,7 +40,6 @@ export default class MainApi {
 
   // выйти из аккаунта
   signout() {
-    console.log(serverUrl)
     // отправляем запрос на обнуление куки
     return fetch(`${serverUrl}/signout`, {
       method: 'POST',
@@ -56,7 +53,6 @@ export default class MainApi {
 
   // создать статью
    createArticle(keyword, title, text, date, source, link, image) {
-    console.log(serverUrl)
     return fetch(`${serverUrl}/articles`, {
       method: 'POST',
       credentials: 'include', // разрешаем отправку куки
@@ -78,7 +74,6 @@ export default class MainApi {
 
   // возвращает данные о пользователе
   getUserData() {
-    console.log(serverUrl)
     return fetch(`${serverUrl}/users/me`, {
       method: 'GET',
       credentials: 'include', // разрешаем отправку куки
@@ -92,7 +87,6 @@ export default class MainApi {
 
   // забирает все статьи
   getArticles() {
-    console.log(serverUrl)
     return fetch(`${serverUrl}/articles`, {
       method: 'GET',
       credentials: 'include', // разрешаем отправку куки
@@ -102,7 +96,6 @@ export default class MainApi {
 
   // Удалить статью
   removeArticle(articleId) {
-    console.log(serverUrl)
     return fetch(`${serverUrl}/articles/${articleId}`, {
       method: 'DELETE',
       credentials: 'include', // разрешаем отправку куки

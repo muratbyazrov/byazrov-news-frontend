@@ -11,8 +11,8 @@ export default class Searcher {
   // стартовый метод
   startSearch(event) {
     event.preventDefault(); // остановить действие по умолчанию
-    this.checkKeyword(); // проверим текст зароса
     this.setActualDate(); // утсновить корректную дату для поиска
+    this.checkKeyword(); // проверим текст зароса
     this.newsList.clearAccumCardsArr(); // очистить аккумиулирующий массив
   }
 
