@@ -125,6 +125,7 @@ loginSuccessButton.addEventListener('click', popup.openLogin.bind(popup));
 // шапка
 userNameButton.addEventListener('click', signout);
 menuOpener.addEventListener('click', header.menuOpen.bind(header));
+window.addEventListener('click', header.menuClose.bind(header)); // чтобы закрывать меню при клике на любое поле
 
 // ПОИСК!
 searchSubmit.addEventListener('click', searcher.startSearch.bind(searcher));

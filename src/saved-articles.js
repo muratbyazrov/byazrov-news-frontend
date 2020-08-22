@@ -51,3 +51,4 @@ mainApi.getArticles()
 
 cardContainer.addEventListener('click', card.deleteCard.bind(card));
 userNameButtonSaved.addEventListener('click', signout);
+window.addEventListener('click', header.menuClose.bind(header)); // чтобы закрывать меню при клике на любое поле

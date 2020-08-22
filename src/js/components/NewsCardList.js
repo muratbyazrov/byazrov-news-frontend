@@ -170,4 +170,8 @@ export default class NewsCardList {
   showButton() {
     this.resultBlock.querySelector('.result__button').classList.remove('none-display');
   }
+
+  clearAccumCardsArr() {
+    this.accumCards = [];
+  }
 }
