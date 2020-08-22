@@ -5,7 +5,8 @@
     "no-restricted-globals": ["error", "event", "fdescribe"], // разрешить scrollY
     "no-console": "off", // разрешаем консоли
     "class-methods-use-this": ["error", { "exceptMethods": [
-      "getNews", "signup", "signin", "signout", "createArticle", "getUserData", "getArticles", "removeArticle"
+      "getNews", "signup", "signin", "signout", "createArticle", "getUserData", "getArticles", "removeArticle",
+      "renderIcon"
       ]
     }]
   },

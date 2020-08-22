@@ -25,20 +25,21 @@ export default class NewsCard {
     cardIcon.classList.toggle('saved-card');
   }
 
+  // класс кнопочке карточки корзина или флажок
   setClassnameIcon() {
-    if (this.logProps.page === 'main') {
-      return 'card__button_save';
-    } if (this.logProps.page === 'saved') {
+    if (this.logProps.page === 'saved') {
       return 'card__button_delete';
     }
+    return 'card__button_save';
   }
 
   createCard(keyword, title, text, date, source, link, image, cardId) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.id = cardId;
+    let dateNews = date; // изменение параметров функции может привести к ошибкам, поэтомы вынесли
     // createcard срабатывает дважды, a dateFormat должен только раз
-    date = this.logProps.page === 'main' ? dateFormat(date, 'dd mmmm, yyyy') : date;
+    dateNews = this.logProps.page === 'main' ? dateFormat(dateNews, 'dd mmmm, yyyy') : dateNews;
     const cardMessage = this.setMessage();
     const iconClassname = this.setClassnameIcon();
     const setKeyword = this.logProps.page === 'main' ? '' : `<h4 class="card__keyword"> ${keyword} </h4>`;
@@ -51,7 +52,7 @@ export default class NewsCard {
         </div>
 
         <div class="card__details">
-          <p class="card__date"> ${date} </p>
+          <p class="card__date"> ${dateNews} </p>
           <h3 class="card__title"> ${title} </h3>
           <p class="card__text"> ${text} </p>
           <p class="card__source"> ${source} </p>
@@ -72,28 +73,27 @@ export default class NewsCard {
       const link = currentCard.href;
       const image = currentCard.querySelector('.card__image').src;
 
-      this.mainApi.createArticle(keyword, title, text, date, source, link, image) // запрос на сохранение
+      this.mainApi.createArticle(keyword, title, text, date, source, link, image) // запрос на сохр.
         .then((res) => {
           if (res.ok) {
-            this.renderIcon(event.target); // если ответ положительный, отрендерить иконку
-            return res.json();
-          }
+            this.renderIcon(event.target); // только если ответ положительный, отрендерить иконку
+          } return res.json(); // но в любом случае отдаем ответ
         })
-        .then(data => {
+        .then((data) => {
           currentCard.parentNode.id = data.data._id; // дать карточке id
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else if (event.target.classList.contains('saved-card')) { // отменить сохранение
       event.preventDefault(); // отменяем переход по ссылке
-      this.mainApi.removeArticle(currentCard.parentNode.id) // запрос на удаление по id, которое определил выше
-      .then (() => {
-        this.renderIcon(event.target); // после чего отрендерим иконку
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      this.mainApi.removeArticle(currentCard.parentNode.id) // запрос на удаление по id
+        .then(() => {
+          this.renderIcon(event.target); // после чего отрендерим иконку
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
@@ -114,8 +114,3 @@ export default class NewsCard {
     }
   }
 }
-
-/* если часть интерфейса, которой управляет класс, подразумевает интерактивность,
-конструктор этого класса может принимать массив обработчиков событий, которые нужно
-добавить его элементам. Обработчики следует передавать конструктору в виде массива, а
-за их добавление должен отвечать приватный метод _setHandlers. */
